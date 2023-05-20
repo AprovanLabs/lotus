@@ -1,0 +1,16 @@
+name: Mirror Repo
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+      - name: Mirror
+        run: git push --mirror https://${GH_TOKEN}@github.com/${GH_USERNAME}/${GH_REPO}.git
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_USERNAME: ${{ secrets.GH_USERNAME }}
+          GH_REPO: ${{ secrets.GH_REPO }}
