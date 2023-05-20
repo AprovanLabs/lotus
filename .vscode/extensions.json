@@ -1,0 +1,13 @@
+{
+	"recommendations": [
+		"bradlc.vscode-tailwindcss",
+		"austenc.tailwind-docs",
+		"dbaeumer.vscode-eslint",
+		"donjayamanne.githistory",
+		"eamodio.gitlens",
+		"EditorConfig.EditorConfig",
+		"esbenp.prettier-vscode",
+		"vscode-icons-team.vscode-icons",
+		"yoavbls.pretty-ts-errors",
+	]
+}
