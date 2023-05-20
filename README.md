@@ -1,6 +1,6 @@
 # Lotus
 
-Lotus tennis tournament pages
+Lotus websites. 'Highly Strung Tennis Tournamen' homepage
 
 ## Prerequisites
 

@@ -4,13 +4,13 @@ on: [push, pull_request]
 
 jobs:
   build:
+    if: github.repository == 'AprovanLabs/lotus'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source
         uses: actions/checkout@v2
       - name: Mirror
-        run: git push --mirror https://${GH_TOKEN}@github.com/${GH_USERNAME}/${GH_REPO}.git
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          GH_USERNAME: ${{ secrets.GH_USERNAME }}
-          GH_REPO: ${{ secrets.GH_REPO }}
+        # Remove the extraheader that is set by the checkout action
+        run: |
+          git config --unset-all http.https://github.com/.extraheader
+          git push --mirror https://${{secrets.EXTERNAL_GITHUB_TOKEN}}@github.com/AprovanBot/lotus.git
