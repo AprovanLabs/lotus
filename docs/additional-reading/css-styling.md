@@ -1,4 +1,6 @@
-# Learning Tailwind
+# CSS Styling
+
+...or why Tailwind is the best CSS 'framework'.
 
 Styling web projects is an age-old debate and everyone has their own opinion. Here are a few different patterns/technologies you might find in modern web projects:
 
