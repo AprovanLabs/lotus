@@ -8,4 +8,4 @@ Introducing 'unstyled components'. These libraries provide robust components (mu
 
 ## Shadcn
 
-[Shadcn](https://ui.shadcn.com/) is a library of unstyled components that include examples. This is a gret way to quickly include a new component into a product and then restyle it to fit the use-case, later. It uses Tailwind for the styling
+[Shadcn](https://ui.shadcn.com/) is a library of unstyled components that include examples. This is a great way to quickly include a new component into a product and then restyle it to fit the use-case, later. It uses Tailwind for the styling.
