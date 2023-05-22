@@ -1,6 +1,6 @@
 # Lotus
 
-Lotus websites. 'Highly Strung Tennis Tournamen' homepage
+Lotus websites. 'Highly Strung Tennis Tournament' homepage
 
 ## Overview
 
