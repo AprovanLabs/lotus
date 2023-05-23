@@ -1,6 +1,36 @@
 # Git
 
-## Git Flow
+[Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
+
+## Commiting/Syncing with GitHub
+
+I want to see what files I've changed so far
+
+```bash
+git status
+```
+
+I have changes to my files and want to commit them and send them to GitHub
+
+```bash
+git add file1 # Or 'git add .' to add all files
+git commit -m "Commit message" # Be descriptive, in the past tense. e.g. 'Removed unused environment variable in Dockerfile'
+git push
+```
+
+Someone has pushed changes to GitHub on the same branch
+
+```bash
+# Make sure working tree is clean (everything is committed)
+git pull
+```
+
+I need to set my username and email
+
+```bash
+git config --global user.name JacobSampson
+git config --global user.email JacobSampson
+```
 
 ## Branching
 
@@ -42,19 +72,3 @@ For a GitHub Projects-based workflow, the issue number is the number of the card
 | chore    | `chore/issue-1`    |
 
 [A Simplified Convention for Naming Branches and Commits in Git](https://dev.to/varbsan/a-simplified-convention-for-naming-branches-and-commits-in-git-il4#:~:text=Branch%20Naming%20Convention&text=A%20git%20branch%20should%20start,bugfix%20%2C%20hotfix%20%2C%20or%20test%20.&text=After%20the%20category%2C%20there%20should,%2C%20just%20add%20no%2Dref%20)
-
-## Commiting
-
-I have changes to my files and want to commit them and send them to GitHub
-
-```bash
-git add file1 # Or 'git add .' to add all files
-git commit -m "Commit message" # Be descriptive, in the past tense. e.g. 'Removed unused environment variable in Dockerfile'
-git push
-```
-
-git status
-staging
-
-git config --global user.name JacobSampson
-git config --global user.email JacobSampson
