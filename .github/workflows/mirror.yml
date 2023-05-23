@@ -12,5 +12,5 @@ jobs:
       - name: Mirror
         # Remove the extraheader that is set by the checkout action
         run: |
-          git config --unset-all http.https://github.com/.extraheader
+          git config --unset-all http.https://github.com/.extraheader || TRUE
           git push --mirror https://${{secrets.EXTERNAL_GITHUB_TOKEN}}@github.com/AprovanBot/lotus.git
