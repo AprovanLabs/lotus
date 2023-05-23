@@ -52,3 +52,9 @@ git add file1 # Or 'git add .' to add all files
 git commit -m "Commit message" # Be descriptive, in the past tense. e.g. 'Removed unused environment variable in Dockerfile'
 git push
 ```
+
+git status
+staging
+
+git config --global user.name JacobSampson
+git config --global user.email JacobSampson
