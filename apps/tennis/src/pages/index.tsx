@@ -10,8 +10,10 @@ const HomePage = () => {
   return (
     // We use 'layout' files to control how the page looks. This is a good place to put things like headers, footers, navigation, etc. This makes things appear consistent across the site
     <BasicLayout>
-      <h1 className="text-xl">Home Page</h1>
-      <Link href="https://google.com">contact us</Link>
+      <h1 className="text-xl" style={{ backgroundColor: "blue" }}>Highly Strung Tennis Tournament</h1>
+      <Link href="/contact" style={{ backgroundColor: "green" }}>contact us</Link>
+      <Link href="/tournaments" style={{ backgroundColor: "green" }}>tournaments</Link>
+      <Link href="/draws" style={{ backgroundColor: "green" }}>draws</Link>
     </BasicLayout>
   );
 };
