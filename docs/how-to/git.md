@@ -4,13 +4,13 @@
 
 ## Commiting/Syncing with GitHub
 
-I want to see what files I've changed so far
+> I want to see what files I've changed so far
 
 ```bash
 git status
 ```
 
-I have changes to my files and want to commit them and send them to GitHub
+> I have changes to my files and want to commit them and send them to GitHub
 
 ```bash
 git add file1 # Or 'git add .' to add all files
@@ -18,19 +18,33 @@ git commit -m "Commit message" # Be descriptive, in the past tense. e.g. 'Remove
 git push
 ```
 
-Someone has pushed changes to GitHub on the same branch
+> Someone has pushed changes to GitHub on the same branch
 
 ```bash
 # Make sure working tree is clean (everything is committed)
 git pull
 ```
 
-I need to set my username and email
+*Commit changes using VS Code's extension or*
+
+1. <kbd>ESC</kbd>  
+2. <kbd>wq</kbd>  
+3. <kbd>ENTER</kbd>
+
+> I need to set my username and email
 
 ```bash
 git config --global user.name JacobSampson
 git config --global user.email JacobSampson
 ```
+
+> I want to see the history of changes
+
+```bash
+git log # Copy commit sha. e.g. 9e4be01840058b8801a140da5e379f10b26353c3
+git diff 9e4be01840058b8801a140da5e379f10b26353c3^!
+```
+
 
 ## Branching
 
