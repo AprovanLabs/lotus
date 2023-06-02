@@ -23,30 +23,30 @@ const ContactUsPage = () => {
 
   return (
     <BasicLayout>
-      <h1 className="text-xl">Contact Us</h1>
+      <h1 className="text-xl" style={{ backgroundColor: '#236494', color: 'white', marginBottom: '2rem', fontWeight: 800 }}>Contact Us</h1>
 
       <form onSubmit={funcionName}>
-        <div style={{ backgroundColor: '#6C935C', marginBottom: '2rem', fontWeight: 800 }}>
+        <div style={{ backgroundColor: '#a4c36c', color: 'white', marginBottom: '2rem', fontWeight: 500 }}>
           <label htmlFor="name">Name:</label>
-          <input type="text" id="name" name="name"></input>
+          <input type="text" id="name" name="name" style={{ backgroundColor: 'transparent', border: 'none', borderBottom: '1px solid white', color: 'transparent' }} />
         </div>
 
-        <div>
+        <div style={{ backgroundColor: '#a4c36c', color: 'white', marginBottom: '2rem', fontWeight: 500 }}>
           <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" />
+          <input type="email" id="email" name="email" style={{ backgroundColor: 'transparent', border: 'none', borderBottom: '1px solid white', color: 'transparent' }} />
         </div>
 
-        <div>
-          <label htmlFor="phone">Phone Number:</label>
-          <input type="tel" id="phone" name="email" />
+        <div style={{ backgroundColor: '#a4c36c', color: 'white', marginBottom: '2rem', fontWeight: 500 }}>
+          <label htmlFor="phone" style={{ display: 'block', marginBottom: '0.5rem' }}>Phone Number:</label>
+          <input type="tel" id="phone" name="email" style={{ backgroundColor: 'transparent', border: 'none', borderBottom: '1px solid white', color: 'transparent' }} />
         </div>
 
-        <div>
-          <label htmlFor="message">Message</label>
-          <textarea id="message" name="message" rows={6}></textarea>
+        <div style={{ backgroundColor: '#a4c36c', color: 'white', marginBottom: '2rem', fontWeight: 500 }}>
+          <label htmlFor="message" style={{ display: 'block', marginBottom: '0.5rem' }}>Message</label>
+          <textarea id="message" name="message" rows={6} style={{ color: 'transparent', backgroundColor: '#a4c36c' }}></textarea>
         </div>
 
-        <input type="submit" value="Submit" />
+        <input style={{ backgroundColor: '#a4c36c', color: 'white', marginBottom: '2rem', fontWeight: 500 }} type="submit" value="Submit" />
       </form>
     </BasicLayout>
   );
