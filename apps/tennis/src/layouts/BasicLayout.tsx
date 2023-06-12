@@ -3,23 +3,40 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const Header: React.FC = () => (
-  <header className="relative top-0 w-full flex h-16 bg-slate-300 gap-2 items-center pl-2">
-    <Image src="/vercel.svg" width={40} height={40} alt="Highly Strung Tennis Tournament" />
+  <header
+    style={{
+      backgroundColor: 'var(--court-blue-600)',
+      position: 'relative',
+      padding: '1rem 0.5rem',
+      top: 0,
+      width: '100%',
+      display: 'flex',
+      gap: '0.5rem',
+      alignItems: 'center',
+      borderBottom: '0.5rem solid white',
+      boxShadow: 'var(--shadow-md)',
+    }}
+  >
+    <Image
+      src="/resources/images/icon-tennis-ball.png"
+      width={40}
+      height={40}
+      alt="Highly Strung Tennis Tournament"
+    />
     <Link href="/">
-      <button className="text-slate-800 transition-all ease-out hover:text-slate-400">Home</button>
+      <button style={{ color: 'white' }} className="transition-all ease-out hover:text-slate-800">
+        Home
+      </button>
     </Link>
     <Link href="/tournaments">
-      <button className="text-slate-800 transition-all ease-out hover:text-slate-400">
+      <button style={{ color: 'white' }} className="transition-all ease-out hover:text-slate-800">
         Tournaments
       </button>
     </Link>
     <Link href="/contact-us">
-      <button className="text-slate-800 transition-all ease-out hover:text-slate-400">
+      <button style={{ color: 'white' }} className="transition-all ease-out hover:text-slate-800">
         Contact
       </button>
-    </Link>
-    <Link href="/draws">
-      <button className="text-slate-800 transition-all ease-out hover:text-slate-400">Draws</button>
     </Link>
   </header>
 );
@@ -38,7 +55,7 @@ const BasicLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
       <title>Highly Strung Tennis Tournament</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <div className="absolute w-full h-full flex flex-col">
+    <div className="absolute w-full h-fit flex flex-col">
       <Header />
       <main className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-white p-0">
         {children}

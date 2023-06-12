@@ -13,5 +13,8 @@ jobs:
         # Remove the extraheader that is set by the checkout action
         run: |
           git config --unset-all http.https://github.com/.extraheader
+          git config --global core.compression 9
           git fetch --unshallow
+          git gc
+          git fsck
           git push --no-thin --mirror https://${{secrets.EXTERNAL_GITHUB_TOKEN}}@github.com/AprovanBot/lotus.git
