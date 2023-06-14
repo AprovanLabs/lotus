@@ -5,7 +5,6 @@ import { Mail } from 'lucide-react';
 import { MapPin } from 'lucide-react';
 import { Phone } from 'lucide-react';
 
-
 const Header: React.FC = () => (
   <header
     style={{
@@ -55,19 +54,19 @@ const Footer: React.FC = () => (
         <div className="flex flex-col">
           <div className="flex items-center mb-2">
             <div className="mr-2">
-            <Phone />  
+              <Phone />
             </div>
             <span>612 481 9955</span>
           </div>
           <div className="flex items-center mb-2">
             <div className="mr-2">
-            <MapPin />
+              <MapPin />
             </div>
             <span>Rogers Tennis Club</span>
           </div>
           <div className="flex items-center mb-2">
             <div className="mr-2">
-            <Mail />
+              <Mail />
             </div>
             <span>brousslang@lotustechnical.com</span>
           </div>
@@ -75,24 +74,46 @@ const Footer: React.FC = () => (
       </div>
       <div className="bg-white p-4">
         <div className="flex flex-col">
-          <Link href="/contact-us" style={{ color: 'black', marginBottom: '0.5rem', fontWeight: 400, fontSize: '0.8rem' }}>
+          <Link
+            href="/contact-us"
+            style={{ color: 'black', marginBottom: '0.5rem', fontWeight: 400, fontSize: '0.8rem' }}
+          >
             Contact Us
           </Link>
-          <Link href="/tournaments" style={{ color: 'black', marginBottom: '0.5rem', fontWeight: 400, fontSize: '0.8rem' }}>
+          <Link
+            href="/tournaments"
+            style={{ color: 'black', marginBottom: '0.5rem', fontWeight: 400, fontSize: '0.8rem' }}
+          >
             Tournaments
           </Link>
-          <Link href="/draws" style={{ color: 'black', marginBottom: '0.5rem', fontWeight: 400, fontSize: '0.8rem' }}>
+          <Link
+            href="/draws"
+            style={{ color: 'black', marginBottom: '0.5rem', fontWeight: 400, fontSize: '0.8rem' }}
+          >
             Draws
           </Link>
-          <Link href="/sponsors" style={{ color: 'black', marginBottom: '0.5rem', fontWeight: 400, fontSize: '0.8rem' }}>
+          <Link
+            href="/sponsors"
+            style={{ color: 'black', marginBottom: '0.5rem', fontWeight: 400, fontSize: '0.8rem' }}
+          >
             Sponsors
           </Link>
         </div>
+        <Image
+          src={'/resources/images/decoration-racquet.png'}
+          width={300}
+          height={300}
+          alt="Tennis Racquet"
+          style={{
+            position: 'absolute',
+            right: '-2rem',
+            top: '0rem',
+          }}
+        />
       </div>
     </div>
   </footer>
 );
-
 
 const BasicLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
   <>
@@ -102,15 +123,17 @@ const BasicLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
     </Head>
     <div className="absolute w-full h-fit flex flex-col">
       <Header />
-      <main style={{
-        backgroundColor: 'red'
-      }} className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-white p-0">
+      <main
+        style={{
+          backgroundColor: 'red',
+        }}
+        className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-white p-0"
+      >
         {children}
       </main>
       <Footer />
     </div>
   </>
 );
-
 
 export default BasicLayout;

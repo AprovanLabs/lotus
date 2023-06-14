@@ -3,7 +3,7 @@ import BasicLayout from 'src/layouts/BasicLayout';
 import Image from 'next/image';
 import InlineLink from 'src/components/InlineLink';
 import { Button } from 'src/components/Button';
-import { DownloadIcon, InfoIcon, MapPinIcon } from 'lucide-react';
+import { ArrowBigDownIcon, DownloadIcon, InfoIcon, MapPinIcon } from 'lucide-react';
 import { css } from '@emotion/css';
 import { ScreenSizeBreakpoints } from 'src/lib/style';
 
