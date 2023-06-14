@@ -45,10 +45,30 @@ const Header: React.FC = () => (
 );
 
 const Footer: React.FC = () => (
-  <footer className="relative bottom-0 w-full h-12 bg-slate-400">
-    <div className="flex flex-row justify-center items-center h-full">
-      <p className="text-white">2023 Highly Strung Tennis Tournament</p>
-    </div>
+  <footer
+    style={{
+      position: 'relative',
+      bottom: 0,
+      width: '100%',
+      minHeight: '10rem',
+      backgroundColor: 'black',
+      overflow: 'hidden',
+    }}
+  >
+    <Image
+      src={'/resources/images/decoration-racquet.png'}
+      width={300}
+      height={300}
+      alt="Tennis Racquet"
+      style={{
+        position: 'absolute',
+        right: '-2rem',
+        top: '0rem',
+      }}
+    />
+    <p style={{ color: 'white' }}>THis is text</p>
+    <p style={{ color: 'white' }}>THis is text</p>
+    <p style={{ color: 'white' }}>THis is text</p>
   </footer>
 );
 
