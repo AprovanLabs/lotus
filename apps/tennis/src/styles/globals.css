@@ -5,6 +5,7 @@
 @layer base {
   :root {
     /** Custom */
+    --court-green-600: #6c935c;
     --court-green-900: #1F3427;
     --court-blue-800: #242F55;
     --court-blue-600: #3C638E;

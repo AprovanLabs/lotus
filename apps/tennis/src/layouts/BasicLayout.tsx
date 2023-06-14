@@ -26,6 +26,9 @@ const Header: React.FC = () => (
       width={40}
       height={40}
       alt="Highly Strung Tennis Tournament"
+      style={{
+        margin: '0 0.5rem',
+      }}
     />
     <Link href="/">
       <button style={{ color: 'white' }} className="transition-all ease-out hover:text-slate-800">

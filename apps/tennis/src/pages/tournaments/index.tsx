@@ -3,7 +3,9 @@ import BasicLayout from 'src/layouts/BasicLayout';
 import Image from 'next/image';
 import InlineLink from 'src/components/InlineLink';
 import { Button } from 'src/components/Button';
-import { DownloadIcon, InfoIcon, MapPinIcon, PinIcon } from 'lucide-react';
+import { DownloadIcon, InfoIcon, MapPinIcon } from 'lucide-react';
+import { css } from '@emotion/css';
+import { ScreenSizeBreakpoints } from 'src/lib/style';
 
 type Content = { type: string; text: string } & { type: string; text: string } & {
   type: string;
@@ -227,7 +229,7 @@ const TournamentsPage = () => {
           // Short-hand with two becomes 'left/right top/bottom'
           padding: '10rem 2rem',
           // Set the background color to a custom property
-          backgroundColor: 'var(--court-green-900)',
+          backgroundColor: 'var(--court-green-600)',
           color: 'white',
           // Add a couple drop shadows
           boxShadow: 'var(--shadow-md)',
@@ -260,14 +262,19 @@ const TournamentsPage = () => {
             {tournament.fromDate} - {tournament.toDate}
           </h2>
           <div
-            style={{
+            className={css({
               width: '100%',
               display: 'flex',
               marginTop: '2rem',
-              flexDirection: 'row',
+              flexDirection: 'column',
               // Allign things in the center with extra space on sides of all the elements together
               justifyContent: 'space-around',
-            }}
+
+              // Once the screen is above the 'sm' size, change to horizontal layout
+              [ScreenSizeBreakpoints.sm]: {
+                flexDirection: 'row',
+              },
+            })}
           >
             <Image
               src="/resources/images/tshirt.png"
@@ -348,10 +355,16 @@ const TournamentsPage = () => {
       {/* ID property referenced by 'href' above */}
       <section
         id="faq"
-        style={{
+        className={css({
           margin: 'auto',
           marginBottom: '10rem',
-        }}
+          width: '100%',
+
+          // Once the screen is above the 'md' size, set the width manually
+          [ScreenSizeBreakpoints.md]: {
+            width: '60rem',
+          },
+        })}
       >
         <h1
           style={{
@@ -371,7 +384,10 @@ const TournamentsPage = () => {
 
         <div
           style={{
-            width: 'fit-content',
+            width: '100%',
+            maxWidth: '35rem',
+            marginLeft: '1rem',
+            marginRight: '1rem',
           }}
         >
           {tournament.faqs.map(faq => (

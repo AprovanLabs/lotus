@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { css } from '@emotion/css';
+import { ScreenSizeBreakpoints } from 'src/lib/style';
 import BasicLayout from '../layouts/BasicLayout';
 
 /**
