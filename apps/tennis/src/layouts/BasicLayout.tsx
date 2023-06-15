@@ -123,12 +123,7 @@ const BasicLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
     </Head>
     <div className="absolute w-full h-fit flex flex-col">
       <Header />
-      <main
-        style={{
-          backgroundColor: 'red',
-        }}
-        className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-white p-0"
-      >
+      <main className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-white p-0">
         {children}
       </main>
       <Footer />
