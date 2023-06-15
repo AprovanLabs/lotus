@@ -14,6 +14,7 @@ const HomePage = () => {
       <Link href="/contact-us" style={{ backgroundColor: '#a4c36c', color: 'white', marginBottom: '1rem', fontWeight: 500 }}>Contact Us</Link>
       <Link href="/tournaments" style={{ backgroundColor: '#a4c36c', color: 'white', marginBottom: '1rem', fontWeight: 500 }}>Tournaments</Link>
       <Link href="/draws" style={{ backgroundColor: '#a4c36c', color: 'white', marginBottom: '1rem', fontWeight: 500 }}>Draws</Link>
+      <Link href="/sponsors" style={{ backgroundColor: '#a4c36c', color: 'white', marginBottom: '1rem', fontWeight: 500 }}>Sponsors</Link>
     </BasicLayout>
   );
 };

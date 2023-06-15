@@ -1,6 +1,10 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Mail } from 'lucide-react';
+import { MapPin } from 'lucide-react';
+import { Phone } from 'lucide-react';
+
 
 const Header: React.FC = () => (
   <header
@@ -42,12 +46,50 @@ const Header: React.FC = () => (
 );
 
 const Footer: React.FC = () => (
-  <footer className="relative bottom-0 w-full h-12 bg-slate-400">
-    <div className="flex flex-row justify-center items-center h-full">
-      <p className="text-white">2023 Highly Strung Tennis Tournament</p>
+  <footer className="relative bottom-0 w-full bg-white">
+    <div className="flex justify-between">
+      <div className="bg-white p-4">
+        <div className="flex flex-col">
+          <div className="flex items-center mb-2">
+            <div className="mr-2">
+            <Phone />  
+            </div>
+            <span>612 481 9955</span>
+          </div>
+          <div className="flex items-center mb-2">
+            <div className="mr-2">
+            <MapPin />
+            </div>
+            <span>Rogers Tennis Club</span>
+          </div>
+          <div className="flex items-center mb-2">
+            <div className="mr-2">
+            <Mail />
+            </div>
+            <span>brousslang@lotustechnical.com</span>
+          </div>
+        </div>
+      </div>
+      <div className="bg-white p-4">
+        <div className="flex flex-col">
+          <Link href="/contact-us" style={{ color: 'black', marginBottom: '0.5rem', fontWeight: 400, fontSize: '0.8rem' }}>
+            Contact Us
+          </Link>
+          <Link href="/tournaments" style={{ color: 'black', marginBottom: '0.5rem', fontWeight: 400, fontSize: '0.8rem' }}>
+            Tournaments
+          </Link>
+          <Link href="/draws" style={{ color: 'black', marginBottom: '0.5rem', fontWeight: 400, fontSize: '0.8rem' }}>
+            Draws
+          </Link>
+          <Link href="/sponsors" style={{ color: 'black', marginBottom: '0.5rem', fontWeight: 400, fontSize: '0.8rem' }}>
+            Sponsors
+          </Link>
+        </div>
+      </div>
     </div>
   </footer>
 );
+
 
 const BasicLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
   <>
@@ -57,12 +99,15 @@ const BasicLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
     </Head>
     <div className="absolute w-full h-fit flex flex-col">
       <Header />
-      <main className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-white p-0">
+      <main style={{
+        backgroundColor: 'red'
+      }} className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-white p-0">
         {children}
       </main>
       <Footer />
     </div>
   </>
 );
+
 
 export default BasicLayout;
