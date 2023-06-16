@@ -53,6 +53,29 @@ const Footer: React.FC = () => (
       <div className="bg-white p-4">
         <div className="flex flex-col">
           <div className="flex items-center mb-2">
+            <Image
+              src="/resources/images/sponsor-trinite.png"
+              alt="Trinite"
+              className="w-12 h-11 mr-1"
+              width={1000}
+              height={800}
+            />
+            <Image
+              src="/resources/images/sponsor-jj.webp"
+              alt="Jimmy Johns"
+              className="w-11 h-11 mr-1"
+              width={1000}
+              height={800}
+            />
+            <Image
+              src="/resources/images/sponsors-lotus.png"
+              alt="Lotus"
+              className="w-11 h-11 mr-1"
+              width={1000}
+              height={800}
+            />
+          </div>
+          <div className="flex items-center mb-2">
             <div className="mr-2">
               <Phone />
             </div>
@@ -72,7 +95,7 @@ const Footer: React.FC = () => (
           </div>
         </div>
       </div>
-      <div className="bg-white p-4">
+      <div className="bg-white p-4 relative"> 
         <div className="flex flex-col">
           <Link
             href="/contact-us"
@@ -99,21 +122,19 @@ const Footer: React.FC = () => (
             Sponsors
           </Link>
         </div>
-        <Image
-          src={'/resources/images/decoration-racquet.png'}
-          width={300}
-          height={300}
-          alt="Tennis Racquet"
-          style={{
-            position: 'absolute',
-            right: '-2rem',
-            top: '0rem',
-          }}
-        />
+        <div style={{ position: 'absolute', right: '-2rem', top: '0rem' }}> 
+          <Image
+            src={'/resources/images/decoration-racquet.png'}
+            width={300}
+            height={300}
+            alt="Tennis Racquet"
+          />
+        </div>
       </div>
     </div>
   </footer>
 );
+
 
 const BasicLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
   <>
@@ -123,7 +144,12 @@ const BasicLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
     </Head>
     <div className="absolute w-full h-fit flex flex-col">
       <Header />
-      <main className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-white p-0">
+      <main
+        style={{
+          backgroundColor: 'white',
+        }}
+        className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-white p-0"
+      >
         {children}
       </main>
       <Footer />
