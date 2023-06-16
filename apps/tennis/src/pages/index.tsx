@@ -32,7 +32,8 @@ const HomePage = () => {
             left: 0;
             bottom: 0;
             right: 0;
-            background: linear-gradient(to right, rgba(31, 52, 39, 0), rgba(31, 52, 39, 0.8)), url('/resources/images/rtc-inside.jpeg');
+            background: rgb(31,52,39);
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(31,52,39,1) 60%), url('/resources/images/rtc-inside.jpeg');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: left;

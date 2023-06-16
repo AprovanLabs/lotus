@@ -49,29 +49,26 @@ const Header: React.FC = () => (
 
 const Footer: React.FC = () => (
   <footer className="relative bottom-0 w-full bg-white">
-    <div className="flex justify-between">
+    <div className="flex justify-around">
       <div className="bg-white p-4">
         <div className="flex flex-col">
-          <div className="flex items-center mb-2">
+          <div className="flex items-center mb-2 gap-2">
             <Image
               src="/resources/images/sponsor-trinite.png"
               alt="Trinite"
-              className="w-12 h-11 mr-1"
-              width={1000}
-              height={800}
+              width={75}
+              height={400}
             />
             <Image
               src="/resources/images/sponsor-jj.webp"
               alt="Jimmy Johns"
-              className="w-11 h-11 mr-1"
-              width={1000}
+              width={60}
               height={800}
             />
             <Image
               src="/resources/images/sponsors-lotus.png"
               alt="Lotus"
-              className="w-11 h-11 mr-1"
-              width={1000}
+              width={75}
               height={800}
             />
           </div>
