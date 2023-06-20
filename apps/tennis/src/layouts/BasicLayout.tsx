@@ -100,17 +100,17 @@ const Footer: React.FC = () => (
         </div>
 
         <div className="flex flex-col gap-2 z-50 relative">
-          <Link href="/contact-us" className="bg-black mb-1 font-weight-400 text-xs">
+          <Link href="/contact-us" className="bg-black mb-1 font-normal text-sm">
             <p className="uppercase hover:cursor-pointer">Contact Us</p>
           </Link>
-          <Link href="/tournaments" className="bg-black mb-1 font-weight-400 text-xs">
+          <Link href="/tournaments" className="bg-black mb-1 font-normal text-xs">
             <p className="uppercase hover:cursor-pointer">Tournaments</p>
           </Link>
-          <Link href="/draws" className="bg-black mb-1 font-weight-400 text-xs">
-            <p className="uppercase hover:cursor-pointer"> Draws</p>
+          <Link href="/draws" className="bg-black mb-1 font-normal text-xs">
+            <p className="uppercase hover:cursor-pointer">Draws</p>
           </Link>
-          <Link href="/sponsors" className="bg-black mb-1 font-weight-400 text-xs">
-            <p className="uppercase hover:cursor-pointer"> Sponsors</p>
+          <Link href="/sponsors" className="bg-black mb-1 font-normal text-xs">
+            <p className="uppercase hover:cursor-pointer">Sponsors</p>
           </Link>
         </div>
       </div>
