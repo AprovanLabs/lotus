@@ -4,6 +4,9 @@ import Link from 'next/link';
 import { Mail } from 'lucide-react';
 import { MapPin } from 'lucide-react';
 import { Phone } from 'lucide-react';
+import InlineLink from 'src/components/InlineLink';
+
+const ADDRESS = '21095 147th Ave N, Rogers, MN 55374';
 
 const Header: React.FC = () => (
   <header
@@ -14,7 +17,7 @@ const Header: React.FC = () => (
       top: 0,
       width: '100%',
       display: 'flex',
-      gap: '0.5rem',
+      gap: '1rem',
       alignItems: 'center',
       borderBottom: '0.5rem solid white',
       boxShadow: 'var(--shadow-md)',
@@ -22,37 +25,31 @@ const Header: React.FC = () => (
   >
     <Image
       src="/resources/images/icon-tennis-ball.png"
-      width={40}
-      height={40}
+      width={25}
+      height={25}
       alt="Highly Strung Tennis Tournament"
       style={{
         margin: '0 0.5rem',
       }}
     />
-    <Link href="/">
-      <button style={{ color: 'white' }} className="transition-all ease-out hover:text-slate-800">
-        Home
-      </button>
-    </Link>
-    <Link href="/tournaments">
-      <button style={{ color: 'white' }} className="transition-all ease-out hover:text-slate-800">
-        Tournaments
-      </button>
-    </Link>
-    <Link href="/contact-us">
-      <button style={{ color: 'white' }} className="transition-all ease-out hover:text-slate-800">
-        Contact
-      </button>
-    </Link>
+    <InlineLink href="/" className="font-normal">
+      Home
+    </InlineLink>
+    <InlineLink href="/tournaments" className="font-normal">
+      Tournaments
+    </InlineLink>
+    <InlineLink href="/contact-us" className="font-normal">
+      Contact
+    </InlineLink>
   </header>
 );
 
 const Footer: React.FC = () => (
-  <footer className="relative bottom-0 w-full bg-white">
-    <div className="flex justify-around">
-      <div className="bg-white p-4">
+  <footer className="relative bottom-0 w-full bg-white overflow-hidden">
+    <div className="flex flex-col sm:flex-row gap-12 justify-around">
+      <div className="bg-white px-12 py-24 sm:py-12 flex-grow">
         <div className="flex flex-col">
-          <div className="flex items-center mb-2 gap-2">
+          <div className="flex items-center mb-2 gap-2 justify-center sm:justify-start">
             <Image
               src="/resources/images/sponsor-trinite.png"
               alt="Trinite"
@@ -65,73 +62,61 @@ const Footer: React.FC = () => (
               width={60}
               height={800}
             />
-            <Image
-              src="/resources/images/sponsors-lotus.png"
-              alt="Lotus"
-              width={75}
-              height={800}
-            />
+            <Image src="/resources/images/sponsors-lotus.png" alt="Lotus" width={75} height={100} />
           </div>
-          <div className="flex items-center mb-2">
-            <div className="mr-2">
-              <Phone />
-            </div>
-            <span>612 481 9955</span>
-          </div>
-          <div className="flex items-center mb-2">
-            <div className="mr-2">
-              <MapPin />
-            </div>
-            <span>Rogers Tennis Club</span>
-          </div>
-          <div className="flex items-center mb-2">
-            <div className="mr-2">
-              <Mail />
-            </div>
-            <span>brousslang@lotustechnical.com</span>
+          <div className="flex flex-col gap-2">
+            <a
+              className="flex items-center opacity-100 transition-all ease-in-out hover:cursor-pointer hover:opacity-50"
+              href="tel:612-481-9955"
+            >
+              <Phone className="mr-2" />
+              <span>612 481 9955</span>
+            </a>
+            <a
+              className="flex items-center opacity-100 transition-all ease-in-out hover:cursor-pointer hover:opacity-50"
+              href={`https://www.google.com/maps/search/?api=1&query=${ADDRESS}`}
+            >
+              <MapPin className="mr-2" />
+              <span>Rogers Tennis Club</span>
+            </a>
+            <a
+              className="flex items-center opacity-100 transition-all ease-in-out hover:cursor-pointer hover:opacity-50"
+              href="email:brousslang@lotustechnical.com"
+            >
+              <Mail className="mr-2" />
+              <span>brousslang@lotustechnical.com</span>
+            </a>
           </div>
         </div>
       </div>
-      <div className="bg-white p-4 relative"> 
-        <div className="flex flex-col">
-          <Link
-            href="/contact-us"
-            style={{ color: 'black', marginBottom: '0.5rem', fontWeight: 400, fontSize: '0.8rem' }}
-          >
-            Contact Us
-          </Link>
-          <Link
-            href="/tournaments"
-            style={{ color: 'black', marginBottom: '0.5rem', fontWeight: 400, fontSize: '0.8rem' }}
-          >
-            Tournaments
-          </Link>
-          <Link
-            href="/draws"
-            style={{ color: 'black', marginBottom: '0.5rem', fontWeight: 400, fontSize: '0.8rem' }}
-          >
-            Draws
-          </Link>
-          <Link
-            href="/sponsors"
-            style={{ color: 'black', marginBottom: '0.5rem', fontWeight: 400, fontSize: '0.8rem' }}
-          >
-            Sponsors
-          </Link>
-        </div>
-        <div style={{ position: 'absolute', right: '-2rem', top: '0rem' }}> 
+      <div className=" bg-white relative flex-grow h-full my-auto px-12 py-8">
+        <div className="absolute -right-2 top-[-25%] z-0">
           <Image
             src={'/resources/images/decoration-racquet.png'}
-            width={300}
-            height={300}
+            width={600}
+            height={600}
             alt="Tennis Racquet"
           />
+        </div>
+
+        <div className="flex flex-col gap-2 z-50 relative">
+          <Link href="/contact-us" className="bg-black mb-1 font-weight-400 text-xs">
+            <p className="uppercase hover:cursor-pointer">Contact Us</p>
+          </Link>
+          <Link href="/tournaments" className="bg-black mb-1 font-weight-400 text-xs">
+            <p className="uppercase hover:cursor-pointer">Tournaments</p>
+          </Link>
+          <Link href="/draws" className="bg-black mb-1 font-weight-400 text-xs">
+            <p className="uppercase hover:cursor-pointer"> Draws</p>
+          </Link>
+          <Link href="/sponsors" className="bg-black mb-1 font-weight-400 text-xs">
+            <p className="uppercase hover:cursor-pointer"> Sponsors</p>
+          </Link>
         </div>
       </div>
     </div>
   </footer>
 );
-
 
 const BasicLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
   <>

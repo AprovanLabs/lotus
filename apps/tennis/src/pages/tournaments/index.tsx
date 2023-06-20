@@ -384,7 +384,7 @@ const TournamentsPage = () => {
 
         <div
           style={{
-            width: '100%',
+            width: 'calc(100% - 2rem)',
             maxWidth: '35rem',
             marginLeft: '1rem',
             marginRight: '1rem',
