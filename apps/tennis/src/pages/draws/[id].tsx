@@ -9,6 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from 'src/components/Accordion';
+import { GetStaticPaths } from 'next';
 
 const DrawAccordionItem: React.FC<React.PropsWithChildren & DrawModel> = ({
   title,
@@ -38,8 +39,26 @@ const DrawsPage = ({ tournament }: { tournament: TournamentModel }) => {
   );
 };
 
-export async function getServerSideProps({ params }: { params: { id: string } }) {
-  const tournament = await TournamentService.getTournamentById(params.id);
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = [
+    {
+      params: {
+        id: 'latest',
+      },
+    },
+  ];
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export async function getStaticProps({ params }: { params: { id: string } }) {
+  const isLatest = params.id === 'latest';
+  const tournament = isLatest
+    ? await TournamentService.getLatestTournament()
+    : await TournamentService.getTournamentById(params.id);
 
   return {
     props: {

@@ -3,9 +3,17 @@ import client from 'src/lib/server/prismic/prismicClient';
 import { mapPrismicTournament } from './tournamentMappers';
 
 class TournamentService {
+  static async getLatestTournament(): Promise<TournamentModel | null> {
+    const tournaments = await TournamentService.getAllTournaments();
+
+    if (!tournaments?.length) return null;
+
+    return tournaments[0];
+  }
+
   static async getTournamentById(id: string): Promise<TournamentModel | null> {
     const { data } = await client.getByUID('tournament', id, {
-      fetchLinks: 'signUpForm'
+      fetchLinks: 'signUpForm',
     });
 
     if (!data) return null;
@@ -15,7 +23,10 @@ class TournamentService {
 
   static async getAllTournaments(): Promise<TournamentModel[] | null> {
     const data = await client.getAllByType('tournament', {
-      fetchLinks: 'signUpForm'
+      fetchLinks: 'signUpForm',
+      orderings: [{
+        field: 'fromDate'
+      }],
     });
 
     if (!data) return null;

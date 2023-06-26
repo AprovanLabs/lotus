@@ -77,7 +77,7 @@ const HomePage = ({
               Join us for a weekend of good tennis and good fun!
             </p>
 
-            <Link href="/tournaments/hstt-2023">
+            <Link href="/tournaments/latest">
               <Button>Sign-up and Information &rarr;</Button>
             </Link>
           </div>
@@ -150,50 +150,48 @@ const HomePage = ({
           </div>
         </div>
         <div className="bg-[#1f3427] text-white h-auto w-full text-center pb-12 pt-24 font-thin mb-55">
-  <h2 className="text-2xl">Meet the organizers</h2>
-  <div className="flex flex-col md:flex-row items-start justify-start">
-    <div className="flex-none mx-auto mt-7">
-      <div className="mb-5 mr-40 ml-20 max-w-sm">
-        <Image
-          src="/resources/images/players-ryan-and-brian.jpeg"
-          alt="Ryan and Brian"
-          width={500}  // Increase the width value
-          height={200} // Increase the height value
-        />
+          <h2 className="text-2xl">Meet the organizers</h2>
+          <div className="flex flex-col md:flex-row items-start justify-start">
+            <div className="flex-none mx-auto mt-7">
+              <div className="mb-5 mr-40 ml-20 max-w-sm">
+                <Image
+                  src="/resources/images/players-ryan-and-brian.jpeg"
+                  alt="Ryan and Brian"
+                  width={500} // Increase the width value
+                  height={200} // Increase the height value
+                />
+              </div>
+            </div>
+            <div className="flex items-center mt-7">
+              <div className="flex flex-col text-left">
+                <p className="text-lg mb-.5">Brian Rousslang</p>
+                <p className="text-lg mb-2">Ryan Kadelbach</p>
+                <p className="text-sm">Two best friends with a passion for growing</p>
+                <p className="text-sm mb-1">tennis communities</p>
+                <p className="text-gray-500 text-xs mb-2">since 2014</p>
+                <Link href="/contact-us">
+                  <Button style={{ fontWeight: 'bold' }}>Contact Us &rarr;</Button>
+                </Link>
+              </div>
+            </div>
+            <div className="flex-grow"></div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div className="flex items-center mt-7">
-      <div className="flex flex-col text-left">
-        <p className="text-lg mb-.5">Brian Rousslang</p>
-        <p className="text-lg mb-2">Ryan Kadelbach</p>
-        <p className="text-sm">Two best friends with a passion for growing</p>
-        <p className="text-sm mb-1">tennis communities</p>
-        <p className="text-gray-500 text-xs mb-2">since 2014</p>
-        <Link href="/contact-us">
-  <Button style={{ fontWeight: 'bold' }}>Contact Us &rarr;</Button>
-</Link>
-      </div>
-    </div>
-    <div className="flex-grow"></div>
-  </div>
-</div>
-</div>
-      
     </BasicLayout>
   );
 };
 
-export async function getServerSideProps() {
-  const tournaments = await TournamentService.getAllTournaments();
+export async function getStaticProps() {
+  const tournament = await TournamentService.getLatestTournament();
   const contact = await ContactService.getContact();
 
   return {
     props: {
       contact,
-      tournament: tournaments ? tournaments[0] : null,
+      tournament: tournament || null,
     },
   };
 }
 
 export default HomePage;
-

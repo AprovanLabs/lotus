@@ -11,6 +11,7 @@ import ContactService from 'src/lib/server/contact/contactService';
 import { FaqModel, TournamentModel } from 'src/lib/core/models/tournament';
 import { ContactModel } from 'src/lib/core/models/contact';
 import { formatDate } from 'src/lib/core/utils/date';
+import { GetStaticPaths } from 'next';
 
 const Faq: React.FC<React.PropsWithChildren & FaqModel> = ({
   title,
@@ -326,8 +327,26 @@ const TournamentsPage = ({
   );
 };
 
-export async function getServerSideProps({ params }: { params: { id: string } }) {
-  const tournament = await TournamentService.getTournamentById(params.id);
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = [
+    {
+      params: {
+        id: 'latest',
+      },
+    },
+  ];
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export async function getStaticProps({ params }: { params: { id: string } }) {
+  const isLatest = params.id === 'latest';
+  const tournament = isLatest
+    ? await TournamentService.getLatestTournament()
+    : await TournamentService.getTournamentById(params.id);
   const contact = await ContactService.getContact();
 
   return {
