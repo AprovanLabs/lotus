@@ -37,12 +37,22 @@ const HomePage = ({
               height: 100%;
               filter: blur(10px);
               background:
-                linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(31, 52, 39, 1) 60%),
+                linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(31, 52, 39, 1) 90%),
                 url('/resources/images/rtc-inside.jpeg');
               background-size: 100% 100%;
               background-repeat: no-repeat;
               background-position: 0 0;
               background-size: cover;
+
+              ${ScreenSizeBreakpoints.sm} {
+                background:
+                  linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(31, 52, 39, 1) 60%),
+                  url('/resources/images/rtc-inside.jpeg');
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                background-position: 0 0;
+                background-size: cover;
+              }
           `)}
           ></div>
           <div className="relative mt-48 translate-x-12">
@@ -149,29 +159,31 @@ const HomePage = ({
             </div>
           </div>
         </div>
-        <div className="bg-[#1f3427] text-white h-auto w-full text-center pb-12 pt-24 font-thin mb-55">
-          <h2 className="text-2xl">Meet the organizers</h2>
+        <div className="bg-[#1f3427] text-white h-auto w-full text-center pb-24 pt-24 font-thin mb-55 flex flex-col items-center">
+          <h2 className="text-2xl mb-4">Meet the Organizers</h2>
           <div className="flex flex-col md:flex-row items-start justify-start">
-            <div className="flex-none mx-auto mt-7">
-              <div className="mb-5 mr-40 ml-20 max-w-sm">
-                <Image
-                  src="/resources/images/players-ryan-and-brian.jpeg"
-                  alt="Ryan and Brian"
-                  width={500} // Increase the width value
-                  height={200} // Increase the height value
-                />
-              </div>
+            <div className="flex-none mt-7 mx-8 max-w-sm">
+              <Image
+                src="/resources/images/players-ryan-and-brian.jpeg"
+                className="rounded-md shadow-md"
+                alt="Ryan and Brian"
+                width={500} // Increase the width value
+                height={200} // Increase the height value
+              />
             </div>
-            <div className="flex items-center mt-7">
+            <div className="flex items-center mt-7 mx-8">
               <div className="flex flex-col text-left">
                 <p className="text-lg mb-.5">Brian Rousslang</p>
                 <p className="text-lg mb-2">Ryan Kadelbach</p>
-                <p className="text-sm">Two best friends with a passion for growing</p>
-                <p className="text-sm mb-1">tennis communities</p>
-                <p className="text-gray-500 text-xs mb-2">since 2014</p>
-                <Link href="/contact-us">
-                  <Button style={{ fontWeight: 'bold' }}>Contact Us &rarr;</Button>
-                </Link>
+                <p className="text-sm">
+                  Two best friends with a passion for growing tennis communities
+                </p>
+                <p className="text-gray-400 text-sm mt-2 mb-4">Since 2014</p>
+                <span>
+                  <Link href="/contact-us">
+                    <Button style={{ fontWeight: 'bold' }}>Contact Us &rarr;</Button>
+                  </Link>
+                </span>
               </div>
             </div>
             <div className="flex-grow"></div>

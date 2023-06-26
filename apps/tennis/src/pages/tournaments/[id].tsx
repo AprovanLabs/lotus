@@ -253,7 +253,7 @@ const TournamentsPage = ({
               >
                 Send to{' '}
                 <InlineLink
-                  href={`email:${contact.email}`}
+                  href={`mailto:${contact.email}`}
                   style={{
                     fontWeight: 300,
                   }}
