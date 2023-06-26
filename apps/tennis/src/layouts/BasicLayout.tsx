@@ -35,8 +35,11 @@ const Header: React.FC = () => (
     <InlineLink href="/" className="font-normal">
       Home
     </InlineLink>
-    <InlineLink href="/tournaments" className="font-normal">
+    <InlineLink href="/tournaments/hstt-2023" className="font-normal">
       Tournaments
+    </InlineLink>
+    <InlineLink href="/draws/hstt-2023" className="font-normal">
+      Draws
     </InlineLink>
     <InlineLink href="/contact-us" className="font-normal">
       Contact
@@ -103,7 +106,7 @@ const Footer: React.FC = () => (
           <Link href="/contact-us" className="bg-black mb-1 font-normal text-sm">
             <p className="uppercase hover:cursor-pointer">Contact Us</p>
           </Link>
-          <Link href="/tournaments" className="bg-black mb-1 font-normal text-xs">
+          <Link href="/tournaments/hstt-2023" className="bg-black mb-1 font-normal text-xs">
             <p className="uppercase hover:cursor-pointer">Tournaments</p>
           </Link>
           <Link href="/draws" className="bg-black mb-1 font-normal text-xs">

@@ -4,8 +4,18 @@ import { ScreenSizeBreakpoints } from 'src/lib/style';
 import BasicLayout from '../layouts/BasicLayout';
 import Image from 'next/image';
 import { Button } from 'src/components/Button';
+import TournamentService from 'src/lib/server/tournaments/tournamentService';
+import ContactService from 'src/lib/server/contact/contactService';
+import { TournamentModel } from 'src/lib/core/models/tournament';
+import { ContactModel } from 'src/lib/core/models/contact';
 
-const HomePage = () => {
+const HomePage = ({
+  tournament,
+  contact,
+}: {
+  tournament: TournamentModel;
+  contact: ContactModel;
+}) => {
   return (
     <BasicLayout>
       <div className="relative h-full w-full flex flex-col align-center justify-center text-white mt-0 z-0">
@@ -67,7 +77,7 @@ const HomePage = () => {
               Join us for a weekend of good tennis and good fun!
             </p>
 
-            <Link href="/contact-us">
+            <Link href="/tournaments/hstt-2023">
               <Button>Sign-up and Information &rarr;</Button>
             </Link>
           </div>
@@ -115,5 +125,17 @@ const HomePage = () => {
     </BasicLayout>
   );
 };
+
+export async function getServerSideProps() {
+  const tournaments = await TournamentService.getAllTournaments();
+  const contact = await ContactService.getContact();
+
+  return {
+    props: {
+      contact,
+      tournament: tournaments ? tournaments[0] : null,
+    },
+  };
+}
 
 export default HomePage;

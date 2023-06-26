@@ -1,0 +1,78 @@
+{
+  "title": "Highly Strung Tennis Tournament",
+  "registrationDeadlineDate": "July 15th, 2023",
+  "fromDate": "July 23rd",
+  "toDate": "July 26th",
+  "email": "brousslang@lotustechnical.com",
+  "signUpFormUrl": "/resources/2023 TENNIS TOURNAMENT REGISTRATRION FORM.pdf",
+  "faqs": [
+    {
+      "title": "When is the tournament?",
+      "content": [
+        {
+          "type": "text",
+          "text": "Adult Men's and Women's Doubles Tournaments on Sunday, July 23rd (8:30am)\nAdult Mixed Doubles Tournament on Sunday, July 23rd (10:00am)\nVarsity Girls Singles on Monday, July 24th (8:00am)\nVarsity Boys Doubles on Monday, July 24th (10:30am)\nVarsity Boys Singles on Tuesday, July 25th (8:00am)\nVarsity Girls Doubles on Tuesday, July 25th (10:30am)\nJunior Varsity Boys Doubles on Tuesday July 25th (8:00am)\nJunior Varsity Girls Doubles on Tuesday, July 25th (9:30am)\nJunior Varsity Girls Singles on Wednesday, July 26th (1:00pm)\nJunior Varsity Boys Singles on Wednesday, July 26th (1:30pm)"
+        },
+        {
+          "type": "warning",
+          "text": "Registration Deadline: Saturday, July 15th, 2023"
+        }
+      ]
+    },
+    {
+      "title": "Where is the tournament?",
+      "content": [
+        {
+          "type": "location",
+          "text": "Rogers Tennis Club",
+          "address": "21095 147th Ave N, Rogers, MN 55374"
+        }
+      ]
+    },
+    {
+      "title": "What time do I need to show up?",
+      "content": [
+        {
+          "type": "text",
+          "text": "\nCheck in 45 minutes before schedule match time\nCheck in for 8: 30 am matches is at 7:45.\nCheck in for 11:00 am matches Is at 10: 15\nCheck in for 2: 00 pm matches is at 1:15"
+        }
+      ]
+    },
+    {
+      "title": "When are draws released?",
+      "content": [
+        {
+          "type": "text",
+          "text": "2 days prior to the start. They will be posted here: (link to draws page)"
+        }
+      ]
+    },
+    {
+      "title": "How are matches scored?",
+      "content": [
+        {
+          "type": "text",
+          "text": "8 game pros with a 10 point tie-breaker. No ad"
+        }
+      ]
+    },
+    {
+      "title": "How many matches will I play?",
+      "content": [
+        {
+          "type": "text",
+          "text": "You are guaranteed 2 matches"
+        }
+      ]
+    },
+    {
+      "title": "Can I purchase additional t-shirts?",
+      "content": [
+        {
+          "type": "text",
+          "text": "Yes! Purchase additional t-shirts for $20"
+        }
+      ]
+    }
+  ]
+}

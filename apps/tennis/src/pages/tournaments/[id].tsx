@@ -3,160 +3,75 @@ import BasicLayout from 'src/layouts/BasicLayout';
 import Image from 'next/image';
 import InlineLink from 'src/components/InlineLink';
 import { Button } from 'src/components/Button';
-import { ArrowBigDownIcon, DownloadIcon, InfoIcon, MapPinIcon } from 'lucide-react';
+import { DownloadIcon, InfoIcon, MapPinIcon } from 'lucide-react';
 import { css } from '@emotion/css';
 import { ScreenSizeBreakpoints } from 'src/lib/style';
+import TournamentService from 'src/lib/server/tournaments/tournamentService';
+import ContactService from 'src/lib/server/contact/contactService';
+import { FaqModel, TournamentModel } from 'src/lib/core/models/tournament';
+import { ContactModel } from 'src/lib/core/models/contact';
+import { formatDate } from 'src/lib/core/utils/date';
 
-type Content = { type: string; text: string } & { type: string; text: string } & {
-  type: string;
-  text: string;
-  address: string;
-};
-
-const tournament = {
-  title: 'Highly Strung Tennis Tournament',
-  registrationDeadlineDate: 'July 15th, 2023',
-  fromDate: 'July 23rd',
-  toDate: 'July 26th',
-  email: 'brousslang@lotustechnical.com',
-  signUpFormUrl: '/resources/2023 TENNIS TOURNAMENT REGISTRATRION FORM.pdf',
-  faqs: [
-    {
-      title: 'When is the tournament?',
-      content: [
-        {
-          type: 'text',
-          text: `
-    Adult Men's and Women's Doubles Tournaments on Sunday, July 23rd (8:30am)
-    Adult Mixed Doubles Tournament on Sunday, July 23rd (10:00am)
-    Varsity Girls Singles on Monday, July 24th (8:00am)
-    Varsity Boys Doubles on Monday, July 24th (10:30am)
-    Varsity Boys Singles on Tuesday, July 25th (8:00am)
-    Varsity Girls Doubles on Tuesday, July 25th (10:30am)
-    Junior Varsity Boys Doubles on Tuesday July 25th (8:00am)
-    Junior Varsity Girls Doubles on Tuesday, July 25th (9:30am)
-    Junior Varsity Girls Singles on Wednesday, July 26th (1:00pm)
-    Junior Varsity Boys Singles on Wednesday, July 26th (1:30pm)
-        `,
-        },
-        { type: 'warning', text: 'Registration Deadline: Saturday, July 15th, 2023' },
-      ] as Content[],
-    },
-    {
-      title: 'Where is the tournament?',
-      content: [
-        {
-          type: 'location',
-          text: 'Rogers Tennis Club',
-          address: '21095 147th Ave N, Rogers, MN 55374',
-        },
-      ] as Content[],
-    },
-    {
-      title: 'What time do I need to show up?',
-      content: [
-        {
-          type: 'text',
-          text: `
-      Check in 45 minutes before schedule match time
-
-      Check in for 8:30 am matches is at 7:45.
-      Check in for 11:00 am matches Is at 10:15
-      Check in for 2:00 pm matches is at 1:15        `,
-        },
-      ] as Content[],
-    },
-    {
-      title: 'When are draws released?',
-      content: [
-        {
-          type: 'text',
-          text: `2 days prior to the start. They will be posted here: (link to draws page`,
-        },
-      ] as Content[],
-    },
-    {
-      title: 'How are matches scored?',
-      content: [
-        {
-          type: 'text',
-          text: `8 game pros with a 10 point tie-breaker. No ad`,
-        },
-      ] as Content[],
-    },
-    {
-      title: 'How many matches will I play?',
-      content: [
-        {
-          type: 'text',
-          text: `You are guaranteed 2 matches`,
-        },
-      ] as Content[],
-    },
-    {
-      title: 'Can I purchase additional t-shirts?',
-      content: [
-        {
-          type: 'text',
-          text: `Yes! Purchase additional t-shirts for $20`,
-        },
-      ] as Content[],
-    },
-  ],
-};
-
-const FAQ: React.FC<React.PropsWithChildren & { title: string; content: Content[] }> = ({
+const Faq: React.FC<React.PropsWithChildren & FaqModel> = ({
   title,
-  content,
+  text,
+  link,
+  linkLabel,
+  warning,
   children,
   ...props
-}) => (
-  <div {...props}>
-    <h1
-      style={{
-        position: 'relative',
-        color: 'white',
-        marginTop: '4rem',
-        whiteSpace: 'nowrap',
-        fontSize: '1rem',
-        display: 'flex',
-        alignItems: 'center',
-        backgroundColor: 'var(--court-blue-600)',
-        paddingTop: '0.5rem',
-        paddingBottom: '0.5rem',
-        paddingLeft: '1.5rem',
-        paddingRight: '2rem',
-        fontWeight: 700,
-        fontStyle: 'italic',
-        // Only take up as much space as needed
-        width: 'fit-content',
-        // Center the text
-        textAlign: 'center',
-      }}
-    >
-      <div
+}) => {
+  // Show a location icon if a Google Maps link
+  const isLocationLink = link && link.indexOf('https://www.google.com/maps') > 0;
+
+  return (
+    <div {...props}>
+      <h1
         style={{
-          position: 'absolute',
-          fontSize: '1.5rem',
-          left: '0.5rem',
-          opacity: 0.85,
-          color: 'var(--court-blue-200)',
+          position: 'relative',
+          color: 'white',
+          marginTop: '4rem',
+          whiteSpace: 'nowrap',
+          fontSize: '1rem',
+          display: 'flex',
+          alignItems: 'center',
+          backgroundColor: 'var(--court-blue-600)',
+          paddingTop: '0.5rem',
+          paddingBottom: '0.5rem',
+          paddingLeft: '1.5rem',
+          paddingRight: '2rem',
+          fontWeight: 700,
+          fontStyle: 'italic',
+          // Only take up as much space as needed
+          width: 'fit-content',
+          // Center the text
+          textAlign: 'center',
         }}
       >
-        &quot;
-      </div>
-      <div>{title}</div>
-    </h1>
-    <div
-      style={{
-        borderLeft: '0.25rem solid var(--court-blue-800)',
-        fontSize: '0.75rem',
-        padding: '1.5rem 0 1rem 2rem',
-      }}
-    >
-      {content.map((item, index) => {
-        if (item.type === 'text') {
-          return item.text.split('\n').map((text, index) => (
+        <div
+          style={{
+            position: 'absolute',
+            fontSize: '1.5rem',
+            left: '0.5rem',
+            opacity: 0.85,
+            color: 'var(--court-blue-200)',
+          }}
+        >
+          &quot;
+        </div>
+        <div className="mx-2">{title}</div>
+      </h1>
+      <div
+        style={{
+          borderLeft: '0.25rem solid var(--court-blue-800)',
+          fontSize: '0.75rem',
+          padding: '1.5rem 0 1rem 2rem',
+        }}
+      >
+        {children}
+
+        {text &&
+          text.split('\n').map((line, index) => (
             <p
               key={index}
               style={{
@@ -164,60 +79,71 @@ const FAQ: React.FC<React.PropsWithChildren & { title: string; content: Content[
                 marginBottom: '0.5rem',
               }}
             >
-              {text}
+              {line}
             </p>
-          ));
-        }
+          ))}
 
-        if (item.type === 'warning') {
-          return (
-            <div
-              key={index}
-              style={{
-                color: '#DC493A',
-                display: 'flex',
-                alignItems: 'center',
-                fontWeight: 800,
-              }}
-            >
-              <InfoIcon fontSize="0.75rem" size={12} style={{ marginRight: '0.5rem' }} />
-              {item.text}
-            </div>
-          );
-        }
+        {warning && (
+          <div
+            style={{
+              color: '#DC493A',
+              display: 'flex',
+              alignItems: 'center',
+              fontWeight: 800,
+              marginTop: '1rem',
+            }}
+          >
+            <InfoIcon fontSize="0.75rem" size={12} style={{ marginRight: '0.5rem' }} />
+            {warning}
+          </div>
+        )}
 
-        if (item.type === 'location') {
-          return (
-            <div
-              key={index}
-              style={{
-                fontSize: '0.75rem',
-              }}
-            >
-              <a href={`https://www.google.com/maps/search/?api=1&query=${item.address}`}>
-                <Button>
-                  <MapPinIcon fontSize="0.75rem" size={12} style={{ marginRight: '0.5rem' }} />
-                  {item.text}
-                </Button>
-              </a>
-              <p
-                style={{
-                  marginTop: '1rem',
-                }}
-              >
-                {item.address}
-              </p>
-            </div>
-          );
-        }
-      })}
-      {children}
+        {/* Links */}
+        {link && !isLocationLink && (
+          <div
+            style={{
+              fontSize: '0.75rem',
+              marginTop: '1rem',
+            }}
+          >
+            <a href={link}>
+              <Button>{linkLabel} &rarr;</Button>
+            </a>
+          </div>
+        )}
+        {link && isLocationLink && (
+          <div
+            style={{
+              fontSize: '0.75rem',
+              marginTop: '1rem',
+            }}
+          >
+            <a href={`https://www.google.com/maps/search/?api=1&query=${link}`}>
+              <Button>
+                <MapPinIcon fontSize="0.75rem" size={12} style={{ marginRight: '0.5rem' }} />
+                {linkLabel}
+              </Button>
+            </a>
+          </div>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
-const TournamentsPage = () => {
+const TournamentsPage = ({
+  tournament,
+  contact,
+}: {
+  tournament: TournamentModel | undefined;
+  contact: ContactModel | undefined;
+}) => {
   const router = useRouter();
+
+  console.log('tournament', tournament);
+  console.log('contact', contact);
+
+  if (!tournament || !contact) return <></>;
 
   return (
     <BasicLayout>
@@ -259,7 +185,7 @@ const TournamentsPage = () => {
               WebkitTextStroke: '1px rgba(255, 255, 255, 0.8)',
             }}
           >
-            {tournament.fromDate} - {tournament.toDate}
+            {formatDate(tournament.fromDate)} - {formatDate(tournament.toDate)}
           </h2>
           <div
             className={css({
@@ -269,6 +195,7 @@ const TournamentsPage = () => {
               flexDirection: 'column',
               // Allign things in the center with extra space on sides of all the elements together
               justifyContent: 'space-around',
+              gap: '1rem',
 
               // Once the screen is above the 'sm' size, change to horizontal layout
               [ScreenSizeBreakpoints.sm]: {
@@ -277,9 +204,9 @@ const TournamentsPage = () => {
             })}
           >
             <Image
-              src="/resources/images/tshirt.png"
-              width={400}
-              height={600}
+              src={tournament.tShirtImage.url}
+              width={tournament.tShirtImage.width}
+              height={tournament.tShirtImage.width}
               alt="Tournament T-shirt"
             ></Image>
             <div
@@ -325,12 +252,12 @@ const TournamentsPage = () => {
               >
                 Send to{' '}
                 <InlineLink
-                  href={`email:${tournament.email}`}
+                  href={`email:${contact.email}`}
                   style={{
                     fontWeight: 300,
                   }}
                 >
-                  {tournament.email}
+                  {contact.email}
                 </InlineLink>
               </p>
               <p
@@ -346,7 +273,7 @@ const TournamentsPage = () => {
                 }}
               >
                 <InfoIcon fontSize="0.75rem" size={12} style={{ marginRight: '0.5rem' }} /> Register
-                by {tournament.registrationDeadlineDate}
+                by {formatDate(tournament.registrationDeadlineDate)}
               </p>
             </div>
           </div>
@@ -391,12 +318,24 @@ const TournamentsPage = () => {
           }}
         >
           {tournament.faqs.map(faq => (
-            <FAQ title={faq.title} key={faq.title} content={faq.content} />
+            <Faq {...faq} key={faq.title} />
           ))}
         </div>
       </section>
     </BasicLayout>
   );
 };
+
+export async function getServerSideProps({ params }: { params: { id: string } }) {
+  const tournament = await TournamentService.getTournamentById(params.id);
+  const contact = await ContactService.getContact();
+
+  return {
+    props: {
+      contact,
+      tournament,
+    },
+  };
+}
 
 export default TournamentsPage;
