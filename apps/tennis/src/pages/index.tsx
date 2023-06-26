@@ -141,9 +141,9 @@ const HomePage = () => {
         </div>
         <div className="bg-[#1f3427] text-white h-auto w-full text-center pb-12 pt-24 font-thin mb-55">
   <h2 className="text-2xl">Meet the organizers</h2>
-  <div className="flex flex-row items-start justify-start">
+  <div className="flex flex-col md:flex-row items-start justify-start">
     <div className="flex-none mx-auto mt-7">
-      <div className="mb-5 mr-40 ml-20">
+      <div className="mb-5 mr-40 ml-20 max-w-sm">
         <Image
           src="/resources/images/players-ryan-and-brian.jpeg"
           alt="Ryan and Brian"
