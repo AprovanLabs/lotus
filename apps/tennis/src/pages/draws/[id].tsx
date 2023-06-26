@@ -28,13 +28,15 @@ const DrawsPage = ({ tournament }: { tournament: TournamentModel }) => {
 
   return (
     <BasicLayout>
-      <h1 className="text-xl mb-8 mt-4">Draws</h1>
+      <div className="min-h-[70vh] w-full">
+        <h1 className="text-xl mb-16 mt-8 text-center">Draws</h1>
 
-      <Accordion type="single" collapsible className="w-[calc(100%-2rem)] mx-4">
-        {tournament.draws.map((draw: DrawModel) => (
-          <DrawAccordionItem {...draw} key={draw.title} />
-        ))}
-      </Accordion>
+        <Accordion type="single" collapsible className="w-[calc(100%-4rem)] mx-8">
+          {tournament.draws.map((draw: DrawModel) => (
+            <DrawAccordionItem {...draw} key={draw.title} />
+          ))}
+        </Accordion>
+      </div>
     </BasicLayout>
   );
 };

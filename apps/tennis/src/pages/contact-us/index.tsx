@@ -1,3 +1,4 @@
+import { Button } from 'src/components/Button';
 import BasicLayout from 'src/layouts/BasicLayout';
 
 const TO_EMAIL = 'jacobisamps+lotus@gmail.com';
@@ -29,37 +30,61 @@ const ContactUsPage = () => {
 
   return (
     <BasicLayout>
-      <h1 className="text-xl" style={{ backgroundColor: '#236494', color: 'white', marginBottom: '2rem', fontWeight: 800 }}>Contact Us</h1>
+      <div className="max-w-2xl mx-auto px-8 py-4 min-h-[70vh] w-full">
+        <h1 className="text-xl mb-16 mt-4 text-center">Contact Us</h1>
 
-      <form onSubmit={handleFormSubmit}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2rem' }}>
-          <div style={{ backgroundColor: 'transparent', color: 'black', width: '48%', fontWeight: 500 }}>
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" name="name" style={{ backgroundColor: 'transparent', border: '1px solid black', color: 'black' }} />
+        <form onSubmit={handleFormSubmit}>
+          <div className="flex mb-2 flex-col w-full gap-4">
+            <div className="grid weight-500">
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                className="border-2 text-black rounded-sm border-black max-w-[12rem]"
+              />
+            </div>
+
+            <div className="grid weight-500">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className="border-2 text-black rounded-sm border-black max-w-[12rem]"
+              />
+            </div>
+
+            <div className="grid weight-500">
+              <label htmlFor="phone" style={{ display: 'block', width: '100%' }}>
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                className="border-2 text-black rounded-sm border-black max-w-[12rem]"
+              />
+            </div>
           </div>
 
-          <div style={{ backgroundColor: 'transparent', color: 'black', width: '48%', fontWeight: 500 }}>
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" style={{ backgroundColor: 'transparent', border: '1px solid black', color: 'black' }} />
+          <div className="grid weight-500 my-4">
+            <label htmlFor="message" style={{ display: 'block' }}>
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={2}
+              className="border-2 text-black rounded-sm border-black w-full max-w-sm"
+            ></textarea>
           </div>
-        </div>
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2rem' }}>
-          <div style={{ backgroundColor: 'transparent', color: 'black', width: '48%', fontWeight: 500 }}>
-            <label htmlFor="phone" style={{ display: 'block', marginBottom: '0.5rem' }}>Phone Number:</label>
-            <input type="tel" id="phone" name="phone" style={{ backgroundColor: 'transparent', border: '1px solid black', color: 'black' }} />
-          </div>
-
-          <div style={{ backgroundColor: 'transparent', color: 'black', width: '48%', fontWeight: 500 }}>
-            <label htmlFor="message" style={{ display: 'block', marginBottom: '0.5rem' }}>Message:</label>
-            <textarea id="message" name="message" rows={2} style={{ backgroundColor: 'transparent', border: '1px solid black', color: 'black' }}></textarea>
-          </div>
-        </div>
-
-        <button style={{ backgroundColor: 'white', color: 'black', marginBottom: '2rem', fontWeight: 500, border: '1px solid black', display: 'flex', alignItems: 'center' }} type="submit">
-          Submit&nbsp;&nbsp;&rarr;
-        </button>
-      </form>
+          <Button className="mt-4" type="submit">
+            Submit&nbsp;&nbsp;&rarr;
+          </Button>
+        </form>
+      </div>
     </BasicLayout>
   );
 };

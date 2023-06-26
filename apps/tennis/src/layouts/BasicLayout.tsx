@@ -84,7 +84,7 @@ const Footer: React.FC = () => (
             </a>
             <a
               className="flex items-center opacity-100 transition-all ease-in-out hover:cursor-pointer hover:opacity-50"
-              href="email:brousslang@lotustechnical.com"
+              href="mailto:brousslang@lotustechnical.com"
             >
               <Mail className="mr-2" />
               <span>brousslang@lotustechnical.com</span>
