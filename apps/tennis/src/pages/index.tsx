@@ -117,11 +117,68 @@ const HomePage = ({
           />
         </div>
 
-        <div className="bg-white text-black h-48 w-full text-center pb-12 pt-24 font-thin">
+        <div className="bg-white text-black h-96 w-full text-center pb-12 pt-24 font-thin">
           <h2 className="text-2xl">Proudly sponsored by</h2>
-          <div className="flex flex-row justify-around"></div>
+          <div className="flex flex-row justify-around items-center h-full">
+            <div className="flex items-center">
+              <Image
+                src="/resources/images/sponsor-jj.webp"
+                alt="Sponsor JJ"
+                width={150}
+                height={50}
+                className="flex-none"
+              />
+            </div>
+            <div className="flex items-center">
+              <Image
+                src="/resources/images/sponsor-trinite.png"
+                alt="Sponsor Trinite"
+                width={150}
+                height={50}
+                className="flex-none"
+              />
+            </div>
+            <div className="flex items-center">
+              <Image
+                src="/resources/images/sponsors-lotus.png"
+                alt="Sponsor Lotus"
+                width={150}
+                height={50}
+                className="flex-none"
+              />
+            </div>
+          </div>
         </div>
+        <div className="bg-[#1f3427] text-white h-auto w-full text-center pb-12 pt-24 font-thin mb-55">
+  <h2 className="text-2xl">Meet the organizers</h2>
+  <div className="flex flex-col md:flex-row items-start justify-start">
+    <div className="flex-none mx-auto mt-7">
+      <div className="mb-5 mr-40 ml-20 max-w-sm">
+        <Image
+          src="/resources/images/players-ryan-and-brian.jpeg"
+          alt="Ryan and Brian"
+          width={500}  // Increase the width value
+          height={200} // Increase the height value
+        />
       </div>
+    </div>
+    <div className="flex items-center mt-7">
+      <div className="flex flex-col text-left">
+        <p className="text-lg mb-.5">Brian Rousslang</p>
+        <p className="text-lg mb-2">Ryan Kadelbach</p>
+        <p className="text-sm">Two best friends with a passion for growing</p>
+        <p className="text-sm mb-1">tennis communities</p>
+        <p className="text-gray-500 text-xs mb-2">since 2014</p>
+        <Link href="/contact-us">
+  <Button style={{ fontWeight: 'bold' }}>Contact Us &rarr;</Button>
+</Link>
+      </div>
+    </div>
+    <div className="flex-grow"></div>
+  </div>
+</div>
+</div>
+      
     </BasicLayout>
   );
 };
@@ -139,3 +196,4 @@ export async function getServerSideProps() {
 }
 
 export default HomePage;
+
