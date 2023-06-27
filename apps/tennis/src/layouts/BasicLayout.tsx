@@ -5,6 +5,7 @@ import { Mail } from 'lucide-react';
 import { MapPin } from 'lucide-react';
 import { Phone } from 'lucide-react';
 import InlineLink from 'src/components/InlineLink';
+import { ContactModel } from 'src/lib/core/models/contact';
 
 const ADDRESS = '21095 147th Ave N, Rogers, MN 55374';
 
@@ -47,7 +48,7 @@ const Header: React.FC = () => (
   </header>
 );
 
-const Footer: React.FC = () => (
+const Footer: React.FC<{ contact: ContactModel }> = ({ contact }) => (
   <footer className="relative bottom-0 w-full bg-white overflow-hidden">
     <div className="flex flex-col sm:flex-row gap-12 justify-around">
       <div className="bg-white px-12 py-24 sm:py-12 flex-grow">
@@ -121,7 +122,10 @@ const Footer: React.FC = () => (
   </footer>
 );
 
-const BasicLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
+const BasicLayout: React.FC<React.PropsWithChildren & { contact: ContactModel }> = ({
+  contact,
+  children,
+}) => (
   <>
     <Head>
       <title>Highly Strung Tennis Tournament</title>
@@ -137,7 +141,7 @@ const BasicLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
       >
         {children}
       </main>
-      <Footer />
+      <Footer contact={contact} />
     </div>
   </>
 );

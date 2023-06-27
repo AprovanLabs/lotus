@@ -1,10 +1,12 @@
 import { Button } from 'src/components/Button';
 import BasicLayout from 'src/layouts/BasicLayout';
+import { ContactModel } from 'src/lib/core/models/contact';
+import ContactService from 'src/lib/server/contact/contactService';
 
 const TO_EMAIL = 'jacobisamps+lotus@gmail.com';
 const SUBJECT = 'Tennis Tournament Entry';
 
-const ContactUsPage = () => {
+const ContactUsPage = ({ contact }: { contact: ContactModel }) => {
   function handleFormSubmit(event: any) {
     event.preventDefault();
 
@@ -29,7 +31,7 @@ const ContactUsPage = () => {
   }
 
   return (
-    <BasicLayout>
+    <BasicLayout contact={contact}>
       <div className="max-w-2xl mx-auto px-8 py-4 min-h-[70vh] w-full">
         <h1 className="text-xl mb-16 mt-4 text-center">Contact Us</h1>
 
@@ -88,5 +90,15 @@ const ContactUsPage = () => {
     </BasicLayout>
   );
 };
+
+export async function getStaticProps() {
+  const contact = await ContactService.getContact();
+
+  return {
+    props: {
+      contact,
+    },
+  };
+}
 
 export default ContactUsPage;

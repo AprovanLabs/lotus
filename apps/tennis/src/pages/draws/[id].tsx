@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
 import BasicLayout from 'src/layouts/BasicLayout';
 import TournamentService from 'src/lib/server/tournaments/tournamentService';
 import { DrawModel, TournamentModel } from 'src/lib/core/models/tournament';
@@ -10,6 +9,8 @@ import {
   AccordionTrigger,
 } from 'src/components/Accordion';
 import { GetStaticPaths } from 'next';
+import { ContactModel } from 'src/lib/core/models/contact';
+import ContactService from 'src/lib/server/contact/contactService';
 
 const DrawAccordionItem: React.FC<React.PropsWithChildren & DrawModel> = ({
   title,
@@ -23,11 +24,17 @@ const DrawAccordionItem: React.FC<React.PropsWithChildren & DrawModel> = ({
   </AccordionItem>
 );
 
-const DrawsPage = ({ tournament }: { tournament: TournamentModel }) => {
+const DrawsPage = ({
+  tournament,
+  contact,
+}: {
+  tournament: TournamentModel;
+  contact: ContactModel;
+}) => {
   const router = useRouter();
 
   return (
-    <BasicLayout>
+    <BasicLayout contact={contact}>
       <div className="min-h-[70vh] w-full">
         <h1 className="text-xl mb-16 mt-8 text-center">Draws</h1>
 
@@ -61,10 +68,12 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
   const tournament = isLatest
     ? await TournamentService.getLatestTournament()
     : await TournamentService.getTournamentById(params.id);
+  const contact = await ContactService.getContact();
 
   return {
     props: {
       tournament,
+      contact,
     },
   };
 }

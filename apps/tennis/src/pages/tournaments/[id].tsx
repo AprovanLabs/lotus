@@ -147,7 +147,7 @@ const TournamentsPage = ({
   if (!tournament || !contact) return <></>;
 
   return (
-    <BasicLayout>
+    <BasicLayout contact={contact}>
       <section
         style={{
           // Make the section take up the full width of the screen

@@ -16,8 +16,11 @@ const HomePage = ({
   tournament: TournamentModel;
   contact: ContactModel;
 }) => {
+  console.log('tournament', tournament);
+  console.log('contact', contact);
+
   return (
-    <BasicLayout>
+    <BasicLayout contact={contact}>
       <div className="relative h-full w-full flex flex-col align-center justify-center text-white mt-0 z-0">
         <div
           className={css(`
