@@ -22,17 +22,7 @@ const HomePage = ({
   return (
     <BasicLayout contact={contact}>
       <div className="relative h-full w-full flex flex-col align-center justify-center text-white mt-0 z-0">
-        <div
-          className={css(`
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding-bottom: 36rem;
-            padding-top: 8rem;
-        `)}
-        >
+        <div className="relative flex flex-col items-center justify-center pb-[36rem] sm:pt-36">
           <div
             className={css(`
               position: absolute;

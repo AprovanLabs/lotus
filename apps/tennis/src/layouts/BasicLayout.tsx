@@ -71,10 +71,10 @@ const Footer: React.FC<{ contact: ContactModel }> = ({ contact }) => (
           <div className="flex flex-col gap-2">
             <a
               className="flex items-center opacity-100 transition-all ease-in-out hover:cursor-pointer hover:opacity-50"
-              href="tel:612-481-9955"
+              href="tel:6124819955"
             >
               <Phone className="mr-2" />
-              <span>612 481 9955</span>
+              <span>612-481-9955</span>
             </a>
             <a
               className="flex items-center opacity-100 transition-all ease-in-out hover:cursor-pointer hover:opacity-50"
