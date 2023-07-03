@@ -11,8 +11,9 @@ import {
 import { GetStaticPaths } from 'next';
 import { ContactModel } from 'src/lib/core/models/contact';
 import ContactService from 'src/lib/server/contact/contactService';
+import Image from 'next/image';
 
-const DrawAccordionItem: React.FC<React.PropsWithChildren & DrawModel> = ({
+const DrawAccordionItem: React.FC<React.PropsWithChildren<DrawModel & { image?: { url: string; width: number; height: number } }>> = ({
   title,
   description,
   image,
@@ -20,7 +21,14 @@ const DrawAccordionItem: React.FC<React.PropsWithChildren & DrawModel> = ({
 }) => (
   <AccordionItem value={title}>
     <AccordionTrigger>{title}</AccordionTrigger>
-    <AccordionContent>{description}</AccordionContent>
+    <AccordionContent>
+      {description}
+      {image && (
+        <div className="mt-4">
+          <Image src={image.url} width={image.width} height={image.height} alt="Tournament Image" />
+        </div>
+      )}
+    </AccordionContent>
   </AccordionItem>
 );
 
@@ -40,7 +48,7 @@ const DrawsPage = ({
 
         <Accordion type="single" collapsible className="w-[calc(100%-4rem)] mx-8">
           {tournament.draws.map((draw: DrawModel) => (
-            <DrawAccordionItem {...draw} key={draw.title} />
+            <DrawAccordionItem {...draw} key={draw.title} image={draw.image} />
           ))}
         </Accordion>
       </div>

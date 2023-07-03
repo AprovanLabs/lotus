@@ -8,6 +8,7 @@ import TournamentService from 'src/lib/server/tournaments/tournamentService';
 import ContactService from 'src/lib/server/contact/contactService';
 import { TournamentModel } from 'src/lib/core/models/tournament';
 import { ContactModel } from 'src/lib/core/models/contact';
+import { formatDate } from 'src/lib/core/utils/date';
 
 const HomePage = ({
   tournament,
@@ -73,7 +74,7 @@ const HomePage = ({
                 -webkit-text-stroke-color: white;
               `}
             >
-              July 23rd - July 26th
+              {formatDate(tournament.fromDate)} - {formatDate(tournament.toDate)} {/*formatting of tourney dates*/}
             </h2>
 
             <p className="block text-xl font-normal mt-2 mb-4 opacity-50 pr-16">
@@ -160,8 +161,8 @@ const HomePage = ({
                 src="/resources/images/players-ryan-and-brian.jpeg"
                 className="rounded-md shadow-md"
                 alt="Ryan and Brian"
-                width={500} // Increase the width value
-                height={200} // Increase the height value
+                width={500} 
+                height={200} 
               />
             </div>
             <div className="flex items-center mt-7 mx-8">
