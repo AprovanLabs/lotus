@@ -108,7 +108,9 @@ const Faq: React.FC<React.PropsWithChildren & FaqModel> = ({
             }}
           >
             <a href={link}>
-              <Button>{linkLabel} &rarr;</Button>
+              <Button>{linkLabel}
+              <MapPinIcon />
+              </Button>
             </a>
           </div>
         )}
