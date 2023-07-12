@@ -10,10 +10,9 @@ export const config = {
   }
 }
 
-// IMPORTANT: it needs to be placed outside the Function Handler
 const ses = new aws.SES({
   apiVersion: '2010-12-01',
-  region: 'us-east-2', // Change it to match your region
+  region: 'us-east-2',
   credentials: {
     accessKeyId: process.env.LT_AWS_ACCESS_KEY!,
     secretAccessKey: process.env.LT_AWS_SECRET_ACCESS_KEY!,
@@ -62,9 +61,6 @@ const submitForm = async (req: NextApiRequest, res: NextApiResponse) => {
 
   form.parse(req, (err, fields, files) => {
     try {
-      console.log('fields', fields)
-      console.log('files', files)
-
       const attachment = (files as any)?.file?.[0];
 
       sendEmail(process.env.SEND_TO_EMAIL!, {
@@ -81,7 +77,9 @@ const submitForm = async (req: NextApiRequest, res: NextApiResponse) => {
     } catch (error) {
       console.error(`❌ Failed to send email: `, error);
 
-      return res.status(400).redirect('/contact-us');
+      return res.status(400).json({
+        error: `Something went wrong! ${error}`,
+      })
     }
   });
 };
