@@ -22,10 +22,12 @@ const ContactUsPage = ({ contact }: { contact: ContactModel }) => {
 
     const body = `
     Name: ${name}
+
     Email: ${email}
+
     Phone Number: ${phone}
-    Message: ${message}
-    `;
+
+    ${message}`;
 
     window.open(`mailto:${TO_EMAIL}?subject=${SUBJECT}&body=${body}`);
   }
