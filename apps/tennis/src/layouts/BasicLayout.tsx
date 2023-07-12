@@ -124,22 +124,22 @@ const Footer = ({ contact }: { contact: ContactModel }) => {
 
           <div className="flex flex-col gap-2 z-50 relative">
             <Link href="/contact-us" passHref>
-              <a className="bg-black mb-1 font-normal text-sm uppercase hover:cursor-pointer">
+              <a className="bg-transparent mb-1 font-normal text-sm uppercase hover:cursor-pointer">
                 <p>Contact Us</p>
               </a>
             </Link>
             <Link href="/tournaments/latest" passHref>
-              <a className="bg-black mb-1 font-normal text-xs uppercase hover:cursor-pointer">
+              <a className="bg-transparent mb-1 font-normal text-xs uppercase hover:cursor-pointer">
                 <p>Tournaments</p>
               </a>
             </Link>
             <Link href="/draws" passHref>
-              <a className="bg-black mb-1 font-normal text-xs uppercase hover:cursor-pointer">
+              <a className="bg-transparent mb-1 font-normal text-xs uppercase hover:cursor-pointer">
                 <p>Draws</p>
               </a>
             </Link>
             <Link href="/sponsors" passHref>
-              <a className="bg-black mb-1 font-normal text-xs uppercase hover:cursor-pointer">
+              <a className="bg-transparent mb-1 font-normal text-xs uppercase hover:cursor-pointer">
                 <p>Sponsors</p>
               </a>
             </Link>
