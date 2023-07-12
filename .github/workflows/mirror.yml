@@ -1,6 +1,8 @@
 name: Mirror Repo
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
 
 jobs:
   build:
