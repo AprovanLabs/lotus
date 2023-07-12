@@ -23,7 +23,7 @@ const Faq: React.FC<React.PropsWithChildren & FaqModel> = ({
   ...props
 }) => {
   // Show a location icon if a Google Maps link
-  const isLocationLink = link && link.indexOf('https://www.google.com/maps') > 0;
+  const isLocationLink = link && link.indexOf('https://www.google.com/maps') >= 0;
 
   return (
     <div {...props}>
@@ -108,9 +108,7 @@ const Faq: React.FC<React.PropsWithChildren & FaqModel> = ({
             }}
           >
             <a href={link}>
-              <Button>{linkLabel}
-              <MapPinIcon />
-              </Button>
+              <Button>{linkLabel} &rarr;</Button>
             </a>
           </div>
         )}
