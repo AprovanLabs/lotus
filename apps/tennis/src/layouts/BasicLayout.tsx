@@ -163,13 +163,13 @@ const BasicLayout = ({
       <title>Highly Strung Tennis Tournament</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <div className="absolute w-full h-fit flex flex-col">
+    <div className="absolute w-full h-fit min-h-screen flex flex-col">
       <Header />
       <main
         style={{
           backgroundColor: 'white',
         }}
-        className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-white p-0"
+        className="relative  flex h-fit w-full flex-col items-center justify-start overflow-hidden bg-white p-0"
       >
         {children}
       </main>
