@@ -12,7 +12,7 @@ export const config = {
 
 const ses = new aws.SES({
   apiVersion: '2010-12-01',
-  region: 'us-east-2',
+  region: 'us-east-1',
   credentials: {
     accessKeyId: process.env.LT_AWS_ACCESS_KEY!,
     secretAccessKey: process.env.LT_AWS_SECRET_ACCESS_KEY!,
@@ -31,16 +31,17 @@ const sendEmail = (toEmail: string, {
   phoneNumber: string,
   message: string,
 }, attachment?: { name: string; path: string }) => {
-  console.log('toEmail', toEmail, attachment)
   return transporter.sendMail({
     from: "noreply@highlystrung.tennis",
     to: toEmail,
     html: `
-          <h1>Highly Strung Tennis Submittino</h1>
-          <p>Name: ${name}</p>
-          <p>Email: ${email}</p>
-          <p>Phone Number: ${phoneNumber}</p>
-          <pre>${message}</pre>
+          <h1>Highly Strung Tennis Submition</h1>
+          <p>
+            Name: ${name || 'N/A'}<br />
+            Email: ${email || 'N/A'}<br />
+            Phone Number: ${phoneNumber || 'N/A'}<br />
+          </p>
+          <pre>${message || ''}</pre>
           `,
     subject: "Highly Strung Tennis Submission",
     attachments: attachment ? [{
@@ -73,13 +74,11 @@ const submitForm = async (req: NextApiRequest, res: NextApiResponse) => {
         name: attachment?.originalFilename ?? 'submission.pdf',
       } : undefined);
 
-      res.status(200).redirect('/contact-us');
+      res.redirect(302, '/contact-us?success=true');
     } catch (error) {
       console.error(`❌ Failed to send email: `, error);
 
-      return res.status(400).json({
-        error: `Something went wrong! ${error}`,
-      })
+      return res.redirect(302, '/contact-us?success=false')
     }
   });
 };

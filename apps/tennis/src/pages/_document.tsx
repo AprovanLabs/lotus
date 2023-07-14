@@ -1,5 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document';
 import Script from 'next/script';
+import { Toaster } from 'src/components/Toaster';
 
 const Document = () => {
   return (
@@ -12,6 +13,7 @@ const Document = () => {
       </Head>
       <body>
         <Main />
+        <Toaster />
         <NextScript />
       </body>
     </Html>
