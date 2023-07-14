@@ -65,13 +65,13 @@ const ContactUsPage = ({ contact }: { contact: ContactModel }) => {
             </div>
 
             <div className="grid weight-500">
-              <label htmlFor="phone" style={{ display: 'block', width: '100%' }}>
+              <label htmlFor="phoneNumber" style={{ display: 'block', width: '100%' }}>
                 Phone Number
               </label>
               <input
                 type="tel"
-                id="phone"
-                name="phone"
+                id="phoneNumber"
+                name="phoneNumber"
                 className="border-2 text-black rounded-sm border-black max-w-[12rem]"
               />
             </div>
