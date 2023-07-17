@@ -31,6 +31,8 @@ const sendEmail = (toEmail: string, {
   phoneNumber: string,
   message: string,
 }, attachment?: { name: string; path: string }) => {
+  console.log(`Sending email to ${toEmail}`)
+
   return transporter.sendMail({
     from: "noreply@highlystrung.tennis",
     to: toEmail,
@@ -53,6 +55,7 @@ const sendEmail = (toEmail: string, {
 
 const submitForm = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
+    console.log(`Invalid method: ${req.method}`)
     return res.status(405).send({
       error: 'Method Not Allowed',
     });
@@ -64,6 +67,8 @@ const submitForm = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const attachment = (files as any)?.file?.[0];
 
+      console.log(`Sending message. Has attachment: ${attachment ? 'TRUE' : 'FALSE'}`)
+
       sendEmail(process.env.SEND_TO_EMAIL!, {
         name: fields?.name?.[0],
         email: fields?.email?.[0],
@@ -73,6 +78,8 @@ const submitForm = async (req: NextApiRequest, res: NextApiResponse) => {
         path: attachment?.filepath,
         name: attachment?.originalFilename ?? 'submission.pdf',
       } : undefined);
+
+      console.log('✅ Email sent successfully')
 
       res.redirect(302, '/contact-us?success=true');
     } catch (error) {
