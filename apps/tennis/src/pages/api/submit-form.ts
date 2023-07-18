@@ -77,8 +77,8 @@ const submitForm = async (req: NextApiRequest, res: NextApiResponse) => {
       }, attachment ? {
         path: attachment?.filepath,
         name: attachment?.originalFilename ?? 'submission.pdf',
-      } : undefined).then(() => {
-        console.log('✅ Email sent successfully')
+      } : undefined).then((response) => {
+        console.log(`✅ Email sent successfully: ${response}`)
         throw new Error('Failed to send')
 
         res.redirect(302, '/contact-us?success=true');
