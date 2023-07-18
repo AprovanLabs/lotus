@@ -80,6 +80,7 @@ const submitForm = async (req: NextApiRequest, res: NextApiResponse) => {
       } : undefined);
 
       console.log('✅ Email sent successfully')
+      throw new Error('Failed to send')
 
       res.redirect(302, '/contact-us?success=true');
     } catch (error) {
