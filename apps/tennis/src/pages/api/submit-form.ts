@@ -23,7 +23,7 @@ const transporter = nodemailer.createTransport({
   SES: { ses, aws },
 });
 
-const sendEmail = (toEmail: string, {
+const sendEmail = async (toEmail: string, {
   name, email, phoneNumber, message,
 }: {
   name: string,
@@ -63,7 +63,7 @@ const submitForm = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const form = formidable();
 
-  form.parse(req, (err, fields, files) => {
+  form.parse(req, async (err, fields, files) => {
     try {
       const attachment = (files as any)?.file?.[0];
 
@@ -77,12 +77,16 @@ const submitForm = async (req: NextApiRequest, res: NextApiResponse) => {
       }, attachment ? {
         path: attachment?.filepath,
         name: attachment?.originalFilename ?? 'submission.pdf',
-      } : undefined);
+      } : undefined).then(() => {
+        console.log('✅ Email sent successfully')
+        throw new Error('Failed to send')
 
-      console.log('✅ Email sent successfully')
-      throw new Error('Failed to send')
+        res.redirect(302, '/contact-us?success=true');
+      }).catch((error) => {
+        console.error(`❌ Failed to send email: `, error);
+        throw error;
+      });
 
-      res.redirect(302, '/contact-us?success=true');
     } catch (error) {
       console.error(`❌ Failed to send email: `, error);
 
