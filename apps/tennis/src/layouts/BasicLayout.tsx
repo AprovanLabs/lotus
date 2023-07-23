@@ -138,11 +138,6 @@ const Footer = ({ contact }: { contact: ContactModel }) => {
                 <p>Draws</p>
               </a>
             </Link>
-            /** <Link href="/sponsors" passHref>
-              <a className="mb-1 font-normal text-sm uppercase hover:cursor-pointer">
-                <p>Sponsors</p>
-              </a>
-            </Link> */
           </div>
         </div>
       </div>
