@@ -133,16 +133,16 @@ const Footer = ({ contact }: { contact: ContactModel }) => {
                 <p>Tournaments</p>
               </a>
             </Link>
-            <Link href="/draws" passHref>
+            <Link href="/draws/latest" passHref>
               <a className="mb-1 font-normal text-sm uppercase hover:cursor-pointer">
                 <p>Draws</p>
               </a>
             </Link>
-            <Link href="/sponsors" passHref>
+            /** <Link href="/sponsors" passHref>
               <a className="mb-1 font-normal text-sm uppercase hover:cursor-pointer">
                 <p>Sponsors</p>
               </a>
-            </Link>
+            </Link> */
           </div>
         </div>
       </div>
