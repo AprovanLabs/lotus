@@ -138,12 +138,12 @@ const Footer = ({ contact }: { contact: ContactModel }) => {
               </a>
             </Link>
             <Link href="/tournaments/latest" passHref>
-              <a className="mb-1 font-normal text-xs uppercase hover:cursor-pointer">
+              <a className="mb-1 font-normal text-sm uppercase hover:cursor-pointer">
                 <p>Tournaments</p>
               </a>
             </Link>
-            <Link href="/draws" passHref>
-              <a className="mb-1 font-normal text-xs uppercase hover:cursor-pointer">
+            <Link href="/draws/latest" passHref>
+              <a className="mb-1 font-normal text-sm uppercase hover:cursor-pointer">
                 <p>Draws</p>
               </a>
             </Link>
@@ -187,13 +187,13 @@ const BasicLayout = ({
       <title>Highly Strung Tennis Tournament</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <div className="absolute w-full h-fit flex flex-col">
+    <div className="absolute w-full h-fit min-h-screen flex flex-col">
       <Header />
       <main
         style={{
           backgroundColor: 'white',
         }}
-        className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-white p-0"
+        className="relative  flex h-fit w-full flex-col items-center justify-start overflow-hidden bg-white p-0"
       >
         {children}
       </main>

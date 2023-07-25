@@ -70,6 +70,33 @@
                 "allowTargetBlank": true,
                 "single": "paragraph"
               }
+            },
+            "link": {
+              "type": "StructuredText",
+              "config": {
+                "label": "link",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "single": "paragraph"
+              }
+            },
+            "linkLabel": {
+              "type": "StructuredText",
+              "config": {
+                "label": "linkLabel",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "single": "paragraph"
+              }
+            },
+            "iframe": {
+              "type": "StructuredText",
+              "config": {
+                "label": "iframe",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "single": "paragraph"
+              }
             }
           }
         }

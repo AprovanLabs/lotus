@@ -281,6 +281,36 @@ export interface TournamentDocumentDataDrawsItem {
    *
    */
   description: prismic.RichTextField;
+  /**
+   * link field in *Tournament → Draws*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tournament.draws[].link
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  link: prismic.RichTextField;
+  /**
+   * linkLabel field in *Tournament → Draws*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tournament.draws[].linkLabel
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  linkLabel: prismic.RichTextField;
+  /**
+   * iframe field in *Tournament → Draws*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tournament.draws[].iframe
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  iframe: prismic.RichTextField;
 }
 /**
  * Tournament document from Prismic

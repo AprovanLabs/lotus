@@ -16,5 +16,8 @@ export const
       ...draw,
       image: draw?.image ? mapPrismicImage(draw?.image) : null,
       description: mapPrismicRichTextFieldToString(draw?.description) || null,
+      link: mapPrismicRichTextFieldToString(draw?.link) || null,
+      linkLabel: mapPrismicRichTextFieldToString(draw?.linkLabel) || null,
+      iframe: mapPrismicRichTextFieldToString(draw?.iframe) || null,
     })),
   }) as TournamentModel;

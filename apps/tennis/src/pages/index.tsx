@@ -23,7 +23,7 @@ const HomePage = ({
   return (
     <BasicLayout contact={contact}>
       <div className="relative h-full w-full flex flex-col align-center justify-center text-white mt-0 z-0">
-        <div className="relative flex flex-col items-center justify-center pb-[36rem] sm:pt-36">
+        <div className="relative flex flex-col items-center justify-center pb-[36rem] sm:pt-4">
           <div
             className={css(`
               position: absolute;
@@ -74,7 +74,8 @@ const HomePage = ({
                 -webkit-text-stroke-color: white;
               `}
             >
-              {formatDate(tournament.fromDate)} - {formatDate(tournament.toDate)} {/*formatting of tourney dates*/}
+              {formatDate(tournament.fromDate)} - {formatDate(tournament.toDate)}{' '}
+              {/*formatting of tourney dates*/}
             </h2>
 
             <p className="block text-xl font-normal mt-2 mb-4 opacity-50 pr-16">
@@ -161,8 +162,8 @@ const HomePage = ({
                 src="/resources/images/players-ryan-and-brian.jpeg"
                 className="rounded-md shadow-md"
                 alt="Ryan and Brian"
-                width={500} 
-                height={200} 
+                width={500}
+                height={200}
               />
             </div>
             <div className="flex items-center mt-7 mx-8">

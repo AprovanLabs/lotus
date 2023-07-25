@@ -8,7 +8,10 @@ export type FaqModel = {
 
 export type DrawModel = {
   title: string;
-  description: string;
+  description?: string;
+  link?: string;
+  linkLabel?: string;
+  iframe?: string;
   image: {
     width: number,
     height: number,

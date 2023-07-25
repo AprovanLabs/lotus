@@ -12,17 +12,40 @@ import { GetStaticPaths } from 'next';
 import { ContactModel } from 'src/lib/core/models/contact';
 import ContactService from 'src/lib/server/contact/contactService';
 import Image from 'next/image';
+import { Button } from 'src/components/Button';
 
-const DrawAccordionItem: React.FC<React.PropsWithChildren<DrawModel & { image?: { url: string; width: number; height: number } }>> = ({
-  title,
-  description,
-  image,
-  children,
-}) => (
+const DrawAccordionItem: React.FC<
+  React.PropsWithChildren<DrawModel & { image?: { url: string; width: number; height: number } }>
+> = ({ title, description, image, link, linkLabel, iframe, children }) => (
   <AccordionItem value={title}>
     <AccordionTrigger>{title}</AccordionTrigger>
     <AccordionContent>
-      {description}
+      {link && (
+        <div
+          style={{
+            fontSize: '0.75rem',
+            marginTop: '1rem',
+            marginBottom: '2rem',
+          }}
+        >
+          <a href={link}>
+            <Button>{linkLabel} &rarr;</Button>
+          </a>
+        </div>
+      )}
+
+      {description && <p className="mb-8">{description}</p>}
+
+      {iframe && (
+        <iframe
+          src="https://challonge.com/c0pgufel/module"
+          width="100%"
+          height="500"
+          frameBorder="0"
+          scrolling="auto"
+        ></iframe>
+      )}
+
       {image && (
         <div className="mt-4">
           <Image src={image.url} width={image.width} height={image.height} alt="Tournament Image" />
