@@ -55,14 +55,11 @@ const Header = () => (
     <InlineLink href="/contact-us" className="font-normal">
       Contact
     </InlineLink>
-    <InlineLink href="/thank-you" className="font-normal">
-      Thank-You
+    <InlineLink href="/equipment" className="font-normal">
+      Equipment
     </InlineLink>
     <InlineLink href="/other-opportunities" className="font-normal">
       Other
-    </InlineLink>
-    <InlineLink href="/equipment" className="font-normal">
-      Equipment
     </InlineLink>
   </header>
 );
@@ -133,23 +130,18 @@ const Footer = ({ contact }: { contact: ContactModel }) => {
 
           <div className="flex flex-col gap-2 z-50 relative">
             <Link href="/contact-us" passHref>
-              <a className="mb-1 font-normal text-sm uppercase hover:cursor-pointer">
+              <a className="mb-1 font-normal text-xs uppercase hover:cursor-pointer">
                 <p>Contact Us</p>
               </a>
             </Link>
             <Link href="/tournaments/latest" passHref>
-              <a className="mb-1 font-normal text-sm uppercase hover:cursor-pointer">
+              <a className="mb-1 font-normal text-xs uppercase hover:cursor-pointer">
                 <p>Tournaments</p>
               </a>
             </Link>
             <Link href="/draws/latest" passHref>
-              <a className="mb-1 font-normal text-sm uppercase hover:cursor-pointer">
-                <p>Draws</p>
-              </a>
-            </Link>
-            <Link href="/sponsors" passHref>
               <a className="mb-1 font-normal text-xs uppercase hover:cursor-pointer">
-                <p>Sponsors</p>
+                <p>Draws</p>
               </a>
             </Link>
             <Link href="/equipment" passHref>
@@ -160,11 +152,6 @@ const Footer = ({ contact }: { contact: ContactModel }) => {
             <Link href="/other-opportunities" passHref>
               <a className="mb-1 font-normal text-xs uppercase hover:cursor-pointer">
                 <p>Other</p>
-              </a>
-            </Link>
-            <Link href="/thank-you" passHref>
-              <a className="mb-1 font-normal text-xs uppercase hover:cursor-pointer">
-                <p>Thank You!</p>
               </a>
             </Link>
           </div>
