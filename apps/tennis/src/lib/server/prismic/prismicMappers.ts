@@ -14,9 +14,9 @@ export const mapPrismicImage = (prismicImage: any): {
   width: number;
   height: number;
   url: string;
-} | undefined => {
-  if (!prismicImage) return undefined;
-  if (!prismicImage?.dimensions) return undefined;
+} | null => {
+  if (!prismicImage) return null;
+  if (!prismicImage?.dimensions) return null;
 
   return {
     width: prismicImage?.dimensions?.width,

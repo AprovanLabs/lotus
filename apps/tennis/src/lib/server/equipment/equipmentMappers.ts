@@ -9,5 +9,5 @@ export const mapPrismicEquipment = (data: EquipmentDocumentData): EquipmentModel
     title: mapPrismicRichTextFieldToString(data?.title) || "",
     price: data.price ?? 0,
     inStock: data.inStock,
-  };
+  } as EquipmentModel;
 };

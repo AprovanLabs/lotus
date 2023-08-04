@@ -8,9 +8,15 @@ import { ContactModel } from 'src/lib/core/models/contact';
 import EquipmentService from 'src/lib/server/equipment/equipmentService';
 import { EquipmentModel } from 'src/lib/core/models/equipment';
 
-const EquipmentPage = ({ contact, equipment }: { contact: ContactModel, equipment: EquipmentModel[]}) => {
+const EquipmentPage = ({
+  contact,
+  equipment,
+}: {
+  contact: ContactModel;
+  equipment: EquipmentModel[];
+}) => {
   const router = useRouter();
-  const [isShowing, setIsShowing] = useState(false);
+  console.log('equipment', equipment);
 
   return (
     <BasicLayout contact={contact}>
@@ -19,7 +25,6 @@ const EquipmentPage = ({ contact, equipment }: { contact: ContactModel, equipmen
           backgroundColor: 'white',
           color: 'black',
           marginBottom: '2rem',
-          fontWeight: 800,
           whiteSpace: 'nowrap',
           display: 'flex',
           justifyContent: 'center',
@@ -41,182 +46,33 @@ const EquipmentPage = ({ contact, equipment }: { contact: ContactModel, equipmen
           padding: '0 2rem 6rem 2rem',
         }}
       >
-        {
-          equipment.map((item: EquipmentModel, index) => (
-            <div
+        {equipment.map((item: EquipmentModel, index) => (
+          <div
             key={index}
-          style={{
-            border: '2px solid black',
-            padding: '1rem',
-            minHeight: '50vh',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <h2 style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>Equipment 1</h2>
-          <Image src="/resources/images/tshirt.png" width={120} height={120} alt="Tennis Ball Icon" />
-          <p>{item.description}</p>
-          <p style={{ fontSize: '0.8rem', color: 'gray' }}>$00.00</p>
-          <p style={{ fontSize: '0.7rem', color: 'gray' }}>out of stock</p>
-        </div>
-          ))
-        }
-
-        {/* Box 1 */}
-        <div
-          style={{
-            border: '2px solid black',
-            padding: '1rem',
-            minHeight: '50vh',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <h2 style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>Equipment 1</h2>
-          <Image src="/resources/images/tshirt.png" width={120} height={120} alt="Tennis Ball Icon" />
-          <p>Description of equipment</p>
-          <p style={{ fontSize: '0.8rem', color: 'gray' }}>$00.00</p>
-          <p style={{ fontSize: '0.7rem', color: 'gray' }}>out of stock</p>
-        </div>
-
-        {/* Box 2 */}
-        <div
-          style={{
-            border: '2px solid black',
-            padding: '1rem',
-            minHeight: '50vh',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <h2 style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>Equipment 2</h2>
-          <Image src="/resources/images/tshirt.png" width={120} height={120} alt="Tennis Ball Icon" />
-          <p>Description of equipment</p>
-          <p style={{ fontSize: '0.8rem', color: 'gray' }}>$00.00</p>
-          <p style={{ fontSize: '0.7rem', color: 'gray' }}>out of stock</p>
-        </div>
-
-        {/* Box 3 */}
-        <div
-          style={{
-            border: '2px solid black',
-            padding: '1rem',
-            minHeight: '50vh',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <h2 style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>Equipment 3</h2>
-          <Image src="/resources/images/tshirt.png" width={120} height={120} alt="Tennis Ball Icon" />
-          <p>Description of equipment</p>
-          <p style={{ fontSize: '0.8rem', color: 'gray' }}>$00.00</p>
-          <p style={{ fontSize: '0.7rem', color: 'gray' }}>out of stock</p>
-        </div>
-
-        {/* Box 4 */}
-        <div
-          style={{
-            border: '2px solid black',
-            padding: '1rem',
-            minHeight: '50vh',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <h2 style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>Equipment 4</h2>
-          <Image src="/resources/images/tshirt.png" width={120} height={120} alt="Tennis Ball Icon" />
-          <p>Description of equipment</p>
-          <p style={{ fontSize: '0.8rem', color: 'gray' }}>$00.00</p>
-          <p style={{ fontSize: '0.7rem', color: 'gray' }}>out of stock</p>
-        </div>
-
-        {/* Box 5 */}
-        <div
-          style={{
-            border: '2px solid black',
-            padding: '1rem',
-            minHeight: '50vh',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <h2 style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>Equipment 5</h2>
-          <Image src="/resources/images/tshirt.png" width={120} height={120} alt="Tennis Ball Icon" />
-          <p>Description of equipment</p>
-          <p style={{ fontSize: '0.8rem', color: 'gray' }}>$00.00</p>
-          <p style={{ fontSize: '0.7rem', color: 'gray' }}>out of stock</p>
-        </div>
-
-        {/* Box 6 */}
-        <div
-          style={{
-            border: '2px solid black',
-            padding: '1rem',
-            minHeight: '50vh',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <h2 style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>Equipment 6</h2>
-          <Image src="/resources/images/tshirt.png" width={120} height={120} alt="Tennis Ball Icon" />
-          <p>Description of equipment</p>
-          <p style={{ fontSize: '0.8rem', color: 'gray' }}>$00.00</p>
-          <p style={{ fontSize: '0.7rem', color: 'gray' }}>out of stock</p>
-        </div>
-
-        {/* Box 7 */}
-        <div
-          style={{
-            border: '2px solid black',
-            padding: '1rem',
-            minHeight: '50vh',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <h2 style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>Equipment 7</h2>
-          <Image src="/resources/images/tshirt.png" width={120} height={120} alt="Tennis Ball Icon" />
-          <p>Description of equipment</p>
-          <p style={{ fontSize: '0.8rem', color: 'gray' }}>$00.00</p>
-          <p style={{ fontSize: '0.7rem', color: 'gray' }}>out of stock</p>
-        </div>
-
-        {/* Box 8 */}
-        <div
-          style={{
-            border: '2px solid black',
-            padding: '1rem',
-            minHeight: '50vh',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <h2 style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>Equipment 8</h2>
-          <Image src="/resources/images/tshirt.png" width={120} height={120} alt="Tennis Ball Icon" />
-          <p>Description of equipment</p>
-          <p style={{ fontSize: '0.8rem', color: 'gray' }}>$00.00</p>
-          <p style={{ fontSize: '0.7rem', color: 'gray' }}>out of stock</p>
-        </div>
+            style={{
+              border: '2px solid black',
+              padding: '1rem',
+              minHeight: '50vh',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <h2 style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>Equipment 1</h2>
+            <Image
+              src="/resources/images/tshirt.png"
+              width={120}
+              height={120}
+              alt="Tennis Ball Icon"
+            />
+            <p>{item.description}!</p>
+            <p style={{ fontSize: '0.8rem', color: 'gray' }}>$00.00</p>
+            <p style={{ fontSize: '0.7rem', color: 'gray' }}>out of stock</p>
+          </div>
+        ))}
       </div>
-      </BasicLayout>
+    </BasicLayout>
   );
 };
 
@@ -233,4 +89,3 @@ export async function getStaticProps() {
 }
 
 export default EquipmentPage;
-
