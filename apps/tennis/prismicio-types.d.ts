@@ -79,6 +79,40 @@ interface EquipmentDocumentData {
    *
    */
   description: prismic.RichTextField;
+  /**
+   * price field in *Equipment*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: equipment.price
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/number
+   *
+   */
+  price: prismic.NumberField;
+  /**
+   * image field in *Equipment*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: equipment.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  image: prismic.ImageField<never>;
+  /**
+   * in stock field in *Equipment*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: equipment.inStock
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+   *
+   */
+  inStock: prismic.BooleanField;
 }
 /**
  * Equipment document from Prismic

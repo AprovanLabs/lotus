@@ -24,6 +24,20 @@
           "allowTargetBlank": true,
           "single": "paragraph"
         }
+      },
+      "price": { "type": "Number", "config": { "label": "price", "placeholder": "" } },
+      "image": {
+        "type": "Image",
+        "config": { "label": "image", "constraint": {}, "thumbnails": [] }
+      },
+      "inStock": {
+        "type": "Boolean",
+        "config": {
+          "label": "in stock",
+          "default_value": false,
+          "placeholder_true": "true",
+          "placeholder_false": "false"
+        }
       }
     }
   }

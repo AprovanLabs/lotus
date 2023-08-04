@@ -36,7 +36,7 @@ const EquipmentPage = ({ contact }: { contact: ContactModel }) => {
           gap: '1rem',
           minHeight: '100vh',
           width: '100vw',
-          padding: '0 2rem 6rem 2rem', // Added padding on the sides and bottom
+          padding: '0 2rem 6rem 2rem',
         }}
       >
 

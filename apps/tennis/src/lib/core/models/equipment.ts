@@ -1,11 +1,11 @@
 export type EquipmentModel = {
   title: string;
-  image: {
+  image?: {
     width: number,
     height: number,
     url: string,
   }
   description: string;
-  price: string;
+  price: number;
 
 };
