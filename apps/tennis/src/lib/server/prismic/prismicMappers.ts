@@ -10,7 +10,11 @@ export const mapPrismicRichTextFieldToString = (prismicNode?: RichTextField): st
   return (prismicNode as unknown as _RichTextField[]).map((n) => n.text.replace(/^\s+|\s+$/g, '')).join('\n');
 }
 
-export const mapPrismicImage = (prismicImage: any) => {
+export const mapPrismicImage = (prismicImage: any): {
+  width: number;
+  height: number;
+  url: string;
+} | null => {
   if (!prismicImage) return null;
   if (!prismicImage?.dimensions) return null;
 
