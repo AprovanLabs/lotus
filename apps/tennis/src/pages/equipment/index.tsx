@@ -14,19 +14,19 @@ const EquipmentPage = ({ contact }: { contact: ContactModel }) => {
     <BasicLayout contact={contact}>
       <div
         style={{
-          backgroundColor: '#6c935c',
-          color: 'white',
+          backgroundColor: 'white',
+          color: 'black',
           marginBottom: '2rem',
           fontWeight: 800,
           whiteSpace: 'nowrap',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          padding: '1rem',
+          padding: '4rem',
           width: '100%',
         }}
       >
-        <h1 className="text-xl">Featured Items</h1>
+        <h1 className="text-3xl">Featured Items</h1>
       </div>
 
       <div
@@ -36,6 +36,7 @@ const EquipmentPage = ({ contact }: { contact: ContactModel }) => {
           gap: '1rem',
           minHeight: '100vh',
           width: '100vw',
+          padding: '0 2rem 6rem 2rem', // Added padding on the sides and bottom
         }}
       >
 
@@ -191,7 +192,7 @@ const EquipmentPage = ({ contact }: { contact: ContactModel }) => {
           <p style={{ fontSize: '0.7rem', color: 'gray' }}>out of stock</p>
         </div>
       </div>
-    </BasicLayout>
+      </BasicLayout>
   );
 };
 

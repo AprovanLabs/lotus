@@ -10,7 +10,7 @@ import { ChevronDown } from 'lucide-react';
 const OtherPage = ({ contact }: { contact: ContactModel }) => {
   const router = useRouter();
 
-  // State to keep track of whether each subheader is clicked or not
+  
   const [isDrillsOpen, setIsDrillsOpen] = useState(false);
   const [isRacquetStringingOpen, setIsRacquetStringingOpen] = useState(false);
 
@@ -30,7 +30,7 @@ const OtherPage = ({ contact }: { contact: ContactModel }) => {
           Other Opportunities
         </h1>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          {/* Drills Subheader */}
+          
           <div
             style={{
               marginBottom: '1rem',
@@ -49,7 +49,7 @@ const OtherPage = ({ contact }: { contact: ContactModel }) => {
             <p>Description of the Drills opportunity</p>
           )}
 
-          {/* Racquet Stringing Subheader */}
+          
           <div
             style={{
               cursor: 'pointer',
