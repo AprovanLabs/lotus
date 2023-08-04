@@ -5,8 +5,10 @@ import BasicLayout from 'src/layouts/BasicLayout';
 import Image from 'next/image';
 import ContactService from 'src/lib/server/contact/contactService';
 import { ContactModel } from 'src/lib/core/models/contact';
+import EquipmentService from 'src/lib/server/equipment/equipmentService';
+import { EquipmentModel } from 'src/lib/core/models/equipment';
 
-const EquipmentPage = ({ contact }: { contact: ContactModel }) => {
+const EquipmentPage = ({ contact, equipment }: { contact: ContactModel, equipment: EquipmentModel[]}) => {
   const router = useRouter();
   const [isShowing, setIsShowing] = useState(false);
 
@@ -39,6 +41,28 @@ const EquipmentPage = ({ contact }: { contact: ContactModel }) => {
           padding: '0 2rem 6rem 2rem',
         }}
       >
+        {
+          equipment.map((item: EquipmentModel, index) => (
+            <div
+            key={index}
+          style={{
+            border: '2px solid black',
+            padding: '1rem',
+            minHeight: '50vh',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <h2 style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>Equipment 1</h2>
+          <Image src="/resources/images/tshirt.png" width={120} height={120} alt="Tennis Ball Icon" />
+          <p>{item.description}</p>
+          <p style={{ fontSize: '0.8rem', color: 'gray' }}>$00.00</p>
+          <p style={{ fontSize: '0.7rem', color: 'gray' }}>out of stock</p>
+        </div>
+          ))
+        }
 
         {/* Box 1 */}
         <div
@@ -198,10 +222,12 @@ const EquipmentPage = ({ contact }: { contact: ContactModel }) => {
 
 export async function getStaticProps() {
   const contact = await ContactService.getContact();
+  const equipment = await EquipmentService.getAllEquipment();
 
   return {
     props: {
       contact,
+      equipment,
     },
   };
 }

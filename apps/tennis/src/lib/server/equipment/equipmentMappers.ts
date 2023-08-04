@@ -4,7 +4,7 @@ import { EquipmentDocumentData } from "prismicio-types";
 
 export const mapPrismicEquipment = (data: EquipmentDocumentData): EquipmentModel => {
   return {
-    image: data?.image ? mapPrismicImage(data?.image) : null,
+    image: data?.image ? mapPrismicImage(data?.image) : undefined,
     description: mapPrismicRichTextFieldToString(data?.description) || "",
     title: mapPrismicRichTextFieldToString(data?.title) || "",
     price: data.price ?? 0,

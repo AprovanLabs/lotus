@@ -7,5 +7,6 @@ export type EquipmentModel = {
   }
   description: string;
   price: number;
+  inStock: boolean,
 
 };
