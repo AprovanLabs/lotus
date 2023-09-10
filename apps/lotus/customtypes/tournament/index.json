@@ -1,0 +1,106 @@
+{
+  "id": "tournament",
+  "label": "Tournament",
+  "format": "custom",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": { "config": { "label": "UID" }, "type": "UID" },
+      "title": { "type": "Text", "config": { "label": "Title", "placeholder": "" } },
+      "tagline": { "type": "Text", "config": { "label": "tagline", "placeholder": "" } },
+      "tShirtImage": {
+        "type": "Image",
+        "config": { "label": "T-shirt Image", "constraint": {}, "thumbnails": [] }
+      },
+      "registrationDeadlineDate": {
+        "type": "Date",
+        "config": { "label": "Registration Deadline Date", "placeholder": "" }
+      },
+      "fromDate": { "type": "Date", "config": { "label": "Start Date", "placeholder": "" } },
+      "toDate": { "type": "Date", "config": { "label": "End Date", "placeholder": "" } },
+      "signUpForm": {
+        "type": "Link",
+        "config": { "label": "Sign Up Form", "placeholder": "", "select": "media" }
+      },
+      "faqs": {
+        "type": "Group",
+        "config": {
+          "label": "FAQs",
+          "fields": {
+            "title": { "type": "Text", "config": { "label": "Title", "placeholder": "" } },
+            "text": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Text",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "paragraph,heading1,heading2,heading3,strong,list-item,o-list-item"
+              }
+            },
+            "warning": { "type": "Text", "config": { "label": "Warning", "placeholder": "" } },
+            "linkLabel": { "type": "Text", "config": { "label": "Link Label", "placeholder": "" } },
+            "link": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "single": "hyperlink"
+              }
+            }
+          }
+        }
+      },
+      "draws": {
+        "type": "Group",
+        "config": {
+          "label": "Draws",
+          "fields": {
+            "title": { "type": "Text", "config": { "label": "title", "placeholder": "" } },
+            "image": {
+              "type": "Image",
+              "config": { "label": "image", "constraint": {}, "thumbnails": [] }
+            },
+            "description": {
+              "type": "StructuredText",
+              "config": {
+                "label": "description",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "single": "paragraph"
+              }
+            },
+            "link": {
+              "type": "StructuredText",
+              "config": {
+                "label": "link",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "single": "paragraph"
+              }
+            },
+            "linkLabel": {
+              "type": "StructuredText",
+              "config": {
+                "label": "linkLabel",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "single": "paragraph"
+              }
+            },
+            "iframe": {
+              "type": "StructuredText",
+              "config": {
+                "label": "iframe",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "single": "paragraph"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
