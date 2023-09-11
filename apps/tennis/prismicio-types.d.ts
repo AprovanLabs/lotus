@@ -128,6 +128,45 @@ export type EquipmentDocument<Lang extends string = string> = prismic.PrismicDoc
   'equipment',
   Lang
 >;
+/** Content for Other documents */
+interface OtherDocumentData {
+  /**
+   * title field in *Other*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: other.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  title: prismic.RichTextField;
+  /**
+   * description field in *Other*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: other.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  description: prismic.RichTextField;
+}
+/**
+ * Other document from Prismic
+ *
+ * - **API ID**: `other`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type OtherDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+  Simplify<OtherDocumentData>,
+  'other',
+  Lang
+>;
 /** Content for Sponsors documents */
 interface SponsorsDocumentData {
   /**
@@ -402,6 +441,7 @@ export type TournamentDocument<Lang extends string = string> = prismic.PrismicDo
 export type AllDocumentTypes =
   | ContactDocument
   | EquipmentDocument
+  | OtherDocument
   | SponsorsDocument
   | TournamentDocument;
 /**
@@ -500,6 +540,8 @@ declare module '@prismicio/client' {
       ContactDocument,
       EquipmentDocumentData,
       EquipmentDocument,
+      OtherDocumentData,
+      OtherDocument,
       SponsorsDocumentData,
       SponsorsDocumentDataSlicesSlice,
       SponsorsDocument,
