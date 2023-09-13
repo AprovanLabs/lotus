@@ -1,17 +1,11 @@
-import Link from 'next/link';
-import { css } from '@emotion/css';
-import { ScreenSizeBreakpoints } from 'src/lib/style';
 import BasicLayout from '../layouts/BasicLayout';
-import Image from 'next/image';
-import { Button } from 'src/components/Button';
-import TournamentService from 'src/lib/server/tournaments/tournamentService';
-import ContactService from 'src/lib/server/contact/contactService';
-import { TournamentModel } from 'src/lib/core/models/tournament';
-import { ContactModel } from 'src/lib/core/models/contact';
-import { formatDate } from 'src/lib/core/utils/date';
 
 const HomePage = () => {
-  return <h1>Hi Megan!</h1>;
+  return (
+    <BasicLayout>
+      <h1>Hi Megan!</h1>
+    </BasicLayout>
+  );
 };
 
 // const HomePage = ({
