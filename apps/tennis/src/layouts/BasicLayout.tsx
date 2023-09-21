@@ -55,12 +55,12 @@ const Header = () => (
     <InlineLink href="/contact-us" className="font-normal">
       Contact
     </InlineLink>
-    <InlineLink href="/equipment" className="font-normal">
+    {/* <InlineLink href="/equipment" className="font-normal">
       Equipment
     </InlineLink>
     <InlineLink href="/other-opportunities" className="font-normal">
       Other
-    </InlineLink>
+    </InlineLink> */}
   </header>
 );
 
@@ -144,16 +144,16 @@ const Footer = ({ contact }: { contact: ContactModel }) => {
                 <p>Draws</p>
               </a>
             </Link>
-            <Link href="/equipment" passHref>
+            {/* <Link href="/equipment" passHref>
               <a className="mb-1 font-normal text-xs uppercase hover:cursor-pointer">
                 <p>Equipment</p>
               </a>
-            </Link>
-            <Link href="/other-opportunities" passHref>
+            </Link> */}
+            {/* <Link href="/other-opportunities" passHref>
               <a className="mb-1 font-normal text-xs uppercase hover:cursor-pointer">
                 <p>Other</p>
               </a>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
