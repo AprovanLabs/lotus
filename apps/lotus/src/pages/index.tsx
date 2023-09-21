@@ -1,10 +1,32 @@
 import BasicLayout from '../layouts/BasicLayout';
 
 const HomePage = () => {
+  const heading = 'Work is hectic';
+  const tagline = `Getting help doesn't have to be`;
+  const subHeading = 'Who we are';
+  const body =
+    'Lotus Technical has filled positions in organizations of all sizes ranging from the small family-owned business to large Fortune 500 companies/nOur staffing expertise and recruiting resources have helped us successfully place candidates in various roles from assembly to C-level executives/nWhether you are looking to fill an entry-level position or an executive position, Lotus Technical will help you find your most important business resource - your people';
+  const subHeading2 = 'What we do';
+  const body2 =
+    'Lotus Technical closes the gap between job seekers and organizations looking to fill positions in the Engineering, IT and Manufacturing industries/nWith historically low unemployment rates, organizations spend unnecessary time and cost recruiting, screening, and hiring the right person for the job. Additionally, many organizations lack the internal resources to find, attract, and retain the right talent/nSince 2010, our job has been to connect organizations to top talent and simplify their hiring process.';
+
   return (
-    <BasicLayout>
-      <h1>Hi Megan!</h1>
-    </BasicLayout>
+    <div className="bg-gradient-to-r from-[#011e32] to-[#577c92]">
+      <BasicLayout>
+        <div className="flex flex-col gap-y-11 text-center font-mono pt-40 text-white">
+          <h1 className="text-9xl uppercase">{heading}</h1>
+          <p className="text-4xl">{tagline}</p>
+          <div className="flex gap-x-24 justify-center p-20">
+            <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 text-[#011e32]">
+              Contact Us
+            </button>
+            <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 text-[#011e32]">
+              Current Openings
+            </button>
+          </div>
+        </div>
+      </BasicLayout>
+    </div>
   );
 };
 

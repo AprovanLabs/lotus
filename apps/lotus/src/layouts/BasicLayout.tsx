@@ -3,13 +3,9 @@ import Head from 'next/head';
 
 const NavBar = () => {
   return (
-    <div className="flex justify-between">
-      <img
-        className="h-20 w-auto"
-        src="/resources/images/lotus.png"
-        alt="Lotus Technical bird logo"
-      />
-      <div className="flex space-x-4">
+    <div className="flex justify-between p-11">
+      <img className="h-20 w-auto" src="/resources/images/lotus.png" alt="Lotus Technical logo" />
+      <div className="flex gap-16 text-lg text-[#92daf4]">
         {/* <Image src="/resources/images/lotus.png" width={90} height={90} alt="Bird icon" /> */}
         <a href="/">Home</a>
         <a href="/clients">Clients</a>
