@@ -17,9 +17,25 @@ const NavBar = () => {
 };
 
 const Footer = () => {
+  const phoneNumber = '763-307-6500';
+  const emailAddress = 'brousslang@lotustechnical.com';
+  const addressLine1 = '7100 Northland Cir N';
+  const addressLine2 = 'Suite 105';
+  const addressLine3 = 'Minneapolis, MN 55428';
+  const twitterLink = 'https://twitter.com/lotustechnical';
+  const facebookLink = 'https://www.facebook.com/LotusTechnical';
+  const linkedInLink = 'https://www.linkedin.com/company/lotus-technical';
   return (
-    <footer>
-      <h2>THIS IS A FOOTER</h2>
+    <footer className="bg-gradient-to-r from-[#78B994] to-[#71B33D]">
+      <div className="flex flex-col gap-y-7 py-20 pl-28 text-xl">
+        <p>{phoneNumber}</p>
+        <p>{emailAddress}</p>
+        <div>
+          <p>{addressLine1}</p>
+          <p>{addressLine2}</p>
+          <p>{addressLine3}</p>
+        </div>
+      </div>
     </footer>
   );
 };

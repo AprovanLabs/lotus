@@ -22,7 +22,7 @@
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
     "formidable": "^3.5.0",
-    "lucide-react": "^0.220.0",
+    "lucide-react": "^0.279.0",
     "next": "latest",
     "nodemailer": "^6.9.3",
     "react": "18.2.0",
