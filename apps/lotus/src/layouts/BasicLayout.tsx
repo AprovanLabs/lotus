@@ -26,7 +26,7 @@ const Footer = () => {
   const facebookLink = 'https://www.facebook.com/LotusTechnical';
   const linkedInLink = 'https://www.linkedin.com/company/lotus-technical';
   return (
-    <footer className="bg-gradient-to-r from-[#78B994] to-[#71B33D] mt-auto">
+    <footer className="bg-gradient-to-r from-[#447669] to-[#78B994] mt-auto">
       <div className="flex flex-col gap-y-7 py-20 pl-28 text-xl">
         <p>{phoneNumber}</p>
         <p>{emailAddress}</p>
@@ -42,7 +42,7 @@ const Footer = () => {
 
 const BasicLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex flex-col min-h-[140vh]">
+    <div className="relative flex flex-col min-h-[140vh]">
       <Head>
         <title>Lotus Technical</title>
         <link rel="icon" href="/favicon.ico" />

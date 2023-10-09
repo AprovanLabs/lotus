@@ -15,61 +15,64 @@ const HomePage = () => {
   const body2Chunk3 =
     'Since 2010, our job has been to connect organizations to top talent and simplify their hiring process.';
   //bg-[left_top_-90rem] bg-cover bg-no-repeat
+  //bg-[left_top_-50%]
+  //w-[170%] h-[170%]
+  //bg-[percentage:150%]
 
   return (
-    <div className="bg-[#011F33]">
-      <div className="bg-[url('/resources/images/transparent-logo.png')]  text-white font-mono">
-        <BasicLayout>
-          <div className="flex flex-col gap-y-11 text-center pt-40">
-            <h1 className="text-9xl uppercase">{heading}</h1>
-            <p className="text-4xl">{tagline}</p>
-            <div className="flex gap-x-24 justify-center p-20">
-              <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 text-[#011e32]">
-                Contact Us
-              </button>
-              <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 text-[#011e32]">
-                Current Openings
-              </button>
-            </div>
-            <div className="flex justify-center pb-40">
-              {/* moveDown icon */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="48"
-                height="48"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-move-down"
-              >
-                <path d="M8 18L12 22L16 18" />
-                <path d="M12 2V22" />
-              </svg>
-            </div>
+    <div className="bg-[#011F33] text-white font-mono">
+      <div className="opacity-[.3] w-full h-full top-0 absolute bg-no-repeat bg-[linear-gradient(to_top,#011F33_10%,transparent),url('/resources/images/lotus.png')] translate-y-[10%]	translate-x-[-12.5%]"></div>
+
+      <BasicLayout>
+        <div className="flex flex-col gap-y-11 text-center pt-40">
+          <h1 className="text-9xl uppercase">{heading}</h1>
+          <p className="text-4xl">{tagline}</p>
+          <div className="flex gap-x-24 justify-center p-20">
+            <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 text-[#011e32]">
+              Contact Us
+            </button>
+            <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 text-[#011e32]">
+              Current Openings
+            </button>
           </div>
-          <div className="flex">
-            <div className="flex flex-col gap-y-11 pt-40 p-60 w-3/4">
-              <h2 className="text-6xl uppercase">{subHeading}</h2>
-              <p className="text-2xl">{bodyChunk1}</p>
-              <p className="text-2xl">{bodyChunk2}</p>
-              <p className="text-2xl">{bodyChunk3}</p>
-            </div>
-            <img src="/resources/images/cutLines2.png" className="w-[40rem]"></img>
+          <div className="flex justify-center pb-40">
+            {/* moveDown icon */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-move-down"
+            >
+              <path d="M8 18L12 22L16 18" />
+              <path d="M12 2V22" />
+            </svg>
           </div>
-          <div className="flex justify-end">
-            <img src="/resources/images/cutLines.png" className="w-[40rem]"></img>
-            <div className="flex flex-col	gap-y-11 pt-20 p-60 w-3/4">
-              <h2 className="text-6xl uppercase">{subHeading2}</h2>
-              <p className="text-2xl">{body2Chunk1}</p>
-              <p className="text-2xl">{body2Chunk2}</p>
-              <p className="text-2xl">{body2Chunk3}</p>
-            </div>
+        </div>
+        <div className="flex">
+          <div className="flex flex-col gap-y-11 pt-40 p-60 w-3/4">
+            <h2 className="text-6xl uppercase">{subHeading}</h2>
+            <p className="text-2xl">{bodyChunk1}</p>
+            <p className="text-2xl">{bodyChunk2}</p>
+            <p className="text-2xl">{bodyChunk3}</p>
           </div>
-        </BasicLayout>
-      </div>
+          <img src="/resources/images/cutLines2.png" className="w-[40rem]"></img>
+        </div>
+        <div className="flex justify-end">
+          <img src="/resources/images/cutLines.png" className="w-[40rem]"></img>
+          <div className="flex flex-col	gap-y-11 pt-20 p-60 w-3/4">
+            <h2 className="text-6xl uppercase">{subHeading2}</h2>
+            <p className="text-2xl">{body2Chunk1}</p>
+            <p className="text-2xl">{body2Chunk2}</p>
+            <p className="text-2xl">{body2Chunk3}</p>
+          </div>
+        </div>
+      </BasicLayout>
     </div>
   );
 };
