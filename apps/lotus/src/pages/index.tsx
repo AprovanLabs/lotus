@@ -25,7 +25,12 @@ const HomePage = () => {
 
       <BasicLayout>
         <div className="flex flex-col gap-y-11 text-center pt-40">
-          <h1 className="text-9xl uppercase">{heading}</h1>
+          <h1
+            className="text-9xl text-[#011F33] font-bold uppercase"
+            style={{ WebkitTextStroke: '3px rgba(255, 255, 255)' }}
+          >
+            {heading}
+          </h1>
           <p className="text-4xl">{tagline}</p>
           <div className="flex gap-x-24 justify-center p-20">
             <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 text-[#011e32]">
@@ -54,23 +59,25 @@ const HomePage = () => {
             </svg>
           </div>
         </div>
-        <div className="flex">
-          <div className="flex flex-col gap-y-11 pt-40 p-60 w-3/4">
-            <h2 className="text-6xl uppercase">{subHeading}</h2>
-            <p className="text-2xl">{bodyChunk1}</p>
-            <p className="text-2xl">{bodyChunk2}</p>
-            <p className="text-2xl">{bodyChunk3}</p>
-          </div>
-          <img src="/resources/images/cutLines2.png" className="w-[40rem]"></img>
+        <img
+          src="/resources/images/cutLines2.png"
+          className="absolute right-0 top-[25%] w-[40rem]"
+        ></img>
+        <div className="relative flex flex-col gap-y-11 pt-40 p-60 w-3/4">
+          <h2 className="text-6xl uppercase">{subHeading}</h2>
+          <p className="text-2xl">{bodyChunk1}</p>
+          <p className="text-2xl">{bodyChunk2}</p>
+          <p className="text-2xl">{bodyChunk3}</p>
         </div>
-        <div className="flex justify-end">
-          <img src="/resources/images/cutLines.png" className="w-[40rem]"></img>
-          <div className="flex flex-col	gap-y-11 pt-20 p-60 w-3/4">
-            <h2 className="text-6xl uppercase">{subHeading2}</h2>
-            <p className="text-2xl">{body2Chunk1}</p>
-            <p className="text-2xl">{body2Chunk2}</p>
-            <p className="text-2xl">{body2Chunk3}</p>
-          </div>
+        <img
+          src="/resources/images/cutLines.png"
+          className="absolute left-0 top-[55%] w-[40rem]"
+        ></img>
+        <div className="relative flex flex-col gap-y-11 pt-20 p-60 w-3/4 ml-auto">
+          <h2 className="text-6xl uppercase">{subHeading2}</h2>
+          <p className="text-2xl">{body2Chunk1}</p>
+          <p className="text-2xl">{body2Chunk2}</p>
+          <p className="text-2xl">{body2Chunk3}</p>
         </div>
       </BasicLayout>
     </div>
