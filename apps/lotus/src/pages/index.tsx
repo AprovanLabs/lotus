@@ -1,6 +1,16 @@
 import BasicLayout from '../layouts/BasicLayout';
+import React, { useRef, useState } from 'react';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
+import { register } from 'swiper/element/bundle';
 
 const HomePage = () => {
+  //Register swiper
+  register();
+
   const heading = 'Work is hectic';
   const tagline = `Getting help doesn't have to be`;
   const subHeading = 'Who we are';
@@ -14,10 +24,6 @@ const HomePage = () => {
     'With historically low unemployment rates, organizations spend unnecessary time and cost recruiting, screening, and hiring the right person for the job. Additionally, many organizations lack the internal resources to find, attract, and retain the right talent';
   const body2Chunk3 =
     'Since 2010, our job has been to connect organizations to top talent and simplify their hiring process.';
-  //bg-[left_top_-90rem] bg-cover bg-no-repeat
-  //bg-[left_top_-50%]
-  //w-[170%] h-[170%]
-  //bg-[percentage:150%]
 
   return (
     <div className="bg-[#011F33] text-white font-mono">
@@ -78,6 +84,21 @@ const HomePage = () => {
           <p className="text-2xl">{body2Chunk1}</p>
           <p className="text-2xl">{body2Chunk2}</p>
           <p className="text-2xl">{body2Chunk3}</p>
+        </div>
+        <div className="w-1/4 ml-auto mr-auto pb-44">
+          {/* https://swiperjs.com/demos */}
+          <swiper-container navigation="true" rewind="true">
+            <div slot="container-start">Rendered before wrapper</div>
+            {/* //https://swiperjs.com/element#parts */}
+            {['supreme-overlord', 'staff-jacob', 'staff-sydney'].map(name => (
+              <swiper-slide>
+                <img
+                  src={`/resources/images/staff/${name}.jpg`}
+                  // className="max-h-[32rem] min-h-40 ml-auto mr-auto"
+                ></img>
+              </swiper-slide>
+            ))}
+          </swiper-container>
         </div>
       </BasicLayout>
     </div>
