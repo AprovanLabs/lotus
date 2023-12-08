@@ -1,0 +1,7 @@
+{
+  "repositoryName": "lotus-highly-strung",
+  "adapter": "@slicemachine/adapter-next",
+  "libraries": [
+    "./src/slices"
+  ]
+}
