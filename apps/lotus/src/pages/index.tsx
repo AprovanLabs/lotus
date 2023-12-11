@@ -23,70 +23,73 @@ const HomePage = () => {
     'Since 2010, our job has been to connect organizations to top talent and simplify their hiring process.';
 
   return (
-    <div className="bg-[#011F33] text-[#011F33] font-mono">
-      <div className="opacity-[.3] w-full h-full top-0 absolute bg-no-repeat bg-[linear-gradient(to_top,#011F33_10%,transparent),url('/resources/images/lotus.png')] translate-y-[10%]	translate-x-[-12.5%]"></div>
+    <div>
+      {' '}
+      <div className="bg-[#011F33] text-[#011F33] font-mono">
+        <div className="opacity-[.3] w-full h-full top-0 absolute bg-no-repeat bg-[linear-gradient(to_top,#011F33_10%,transparent),url('/resources/images/lotus.png')] translate-y-[10%] translate-x-[-12.5%]"></div>
 
-      <BasicLayout>
-        <div className="flex flex-col gap-y-11 text-center pt-40 ">
-          <h1
-            className="text-9xl  font-bold uppercase"
-            style={{ WebkitTextStroke: '3px rgba(255, 255, 255)' }}
-          >
-            {heading}
-          </h1>
-          <p className="text-4xl text-white">{tagline}</p>
-          <div className="flex gap-x-24 justify-center p-20">
-            <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
-              Contact Us
-            </button>
-            <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
-              Current Openings
-            </button>
-          </div>
-          <div className="flex justify-center pb-40">
-            {/* moveDown icon */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="48"
-              height="48"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="white"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoi+n="round"
-              className="lucide lucide-move-down"
+        <BasicLayout>
+          <div className="flex flex-col gap-y-11 text-center pt-40 ">
+            <h1
+              className="text-9xl  font-bold uppercase"
+              style={{ WebkitTextStroke: '3px rgba(255, 255, 255)' }}
             >
-              <path d="M8 18L12 22L16 18" />
-              <path d="M12 2V22" />
-            </svg>
+              {heading}
+            </h1>
+            <p className="text-4xl text-white">{tagline}</p>
+            <div className="flex gap-x-24 justify-center p-20">
+              <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
+                Contact Us
+              </button>
+              <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
+                Current Openings
+              </button>
+            </div>
+            <div className="flex justify-center pb-40">
+              {/* moveDown icon */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-move-down"
+              >
+                <path d="M8 18L12 22L16 18" />
+                <path d="M12 2V22" />
+              </svg>
+            </div>
           </div>
-        </div>
-        <img
-          src="/resources/images/cutLines2.png"
-          className="absolute right-0 bottom-[25%] w-[40rem]"
-        ></img>
-        <div className="bg-white flex justify-center">
-          <div className="relative flex flex-col gap-y-11 p-60 w-3/4">
-            <h2 className="text-6xl uppercase">{subHeading}</h2>
-            <p className="text-2xl">{bodyChunk1}</p>
-            <p className="text-2xl">{bodyChunk2}</p>
-            <p className="text-2xl">{bodyChunk3}</p>
+          <img
+            src="/resources/images/cutLines2.png"
+            className="absolute right-0 bottom-[25%] w-[40rem]"
+          ></img>
+          <div className="bg-white flex justify-center">
+            <div className="relative flex flex-col gap-y-11 p-60 w-3/4">
+              <h2 className="text-6xl uppercase">{subHeading}</h2>
+              <p className="text-2xl">{bodyChunk1}</p>
+              <p className="text-2xl">{bodyChunk2}</p>
+              <p className="text-2xl">{bodyChunk3}</p>
+            </div>
           </div>
-        </div>
-        <img
-          src="/resources/images/cutLines.png"
-          className="absolute left-0 bottom-0 w-[40rem]"
-        ></img>
-        <div className="bg-[#00A7E4]  flex justify-center">
-          <div className="relative flex flex-col gap-y-11 p-60 w-3/4">
-            <h2 className="text-6xl uppercase">{subHeading2}</h2>
-            <p className="text-2xl">{body2Chunk1}</p>
-            <p className="text-2xl">{body2Chunk2}</p>
-            <p className="text-2xl">{body2Chunk3}</p>
+          <img
+            src="/resources/images/cutLines.png"
+            className="absolute left-0 bottom-0 w-[40rem]"
+          ></img>
+          <div className="bg-[#00A7E4] flex justify-center mx-auto">
+            <div className="relative flex flex-col gap-y-11 p-60 w-3/4">
+              <h2 className="text-6xl uppercase">{subHeading2}</h2>
+              <p className="text-2xl">{body2Chunk1}</p>
+              <p className="text-2xl">{body2Chunk2}</p>
+              <p className="text-2xl">{body2Chunk3}</p>
+            </div>
           </div>
-        </div>
-      </BasicLayout>
+        </BasicLayout>
+      </div>
     </div>
   );
 };

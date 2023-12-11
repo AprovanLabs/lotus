@@ -69,7 +69,7 @@ const BasicLayout = ({ children }: { children: React.ReactNode }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar />
-      <main>{children}</main>
+      <main className="relative">{children}</main>
       <Footer />
     </div>
   );
