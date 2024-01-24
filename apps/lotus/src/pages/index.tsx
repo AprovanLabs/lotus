@@ -6,37 +6,33 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import { register } from 'swiper/element/bundle';
+import HomeService from 'src/lib/server/home/homeService';
+import FooterService from 'src/lib/server/footer/footerService';
+import { FooterModel } from 'src/lib/core/models/footer';
+import { HomeModel, infoBoxModel } from 'src/lib/core/models/home';
 
-const HomePage = () => {
-  const heading = 'Work is hectic';
-  const tagline = `Getting help doesn't have to be`;
-  const subHeading = 'Who we are';
-  const bodyChunk1 = `Lotus Technical has filled positions in organizations of all sizes ranging from the small family-owned business to large Fortune 500 companies`;
-  const bodyChunk2 = `Our staffing expertise and recruiting resources have helped us successfully place candidates in various roles from assembly to C-level executives`;
-  const bodyChunk3 = `Whether you are looking to fill an entry-level position or an executive position, Lotus Technical will help you find your most important business resource - your people`;
-  const subHeading2 = 'What we do';
-  const body2Chunk1 =
-    'Lotus Technical closes the gap between job seekers and organizations looking to fill positions in the Engineering, IT and Manufacturing industries';
-  const body2Chunk2 =
-    'With historically low unemployment rates, organizations spend unnecessary time and cost recruiting, screening, and hiring the right person for the job. Additionally, many organizations lack the internal resources to find, attract, and retain the right talent';
-  const body2Chunk3 =
-    'Since 2010, our job has been to connect organizations to top talent and simplify their hiring process.';
-
+const HomePage = ({
+  homePage,
+  footer,
+}: {
+  homePage: HomeModel | undefined;
+  footer: FooterModel | undefined;
+}) => {
   return (
     <div>
       {' '}
       <div className="bg-[#011F33] text-[#011F33] font-mono">
         <div className="opacity-[.3] w-full h-full top-0 absolute bg-no-repeat bg-[linear-gradient(to_top,#011F33_10%,transparent),url('/resources/images/lotus.png')] translate-y-[10%] translate-x-[-12.5%]"></div>
 
-        <BasicLayout>
+        <BasicLayout footer={footer}>
           <div className="flex flex-col gap-y-11 text-center pt-40 ">
             <h1
               className="text-9xl  font-bold uppercase"
               style={{ WebkitTextStroke: '3px rgba(255, 255, 255)' }}
             >
-              {heading}
+              {homePage?.title}
             </h1>
-            <p className="text-4xl text-white">{tagline}</p>
+            <p className="text-4xl text-white">{homePage?.slogan}</p>
             <div className="flex gap-x-24 justify-center p-20">
               <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
                 Contact Us
@@ -69,29 +65,45 @@ const HomePage = () => {
             className="absolute right-0 bottom-[25%] w-[40rem]"
           ></img>
           <div className="bg-white flex justify-center">
-            <div className="relative flex flex-col gap-y-11 p-60 w-3/4">
-              <h2 className="text-6xl uppercase">{subHeading}</h2>
-              <p className="text-2xl">{bodyChunk1}</p>
-              <p className="text-2xl">{bodyChunk2}</p>
-              <p className="text-2xl">{bodyChunk3}</p>
-            </div>
+            <InfoBody info={homePage?.info[0]} />
           </div>
           <img
             src="/resources/images/cutLines.png"
             className="absolute left-0 bottom-0 w-[40rem]"
           ></img>
           <div className="bg-[#00A7E4] flex justify-center mx-auto">
-            <div className="relative flex flex-col gap-y-11 p-60 w-3/4">
-              <h2 className="text-6xl uppercase">{subHeading2}</h2>
-              <p className="text-2xl">{body2Chunk1}</p>
-              <p className="text-2xl">{body2Chunk2}</p>
-              <p className="text-2xl">{body2Chunk3}</p>
-            </div>
+            <InfoBody info={homePage?.info[1]} />
           </div>
         </BasicLayout>
       </div>
     </div>
   );
 };
+
+const InfoBody = ({ info }: { info: infoBoxModel | undefined }) => {
+  return (
+    <div className="relative flex flex-col gap-y-11 p-60 w-3/4">
+      <h2 className="text-6xl uppercase">{info?.title}</h2>
+      {info?.body.map(bodyText => {
+        return (
+          <p key={bodyText} className="text-2xl">
+            {bodyText}
+          </p>
+        );
+      })}
+    </div>
+  );
+};
+
+export async function getStaticProps() {
+  const [homePage, footer] = await Promise.all([HomeService.getHome(), FooterService.getFooter()]);
+
+  return {
+    props: {
+      homePage,
+      footer,
+    },
+  };
+}
 
 export default HomePage;

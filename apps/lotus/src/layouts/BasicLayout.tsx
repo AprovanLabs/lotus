@@ -3,6 +3,8 @@ import Head from 'next/head';
 import { Twitter } from 'lucide-react';
 import { Facebook } from 'lucide-react';
 import { Linkedin } from 'lucide-react';
+import { FooterModel } from 'src/lib/core/models/footer';
+import  FooterService from 'src/lib/server/footer/footerService'
 
 const NavBar = () => {
   return (
@@ -20,40 +22,32 @@ const NavBar = () => {
   );
 };
 
-const Footer = () => {
-  const phoneNumber = '763-307-6500';
-  const emailAddress = 'brousslang@lotustechnical.com';
-  const addressLine1 = '7100 Northland Cir N';
-  const addressLine2 = 'Suite 105';
-  const addressLine3 = 'Minneapolis, MN 55428';
-  const twitterLink = 'https://twitter.com/lotustechnical';
-  const facebookLink = 'https://www.facebook.com/LotusTechnical';
-  const linkedInLink = 'https://www.linkedin.com/company/lotus-technical';
+const Footer = ({footer} : {footer: FooterModel | undefined}) => {
   return (
     <footer className="relative bottom-0 w-[100%] bg-white flex justify-around">
       <div className="flex flex-col gap-y-7 py-20 pl-28 text-xl">
-        <a href="tel:7633076500">{phoneNumber}</a>
-        <a href="mailto:brousslang@lotustechnical.com">{emailAddress}</a>
+        <a href={`tel:${footer?.phoneNumber.replaceAll("-", "")}`}>{footer?.phoneNumber}</a>
+        <a href={`mailto:${footer?.emailAddress}`}>{footer?.emailAddress}</a>
         <a
-          href="https://maps.google.com/maps?q=7100 Northland Cirle N, Minneapolis, MN 55428"
-          target="_blank"
+          href={footer?.googleMapsLink}
+          target="_blank" rel="noreferrer"
         >
           <div>
-            <p>{addressLine1}</p>
-            <p>{addressLine2}</p>
-            <p>{addressLine3}</p>
+            <p>{footer?.addressLine1}</p>
+            <p>{footer?.suiteNumber}</p>
+            <p>{footer?.addressLine2}</p>
           </div>
         </a>
       </div>
       <div className="w-0.5 bg-[#011F33] h-48 mt-auto mb-auto"></div>
       <div className="flex gap-16 mt-auto mb-auto">
-        <a href="https://www.linkedin.com/company/lotus-technical/" target="_blank">
+        <a href={footer?.linkedInLink} target="_blank" rel="noreferrer">
           <Linkedin fill="#011F33" size={36} />
         </a>
-        <a href="https://www.facebook.com/LotusTechnical" target="_blank">
+        <a href={footer?.facebookLink} target="_blank" rel="noreferrer">
           <Facebook fill="#011F33" size={36} />
         </a>
-        <a href="https://twitter.com/lotustechnical" target="_blank">
+        <a href={footer?.twitterLink} target="_blank" rel="noreferrer">
           <Twitter fill="#011F33" size={36} />
         </a>
       </div>
@@ -61,7 +55,7 @@ const Footer = () => {
   );
 };
 
-const BasicLayout = ({ children }: { children: React.ReactNode }) => {
+const BasicLayout = ({ children, footer }: { children: React.ReactNode, footer: FooterModel | undefined }) => {
   return (
     <div className="relative flex flex-col min-h-[140vh]">
       <Head>
@@ -70,8 +64,9 @@ const BasicLayout = ({ children }: { children: React.ReactNode }) => {
       </Head>
       <NavBar />
       <main className="relative">{children}</main>
-      <Footer />
+      <Footer footer={footer} />
     </div>
   );
 };
+
 export default BasicLayout;

@@ -2,451 +2,526 @@
 
 import type * as prismic from '@prismicio/client';
 
-type Simplify<T> = {
-  [KeyType in keyof T]: T[KeyType];
-};
-/** Content for Contact Info documents */
-interface ContactDocumentData {
-  /**
-   * Name field in *Contact Info*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: contact.name
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  name: prismic.KeyTextField;
-  /**
-   * Email Address field in *Contact Info*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: contact.email
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  email: prismic.KeyTextField;
-  /**
-   * Phone Number field in *Contact Info*
-   *
-   * - **Field Type**: Number
-   * - **Placeholder**: *None*
-   * - **API ID Path**: contact.phoneNumber
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/number
-   *
-   */
-  phoneNumber: prismic.NumberField;
-}
+type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
+
+type ClientDocumentDataSlicesSlice = InfoBoxSlice;
+
 /**
- * Contact Info document from Prismic
- *
- * - **API ID**: `contact`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
+ * Content for Client documents
  */
-export type ContactDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
-  Simplify<ContactDocumentData>,
-  'contact',
-  Lang
->;
-/** Content for Equipment documents */
-interface EquipmentDocumentData {
+interface ClientDocumentData {
   /**
-   * title field in *Equipment*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: equipment.title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
-   */
-  title: prismic.RichTextField;
-  /**
-   * description field in *Equipment*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: equipment.description
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
-   */
-  description: prismic.RichTextField;
-  /**
-   * price field in *Equipment*
-   *
-   * - **Field Type**: Number
-   * - **Placeholder**: *None*
-   * - **API ID Path**: equipment.price
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/number
-   *
-   */
-  price: prismic.NumberField;
-  /**
-   * image field in *Equipment*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: equipment.image
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
-   */
-  image: prismic.ImageField<never>;
-  /**
-   * in stock field in *Equipment*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: false
-   * - **API ID Path**: equipment.inStock
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
-   *
-   */
-  inStock: prismic.BooleanField;
-}
-/**
- * Equipment document from Prismic
- *
- * - **API ID**: `equipment`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type EquipmentDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
-  Simplify<EquipmentDocumentData>,
-  'equipment',
-  Lang
->;
-/** Content for Other documents */
-interface OtherDocumentData {
-  /**
-   * title field in *Other*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: other.title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
-   */
-  title: prismic.RichTextField;
-  /**
-   * description field in *Other*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: other.description
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
-   */
-  description: prismic.RichTextField;
-}
-/**
- * Other document from Prismic
- *
- * - **API ID**: `other`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type OtherDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
-  Simplify<OtherDocumentData>,
-  'other',
-  Lang
->;
-/** Content for Sponsors documents */
-interface SponsorsDocumentData {
-  /**
-   * Slice Zone field in *Sponsors*
+   * Slice Zone field in *Client*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
-   * - **API ID Path**: sponsors.slices[]
+   * - **API ID Path**: client.slices[]
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
-   *
+   * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<SponsorsDocumentDataSlicesSlice>;
-}
-/**
- * Slice for *Sponsors → Slice Zone*
- *
- */
-type SponsorsDocumentDataSlicesSlice = SponsorSlice;
-/**
- * Sponsors document from Prismic
- *
- * - **API ID**: `sponsors`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type SponsorsDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
-  Simplify<SponsorsDocumentData>,
-  'sponsors',
-  Lang
->;
-/** Content for Tournament documents */
-interface TournamentDocumentData {
-  /**
-   * Title field in *Tournament*
+  slices: prismic.SliceZone<ClientDocumentDataSlicesSlice> /**
+   * Meta Description field in *Client*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: tournament.title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  title: prismic.KeyTextField;
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: client.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
   /**
-   * tagline field in *Tournament*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: tournament.tagline
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  tagline: prismic.KeyTextField;
-  /**
-   * T-shirt Image field in *Tournament*
+   * Meta Image field in *Client*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: tournament.tShirtImage
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
+   * - **API ID Path**: client.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
-  tShirtImage: prismic.ImageField<never>;
+  meta_image: prismic.ImageField<never>;
+
   /**
-   * Registration Deadline Date field in *Tournament*
+   * Meta Title field in *Client*
    *
-   * - **Field Type**: Date
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: client.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Client document from Prismic
+ *
+ * - **API ID**: `client`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ClientDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+  Simplify<ClientDocumentData>,
+  'client',
+  Lang
+>;
+
+/**
+ * Item in *Employment Forms → Forms*
+ */
+export interface EmploymentFormsDocumentDataFormsItem {
+  /**
+   * Form Name field in *Employment Forms → Forms*
+   *
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: tournament.registrationDeadlineDate
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/date
-   *
+   * - **API ID Path**: employment_forms.forms[].form_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  registrationDeadlineDate: prismic.DateField;
+  form_name: prismic.KeyTextField;
+
   /**
-   * Start Date field in *Tournament*
-   *
-   * - **Field Type**: Date
-   * - **Placeholder**: *None*
-   * - **API ID Path**: tournament.fromDate
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/date
-   *
-   */
-  fromDate: prismic.DateField;
-  /**
-   * End Date field in *Tournament*
-   *
-   * - **Field Type**: Date
-   * - **Placeholder**: *None*
-   * - **API ID Path**: tournament.toDate
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/date
-   *
-   */
-  toDate: prismic.DateField;
-  /**
-   * Sign Up Form field in *Tournament*
+   * Form Link field in *Employment Forms → Forms*
    *
    * - **Field Type**: Link to Media
    * - **Placeholder**: *None*
-   * - **API ID Path**: tournament.signUpForm
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-   *
+   * - **API ID Path**: employment_forms.forms[].form_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  signUpForm: prismic.LinkToMediaField;
+  form_link: prismic.LinkToMediaField;
+}
+
+type EmploymentFormsDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Employment Forms documents
+ */
+interface EmploymentFormsDocumentData {
   /**
-   * FAQs field in *Tournament*
+   * Title field in *Employment Forms*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: employment_forms.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Forms field in *Employment Forms*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: tournament.faqs[]
+   * - **API ID Path**: employment_forms.forms[]
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/group
-   *
+   * - **Documentation**: https://prismic.io/docs/field#group
    */
-  faqs: prismic.GroupField<Simplify<TournamentDocumentDataFaqsItem>>;
+  forms: prismic.GroupField<Simplify<EmploymentFormsDocumentDataFormsItem>>;
+
   /**
-   * Draws field in *Tournament*
+   * Slice Zone field in *Employment Forms*
    *
-   * - **Field Type**: Group
+   * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
-   * - **API ID Path**: tournament.draws[]
+   * - **API ID Path**: employment_forms.slices[]
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/group
-   *
+   * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  draws: prismic.GroupField<Simplify<TournamentDocumentDataDrawsItem>>;
-}
-/**
- * Item in Tournament → FAQs
- *
- */
-export interface TournamentDocumentDataFaqsItem {
-  /**
-   * Title field in *Tournament → FAQs*
+  slices: prismic.SliceZone<EmploymentFormsDocumentDataSlicesSlice> /**
+   * Meta Description field in *Employment Forms*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: tournament.faqs[].title
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  title: prismic.KeyTextField;
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: employment_forms.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
   /**
-   * Text field in *Tournament → FAQs*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: tournament.faqs[].text
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
-   */
-  text: prismic.RichTextField;
-  /**
-   * Warning field in *Tournament → FAQs*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: tournament.faqs[].warning
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  warning: prismic.KeyTextField;
-  /**
-   * Link Label field in *Tournament → FAQs*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: tournament.faqs[].linkLabel
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  linkLabel: prismic.KeyTextField;
-  /**
-   * Link field in *Tournament → FAQs*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: tournament.faqs[].link
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
-   */
-  link: prismic.RichTextField;
-}
-/**
- * Item in Tournament → Draws
- *
- */
-export interface TournamentDocumentDataDrawsItem {
-  /**
-   * title field in *Tournament → Draws*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: tournament.draws[].title
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  title: prismic.KeyTextField;
-  /**
-   * image field in *Tournament → Draws*
+   * Meta Image field in *Employment Forms*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: tournament.draws[].image
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
+   * - **API ID Path**: employment_forms.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
-  image: prismic.ImageField<never>;
+  meta_image: prismic.ImageField<never>;
+
   /**
-   * description field in *Tournament → Draws*
+   * Meta Title field in *Employment Forms*
    *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: tournament.draws[].description
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: employment_forms.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  description: prismic.RichTextField;
-  /**
-   * link field in *Tournament → Draws*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: tournament.draws[].link
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
-   */
-  link: prismic.RichTextField;
-  /**
-   * linkLabel field in *Tournament → Draws*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: tournament.draws[].linkLabel
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
-   */
-  linkLabel: prismic.RichTextField;
-  /**
-   * iframe field in *Tournament → Draws*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: tournament.draws[].iframe
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
-   */
-  iframe: prismic.RichTextField;
+  meta_title: prismic.KeyTextField;
 }
+
 /**
- * Tournament document from Prismic
+ * Employment Forms document from Prismic
  *
- * - **API ID**: `tournament`
+ * - **API ID**: `employment_forms`
  * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type TournamentDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
-  Simplify<TournamentDocumentData>,
-  'tournament',
+export type EmploymentFormsDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+  Simplify<EmploymentFormsDocumentData>,
+  'employment_forms',
   Lang
 >;
-export type AllDocumentTypes =
-  | ContactDocument
-  | EquipmentDocument
-  | OtherDocument
-  | SponsorsDocument
-  | TournamentDocument;
+
+type FooterDocumentDataSlicesSlice = never;
+
 /**
- * Item in Sponsor → Items
+ * Content for Footer documents
+ */
+interface FooterDocumentData {
+  /**
+   * Phone Number field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.phone_number
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  phone_number: prismic.KeyTextField;
+
+  /**
+   * Email field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.email
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  email: prismic.KeyTextField;
+
+  /**
+   * Address Line 1 field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.address_line_1
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  address_line_1: prismic.KeyTextField;
+
+  /**
+   * Suite Number field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.suite_number
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  suite_number: prismic.KeyTextField;
+
+  /**
+   * Address Line 2 field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.address_line_2
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  address_line_2: prismic.KeyTextField;
+
+  /**
+   * Google Maps Link field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.google_maps_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  google_maps_link: prismic.KeyTextField;
+
+  /**
+   * LinkedIn Link field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.linkedin_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  linkedin_link: prismic.KeyTextField;
+
+  /**
+   * Facebook Link field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.facebook_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  facebook_link: prismic.KeyTextField;
+
+  /**
+   * Twitter Link field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.twitter_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  twitter_link: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Footer*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<FooterDocumentDataSlicesSlice> /**
+   * Meta Description field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: footer.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Footer*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: footer.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Footer document from Prismic
  *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+  Simplify<FooterDocumentData>,
+  'footer',
+  Lang
+>;
+
+type HomeDocumentDataSlicesSlice = InfoBoxSlice;
+
+/**
+ * Content for Home documents
+ */
+interface HomeDocumentData {
+  /**
+   * Title field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Slogan field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.slogan
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slogan: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Home*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice> /**
+   * Meta Description field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: home.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Home*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: home.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Home document from Prismic
+ *
+ * - **API ID**: `home`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HomeDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+  Simplify<HomeDocumentData>,
+  'home',
+  Lang
+>;
+
+/**
+ * Content for TESTCUSTOMTYPE documents
+ */
+interface TestcustomtypeDocumentData {
+  /**
+   * Form Name field in *TESTCUSTOMTYPE*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testcustomtype.form_name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  form_name: prismic.RichTextField;
+}
+
+/**
+ * TESTCUSTOMTYPE document from Prismic
+ *
+ * - **API ID**: `testcustomtype`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TestcustomtypeDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<TestcustomtypeDocumentData>, 'testcustomtype', Lang>;
+
+export type AllDocumentTypes =
+  | ClientDocument
+  | EmploymentFormsDocument
+  | FooterDocument
+  | HomeDocument
+  | TestcustomtypeDocument;
+
+/**
+ * Primary content in *InfoBox → Primary*
+ */
+export interface InfoBoxSliceDefaultPrimary {
+  /**
+   * Title field in *InfoBox → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: info_box.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *InfoBox → Items*
+ */
+export interface InfoBoxSliceDefaultItem {
+  /**
+   * Body field in *InfoBox → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: info_box.items[].body
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  body: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for InfoBox Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type InfoBoxSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<InfoBoxSliceDefaultPrimary>,
+  Simplify<InfoBoxSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *InfoBox*
+ */
+type InfoBoxSliceVariation = InfoBoxSliceDefault;
+
+/**
+ * InfoBox Shared Slice
+ *
+ * - **API ID**: `info_box`
+ * - **Description**: InfoBox
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type InfoBoxSlice = prismic.SharedSlice<'info_box', InfoBoxSliceVariation>;
+
+/**
+ * Primary content in *Sponsor → Items*
  */
 export interface SponsorSliceDefaultItem {
   /**
@@ -455,78 +530,78 @@ export interface SponsorSliceDefaultItem {
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: sponsor.items[].name
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   name: prismic.KeyTextField;
+
   /**
    * logo field in *Sponsor → Items*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
    * - **API ID Path**: sponsor.items[].logo
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
   logo: prismic.ImageField<never>;
 }
+
 /**
  * Default variation for Sponsor Slice
  *
  * - **API ID**: `default`
- * - **Description**: `Default`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type SponsorSliceDefault = prismic.SharedSliceVariation<
   'default',
   Record<string, never>,
   Simplify<SponsorSliceDefaultItem>
 >;
+
 /**
  * Slice variation for *Sponsor*
- *
  */
 type SponsorSliceVariation = SponsorSliceDefault;
+
 /**
  * Sponsor Shared Slice
  *
  * - **API ID**: `sponsor`
- * - **Description**: `Sponsor`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: Sponsor
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type SponsorSlice = prismic.SharedSlice<'sponsor', SponsorSliceVariation>;
+
 /**
  * Default variation for TournamentFaqs Slice
  *
  * - **API ID**: `default`
- * - **Description**: `Default`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type TournamentFaqsSliceDefault = prismic.SharedSliceVariation<
   'default',
   Record<string, never>,
   never
 >;
+
 /**
  * Slice variation for *TournamentFaqs*
- *
  */
 type TournamentFaqsSliceVariation = TournamentFaqsSliceDefault;
+
 /**
  * TournamentFaqs Shared Slice
  *
  * - **API ID**: `tournament_faqs`
- * - **Description**: `TournamentFaqs`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: TournamentFaqs
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type TournamentFaqsSlice = prismic.SharedSlice<
   'tournament_faqs',
   TournamentFaqsSliceVariation
 >;
+
 declare module '@prismicio/client' {
   interface CreateClient {
     (
@@ -534,29 +609,37 @@ declare module '@prismicio/client' {
       options?: prismic.ClientConfig
     ): prismic.Client<AllDocumentTypes>;
   }
+
   namespace Content {
     export type {
-      ContactDocumentData,
-      ContactDocument,
-      EquipmentDocumentData,
-      EquipmentDocument,
-      OtherDocumentData,
-      OtherDocument,
-      SponsorsDocumentData,
-      SponsorsDocumentDataSlicesSlice,
-      SponsorsDocument,
-      TournamentDocumentData,
-      TournamentDocumentDataFaqsItem,
-      TournamentDocumentDataDrawsItem,
-      TournamentDocument,
+      ClientDocument,
+      ClientDocumentData,
+      ClientDocumentDataSlicesSlice,
+      EmploymentFormsDocument,
+      EmploymentFormsDocumentData,
+      EmploymentFormsDocumentDataFormsItem,
+      EmploymentFormsDocumentDataSlicesSlice,
+      FooterDocument,
+      FooterDocumentData,
+      FooterDocumentDataSlicesSlice,
+      HomeDocument,
+      HomeDocumentData,
+      HomeDocumentDataSlicesSlice,
+      TestcustomtypeDocument,
+      TestcustomtypeDocumentData,
       AllDocumentTypes,
-      SponsorSliceDefaultItem,
-      SponsorSliceDefault,
-      SponsorSliceVariation,
+      InfoBoxSlice,
+      InfoBoxSliceDefaultPrimary,
+      InfoBoxSliceDefaultItem,
+      InfoBoxSliceVariation,
+      InfoBoxSliceDefault,
       SponsorSlice,
-      TournamentFaqsSliceDefault,
-      TournamentFaqsSliceVariation,
+      SponsorSliceDefaultItem,
+      SponsorSliceVariation,
+      SponsorSliceDefault,
       TournamentFaqsSlice,
+      TournamentFaqsSliceVariation,
+      TournamentFaqsSliceDefault,
     };
   }
 }

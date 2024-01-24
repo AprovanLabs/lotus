@@ -1,0 +1,34 @@
+{
+  "id": "info_box",
+  "type": "SharedSlice",
+  "name": "InfoBox",
+  "description": "InfoBox",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "body": {
+          "type": "Text",
+          "config": {
+            "label": "Body",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}

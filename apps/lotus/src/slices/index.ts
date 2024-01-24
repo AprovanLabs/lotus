@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic';
 
 export const components = {
+  info_box: dynamic(() => import('./InfoBox')),
   sponsor: dynamic(() => import('./Sponsor')),
   tournament_faqs: dynamic(() => import('./TournamentFaqs')),
 };
