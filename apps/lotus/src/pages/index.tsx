@@ -83,14 +83,10 @@ const HomePage = ({
 const InfoBody = ({ info }: { info: infoBoxModel | undefined }) => {
   return (
     <div className="relative flex flex-col gap-y-11 p-60 w-3/4">
-      <h2 className="text-6xl uppercase">{info?.title}</h2>
-      {info?.body.map(bodyText => {
-        return (
-          <p key={bodyText} className="text-2xl">
-            {bodyText}
-          </p>
-        );
-      })}
+      <h2 className="text-6xl uppercase">{info?.title.toUpperCase()}</h2>
+      <p className="text-2xl">{info?.line1}</p>
+      <p className="text-2xl">{info?.line2}</p>
+      <p className="text-2xl">{info?.line3}</p>
     </div>
   );
 };

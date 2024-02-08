@@ -1,6 +1,8 @@
 export type infoBoxModel = {
   title: string,
-  body: string[]
+  line1: string,
+  line2: string
+  line3: string
 };
 
 export type HomeModel = {

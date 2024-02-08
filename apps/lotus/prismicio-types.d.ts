@@ -4,12 +4,81 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type ClientDocumentDataSlicesSlice = InfoBoxSlice;
+/**
+ * Item in *Client → Stats*
+ */
+export interface ClientDocumentDataStatsItem {
+  /**
+   * Value field in *Client → Stats*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: client.stats[].value
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  value: prismic.KeyTextField;
+
+  /**
+   * Label field in *Client → Stats*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: client.stats[].label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+}
+
+type ClientDocumentDataSlicesSlice = ProcessStepsSlice | CareerFieldsSlice;
 
 /**
  * Content for Client documents
  */
 interface ClientDocumentData {
+  /**
+   * Heading field in *Client*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: client.heading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Line 1 field in *Client*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: client.line_1
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  line_1: prismic.KeyTextField;
+
+  /**
+   * Line 2 field in *Client*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: client.line_2
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  line_2: prismic.KeyTextField;
+
+  /**
+   * Stats field in *Client*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: client.stats[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  stats: prismic.GroupField<Simplify<ClientDocumentDataStatsItem>>;
+
   /**
    * Slice Zone field in *Client*
    *
@@ -342,7 +411,52 @@ export type FooterDocument<Lang extends string = string> = prismic.PrismicDocume
   Lang
 >;
 
-type HomeDocumentDataSlicesSlice = InfoBoxSlice;
+/**
+ * Item in *Home → Home Page Information*
+ */
+export interface HomeDocumentDataHomePageInformationItem {
+  /**
+   * Heading field in *Home → Home Page Information*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.home_page_information[].heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Line 1 field in *Home → Home Page Information*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.home_page_information[].line_1
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  line_1: prismic.KeyTextField;
+
+  /**
+   * Line 2 field in *Home → Home Page Information*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.home_page_information[].line_2
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  line_2: prismic.KeyTextField;
+
+  /**
+   * Line 3 field in *Home → Home Page Information*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.home_page_information[].line_3
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  line_3: prismic.KeyTextField;
+}
+
+type HomeDocumentDataSlicesSlice = never;
 
 /**
  * Content for Home documents
@@ -369,6 +483,17 @@ interface HomeDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   slogan: prismic.KeyTextField;
+
+  /**
+   * Home Page Information field in *Home*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.home_page_information[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  home_page_information: prismic.GroupField<Simplify<HomeDocumentDataHomePageInformationItem>>;
 
   /**
    * Slice Zone field in *Home*
@@ -429,6 +554,96 @@ export type HomeDocument<Lang extends string = string> = prismic.PrismicDocument
 >;
 
 /**
+ * Item in *Job Seekers → What To Expect Steps*
+ */
+export interface JobSeekersDocumentDataWhatToExpectStepsItem {
+  /**
+   * Step field in *Job Seekers → What To Expect Steps*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: job_seekers.what_to_expect_steps[].step
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  step: prismic.KeyTextField;
+}
+
+type JobSeekersDocumentDataSlicesSlice = ProcessStepsSlice | CareerFieldsSlice;
+
+/**
+ * Content for Job Seekers documents
+ */
+interface JobSeekersDocumentData {
+  /**
+   * What To Expect Steps field in *Job Seekers*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: job_seekers.what_to_expect_steps[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  what_to_expect_steps: prismic.GroupField<Simplify<JobSeekersDocumentDataWhatToExpectStepsItem>>;
+
+  /**
+   * Slice Zone field in *Job Seekers*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: job_seekers.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<JobSeekersDocumentDataSlicesSlice> /**
+   * Meta Description field in *Job Seekers*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: job_seekers.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Job Seekers*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: job_seekers.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Job Seekers*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: job_seekers.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Job Seekers document from Prismic
+ *
+ * - **API ID**: `job_seekers`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type JobSeekersDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+  Simplify<JobSeekersDocumentData>,
+  'job_seekers',
+  Lang
+>;
+
+/**
  * Content for TESTCUSTOMTYPE documents
  */
 interface TestcustomtypeDocumentData {
@@ -461,7 +676,65 @@ export type AllDocumentTypes =
   | EmploymentFormsDocument
   | FooterDocument
   | HomeDocument
+  | JobSeekersDocument
   | TestcustomtypeDocument;
+
+/**
+ * Primary content in *CareerFields → Primary*
+ */
+export interface CareerFieldsSliceDefaultPrimary {
+  /**
+   * Title field in *CareerFields → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: career_fields.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *CareerFields → Items*
+ */
+export interface CareerFieldsSliceDefaultItem {
+  /**
+   * Job field in *CareerFields → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: career_fields.items[].job
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  job: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for CareerFields Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CareerFieldsSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<CareerFieldsSliceDefaultPrimary>,
+  Simplify<CareerFieldsSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *CareerFields*
+ */
+type CareerFieldsSliceVariation = CareerFieldsSliceDefault;
+
+/**
+ * CareerFields Shared Slice
+ *
+ * - **API ID**: `career_fields`
+ * - **Description**: CareerFields
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CareerFieldsSlice = prismic.SharedSlice<'career_fields', CareerFieldsSliceVariation>;
 
 /**
  * Primary content in *InfoBox → Primary*
@@ -519,6 +792,73 @@ type InfoBoxSliceVariation = InfoBoxSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type InfoBoxSlice = prismic.SharedSlice<'info_box', InfoBoxSliceVariation>;
+
+/**
+ * Primary content in *ProcessSteps → Primary*
+ */
+export interface ProcessStepsSliceDefaultPrimary {
+  /**
+   * Title field in *ProcessSteps → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: process_steps.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *ProcessSteps → Items*
+ */
+export interface ProcessStepsSliceDefaultItem {
+  /**
+   * Step Number field in *ProcessSteps → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: process_steps.items[].step_number
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  step_number: prismic.KeyTextField;
+
+  /**
+   * Step Description field in *ProcessSteps → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: process_steps.items[].step_description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  step_description: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for ProcessSteps Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProcessStepsSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<ProcessStepsSliceDefaultPrimary>,
+  Simplify<ProcessStepsSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *ProcessSteps*
+ */
+type ProcessStepsSliceVariation = ProcessStepsSliceDefault;
+
+/**
+ * ProcessSteps Shared Slice
+ *
+ * - **API ID**: `process_steps`
+ * - **Description**: ProcessSteps
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProcessStepsSlice = prismic.SharedSlice<'process_steps', ProcessStepsSliceVariation>;
 
 /**
  * Primary content in *Sponsor → Items*
@@ -614,6 +954,7 @@ declare module '@prismicio/client' {
     export type {
       ClientDocument,
       ClientDocumentData,
+      ClientDocumentDataStatsItem,
       ClientDocumentDataSlicesSlice,
       EmploymentFormsDocument,
       EmploymentFormsDocumentData,
@@ -624,15 +965,30 @@ declare module '@prismicio/client' {
       FooterDocumentDataSlicesSlice,
       HomeDocument,
       HomeDocumentData,
+      HomeDocumentDataHomePageInformationItem,
       HomeDocumentDataSlicesSlice,
+      JobSeekersDocument,
+      JobSeekersDocumentData,
+      JobSeekersDocumentDataWhatToExpectStepsItem,
+      JobSeekersDocumentDataSlicesSlice,
       TestcustomtypeDocument,
       TestcustomtypeDocumentData,
       AllDocumentTypes,
+      CareerFieldsSlice,
+      CareerFieldsSliceDefaultPrimary,
+      CareerFieldsSliceDefaultItem,
+      CareerFieldsSliceVariation,
+      CareerFieldsSliceDefault,
       InfoBoxSlice,
       InfoBoxSliceDefaultPrimary,
       InfoBoxSliceDefaultItem,
       InfoBoxSliceVariation,
       InfoBoxSliceDefault,
+      ProcessStepsSlice,
+      ProcessStepsSliceDefaultPrimary,
+      ProcessStepsSliceDefaultItem,
+      ProcessStepsSliceVariation,
+      ProcessStepsSliceDefault,
       SponsorSlice,
       SponsorSliceDefaultItem,
       SponsorSliceVariation,
