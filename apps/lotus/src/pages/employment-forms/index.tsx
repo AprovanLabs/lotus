@@ -7,32 +7,35 @@ import FooterService from 'src/lib/server/footer/footerService';
 
 const EmploymentForms = ({
   employmentFormsPage,
-  footer
+  footer,
 }: {
   employmentFormsPage: EmploymentFormsModel | undefined;
   footer: FooterModel | undefined;
 }) => {
   return (
-    <div className="bg-[#011F33]">
-      <div className="opacity-[0.1] absolute w-full h-full bg-cover bg-[url('/resources/images/skyline.jpg')]"></div>
-
-      <BasicLayout footer={footer}>
-        <div className=" text-white font-mono">
+    <BasicLayout footer={footer} navFolded>
+      <div className="bg-[#011F33]">
+        <div className="select-none pointer-events-none opacity-10 absolute w-full h-full bg-cover bg-[url('/resources/images/skyline.jpg')] pt-[12rem]"></div>
+        <div className=" text-white pt-56 pb-96">
           <h1 className="text-center text-5xl pb-20">{employmentFormsPage?.pageTitle}</h1>
-          {/* <div className=" flex justify-center	align-center"> */}
-          <div className="grid grid-cols-3 gap-y-4 max-w-7xl mx-auto text-lg mb-96">
+          <div className="grid grid-cols-3 gap-y-10 max-w-7xl mx-auto text-2xl">
             {employmentFormsPage?.forms.map(form => {
               return (
-                <a key={form?.title} href={form?.link} target="_blank" rel="noreferrer">
+                <a
+                  className="self-center px-12"
+                  key={form?.title}
+                  href={form?.link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   {form?.title}
                 </a>
               );
             })}
           </div>
         </div>
-        {/* </div> */}
-      </BasicLayout>
-    </div>
+      </div>
+    </BasicLayout>
   );
 };
 

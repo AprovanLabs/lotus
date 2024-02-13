@@ -20,14 +20,13 @@ const HomePage = ({
 }) => {
   return (
     <div>
-      {' '}
-      <div className="bg-[#011F33] text-[#011F33] font-mono">
-        <div className="opacity-[.3] w-full h-full top-0 absolute bg-no-repeat bg-[linear-gradient(to_top,#011F33_10%,transparent),url('/resources/images/lotus.png')] translate-y-[10%] translate-x-[-12.5%]"></div>
+      <div className="bg-[#011F33]">
+        <div className="opacity-30 w-full h-full top-0 absolute bg-no-repeat bg-[linear-gradient(to_top,#011F33_10%,transparent),url('/resources/images/lotus.png')] translate-y-[10%] translate-x-[-12.5%]"></div>
 
         <BasicLayout footer={footer}>
           <div className="flex flex-col gap-y-11 text-center pt-40 ">
             <h1
-              className="text-9xl  font-bold uppercase"
+              className="text-9xl font-bold uppercase"
               style={{ WebkitTextStroke: '3px rgba(255, 255, 255)' }}
             >
               {homePage?.title}
@@ -62,7 +61,7 @@ const HomePage = ({
           </div>
           <img
             src="/resources/images/cutLines2.png"
-            className="absolute right-0 bottom-[25%] w-[40rem]"
+            className="absolute right-0 bottom-1/4 w-[40rem]"
           ></img>
           <div className="bg-white flex justify-center">
             <InfoBody info={homePage?.info[0]} />
@@ -83,7 +82,7 @@ const HomePage = ({
 const InfoBody = ({ info }: { info: infoBoxModel | undefined }) => {
   return (
     <div className="relative flex flex-col gap-y-11 p-60 w-3/4">
-      <h2 className="text-6xl uppercase">{info?.title.toUpperCase()}</h2>
+      <h2 className="text-5xl uppercase">{info?.title.toUpperCase()}</h2>
       <p className="text-2xl">{info?.line1}</p>
       <p className="text-2xl">{info?.line2}</p>
       <p className="text-2xl">{info?.line3}</p>

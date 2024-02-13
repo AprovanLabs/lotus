@@ -5,7 +5,7 @@ const CareersSection = ({ careerFields }: { careerFields: CareerFields | undefin
   return (
     <div>
       <div className="flex justify-center p-6">
-        <div className="text-[#011F33] font-mono uppercase text-5xl">{careerFields?.title}</div>
+        <div className="uppercase text-5xl">{careerFields?.title}</div>
       </div>
       <div className="flex justify-center gap-4">
         <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
@@ -19,9 +19,11 @@ const CareersSection = ({ careerFields }: { careerFields: CareerFields | undefin
         {careerFields?.careers?.map(career => {
           return (
             <div
-              className={`bg-[${
-                colors[Math.floor(Math.random() * colors.length)]
-              }] text-white uppercase w-60 h-60 flex justify-center items-center text-2xl`}
+              key={career}
+              style={{
+                backgroundColor: colors[Math.floor(Math.random() * colors.length)],
+              }}
+              className="text-white uppercase w-60 h-60 flex justify-center items-center text-2xl"
             >
               <div className="px-20">{career}</div>
             </div>

@@ -1,0 +1,62 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"job_title": {
+				"__TYPE__": "FieldContent",
+				"value": "company",
+				"type": "Text"
+			},
+			"pay": {
+				"__TYPE__": "FieldContent",
+				"value": "cry",
+				"type": "Text"
+			},
+			"location": {
+				"__TYPE__": "FieldContent",
+				"value": "learn",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Enim cillum consequat incididunt ut elit ad commodo ex duis sint labore velit proident. Adipisicing eiusmod non excepteur exercitation sit deserunt et duis commodo minim commodo aliquip minim. Consequat proident tempor ad."
+						}
+					}
+				]
+			},
+			"responsibilities": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Elit enim nisi quis eu deserunt sint consequat aliquip nostrud est duis deserunt dolor anim nisi. Aliquip nulla officia qui nulla."
+						}
+					}
+				]
+			},
+			"qualifications": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Consectetur exercitation labore aliquip quis esse et nisi. Ullamco ex ad exercitation nulla velit. Magna nostrud in tempor duis Lorem proident exercitation anim ullamco non non eiusmod pariatur."
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	}
+]

@@ -3,7 +3,7 @@ import { ProcessSteps } from 'src/lib/core/models/shared';
 const ProcessSection = ({ processSteps }: { processSteps: ProcessSteps | undefined }) => {
   const colors = ['#B4D897', '#8DB66D', '#71B33D', '#5E9136'];
   return (
-    <div className="w-fit mx-auto text-[#011F33] font-mono pt-48">
+    <div className="w-fit mx-auto pt-48">
       <h2 className="text-5xl uppercase text-center">{processSteps?.title}</h2>
       <div className="flex justify-center pt-10">
         {/* moveDown icon */}
@@ -25,11 +25,12 @@ const ProcessSection = ({ processSteps }: { processSteps: ProcessSteps | undefin
       </div>
       {processSteps?.steps.map((step, index) => {
         return (
-          <div className="flex gap-9 pt-16">
+          <div key={step.number} className="flex gap-9 pt-16">
             <div
-              className={`bg-[${
-                colors[index % 4]
-              }] text-white font-bold w-60 h-60 flex justify-center items-center text-5xl`}
+              style={{
+                backgroundColor: colors[index % 4],
+              }}
+              className="text-white font-bold w-60 h-60 flex justify-center items-center text-5xl"
             >
               {step.number}
             </div>

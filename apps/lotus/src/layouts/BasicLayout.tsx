@@ -4,34 +4,33 @@ import { Twitter } from 'lucide-react';
 import { Facebook } from 'lucide-react';
 import { Linkedin } from 'lucide-react';
 import { FooterModel } from 'src/lib/core/models/footer';
-import  FooterService from 'src/lib/server/footer/footerService'
+import FooterService from 'src/lib/server/footer/footerService';
+import { cn } from 'src/core/utils';
 
-const NavBar = () => {
+const NavBar = ({ className }: { className: string }) => {
   return (
-    <div className="flex justify-between p-11 pb-0">
-      <img className="h-36 w-auto" src="/resources/images/lotus.png" alt="Lotus Technical logo" />
-      <div className="flex gap-16 pt-10 text-xl text-[#92daf4]">
-        {/* CAEBFC */}
-        {/* <Image src="/resources/images/lotus.png" width={90} height={90} alt="Bird icon" /> */}
-        <a href="/">Home</a>
+    <div className={cn('z-50 flex justify-between p-11 pb-0', className)}>
+      <a href="/">
+        <img className="h-36 w-auto" src="/resources/images/lotus.png" alt="Lotus Technical logo" />
+      </a>
+      <div className="flex gap-16 pt-10 text-[#92daf4] font-mono">
         <a href="/clients">Clients</a>
         <a href="/job-seekers">Job Seekers</a>
         <a href="/employment-forms">Employment Forms</a>
+        <a href="/current-openings">Current Openings</a>
+        <a href="/employment-forms">Contact Us</a>
       </div>
     </div>
   );
 };
 
-const Footer = ({footer} : {footer: FooterModel | undefined}) => {
+const Footer = ({ footer }: { footer: FooterModel | undefined }) => {
   return (
-    <footer className="relative bottom-0 w-[100%] bg-white flex justify-around">
-      <div className="flex flex-col gap-y-7 py-20 pl-28 text-xl">
-        <a href={`tel:${footer?.phoneNumber.replaceAll("-", "")}`}>{footer?.phoneNumber}</a>
+    <footer className="relative bottom-0 w-full bg-white flex justify-around">
+      <div className="flex flex-col gap-y-7 py-20 pl-28 font-mono">
+        <a href={`tel:${footer?.phoneNumber.replaceAll('-', '')}`}>{footer?.phoneNumber}</a>
         <a href={`mailto:${footer?.emailAddress}`}>{footer?.emailAddress}</a>
-        <a
-          href={footer?.googleMapsLink}
-          target="_blank" rel="noreferrer"
-        >
+        <a href={footer?.googleMapsLink} target="_blank" rel="noreferrer">
           <div>
             <p>{footer?.addressLine1}</p>
             <p>{footer?.suiteNumber}</p>
@@ -55,14 +54,22 @@ const Footer = ({footer} : {footer: FooterModel | undefined}) => {
   );
 };
 
-const BasicLayout = ({ children, footer }: { children: React.ReactNode, footer: FooterModel | undefined }) => {
+const BasicLayout = ({
+  children,
+  footer,
+  navFolded,
+}: {
+  children: React.ReactNode;
+  footer: FooterModel | undefined;
+  navFolded?: boolean;
+}) => {
   return (
-    <div className="relative flex flex-col min-h-[140vh]">
+    <div className="relative flex flex-col min-h-[140vh] text-xl text-[#011F33]">
       <Head>
         <title>Lotus Technical</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavBar />
+      <NavBar className={cn(navFolded && 'mb-[-12em]')} />
       <main className="relative">{children}</main>
       <Footer footer={footer} />
     </div>

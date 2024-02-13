@@ -137,6 +137,71 @@ export type ClientDocument<Lang extends string = string> = prismic.PrismicDocume
   Lang
 >;
 
+type CurrentOpeningsDocumentDataSlicesSlice = JobSlice;
+
+/**
+ * Content for Current Openings documents
+ */
+interface CurrentOpeningsDocumentData {
+  /**
+   * Slice Zone field in *Current Openings*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: current_openings.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<CurrentOpeningsDocumentDataSlicesSlice> /**
+   * Meta Description field in *Current Openings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: current_openings.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Current Openings*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: current_openings.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Current Openings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: current_openings.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Current Openings document from Prismic
+ *
+ * - **API ID**: `current_openings`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CurrentOpeningsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<CurrentOpeningsDocumentData>,
+    'current_openings',
+    Lang
+  >;
+
 /**
  * Item in *Employment Forms → Forms*
  */
@@ -673,6 +738,7 @@ export type TestcustomtypeDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | ClientDocument
+  | CurrentOpeningsDocument
   | EmploymentFormsDocument
   | FooterDocument
   | HomeDocument
@@ -794,6 +860,98 @@ type InfoBoxSliceVariation = InfoBoxSliceDefault;
 export type InfoBoxSlice = prismic.SharedSlice<'info_box', InfoBoxSliceVariation>;
 
 /**
+ * Primary content in *Job → Primary*
+ */
+export interface JobSliceDefaultPrimary {
+  /**
+   * Job Title field in *Job → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: job.primary.job_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  job_title: prismic.KeyTextField;
+
+  /**
+   * Pay field in *Job → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: job.primary.pay
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  pay: prismic.KeyTextField;
+
+  /**
+   * Location field in *Job → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: job.primary.location
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  location: prismic.KeyTextField;
+
+  /**
+   * Description field in *Job → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: job.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Responsibilities field in *Job → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: job.primary.responsibilities
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  responsibilities: prismic.RichTextField;
+
+  /**
+   * Qualifications field in *Job → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: job.primary.qualifications
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  qualifications: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Job Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type JobSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<JobSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Job*
+ */
+type JobSliceVariation = JobSliceDefault;
+
+/**
+ * Job Shared Slice
+ *
+ * - **API ID**: `job`
+ * - **Description**: Job
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type JobSlice = prismic.SharedSlice<'job', JobSliceVariation>;
+
+/**
  * Primary content in *ProcessSteps → Primary*
  */
 export interface ProcessStepsSliceDefaultPrimary {
@@ -860,88 +1018,6 @@ type ProcessStepsSliceVariation = ProcessStepsSliceDefault;
  */
 export type ProcessStepsSlice = prismic.SharedSlice<'process_steps', ProcessStepsSliceVariation>;
 
-/**
- * Primary content in *Sponsor → Items*
- */
-export interface SponsorSliceDefaultItem {
-  /**
-   * name field in *Sponsor → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: sponsor.items[].name
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  name: prismic.KeyTextField;
-
-  /**
-   * logo field in *Sponsor → Items*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: sponsor.items[].logo
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  logo: prismic.ImageField<never>;
-}
-
-/**
- * Default variation for Sponsor Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type SponsorSliceDefault = prismic.SharedSliceVariation<
-  'default',
-  Record<string, never>,
-  Simplify<SponsorSliceDefaultItem>
->;
-
-/**
- * Slice variation for *Sponsor*
- */
-type SponsorSliceVariation = SponsorSliceDefault;
-
-/**
- * Sponsor Shared Slice
- *
- * - **API ID**: `sponsor`
- * - **Description**: Sponsor
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type SponsorSlice = prismic.SharedSlice<'sponsor', SponsorSliceVariation>;
-
-/**
- * Default variation for TournamentFaqs Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type TournamentFaqsSliceDefault = prismic.SharedSliceVariation<
-  'default',
-  Record<string, never>,
-  never
->;
-
-/**
- * Slice variation for *TournamentFaqs*
- */
-type TournamentFaqsSliceVariation = TournamentFaqsSliceDefault;
-
-/**
- * TournamentFaqs Shared Slice
- *
- * - **API ID**: `tournament_faqs`
- * - **Description**: TournamentFaqs
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type TournamentFaqsSlice = prismic.SharedSlice<
-  'tournament_faqs',
-  TournamentFaqsSliceVariation
->;
-
 declare module '@prismicio/client' {
   interface CreateClient {
     (
@@ -956,6 +1032,9 @@ declare module '@prismicio/client' {
       ClientDocumentData,
       ClientDocumentDataStatsItem,
       ClientDocumentDataSlicesSlice,
+      CurrentOpeningsDocument,
+      CurrentOpeningsDocumentData,
+      CurrentOpeningsDocumentDataSlicesSlice,
       EmploymentFormsDocument,
       EmploymentFormsDocumentData,
       EmploymentFormsDocumentDataFormsItem,
@@ -984,18 +1063,15 @@ declare module '@prismicio/client' {
       InfoBoxSliceDefaultItem,
       InfoBoxSliceVariation,
       InfoBoxSliceDefault,
+      JobSlice,
+      JobSliceDefaultPrimary,
+      JobSliceVariation,
+      JobSliceDefault,
       ProcessStepsSlice,
       ProcessStepsSliceDefaultPrimary,
       ProcessStepsSliceDefaultItem,
       ProcessStepsSliceVariation,
       ProcessStepsSliceDefault,
-      SponsorSlice,
-      SponsorSliceDefaultItem,
-      SponsorSliceVariation,
-      SponsorSliceDefault,
-      TournamentFaqsSlice,
-      TournamentFaqsSliceVariation,
-      TournamentFaqsSliceDefault,
     };
   }
 }
