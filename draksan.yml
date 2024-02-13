@@ -1,0 +1,56 @@
+apps:
+  - id: lotus-technical
+    name: Lotus Technical
+    description: "lotustechnical.com"
+
+  - id: job-board
+    name: Job Board
+    runtime: static
+    imageUrl: https://avatars.githubusercontent.com/u/98067664?s=200&amp;v=4
+    description: "A board for scraped job listings and applications"
+    staticPublishPath: ./apps/dashboard/build
+
+docs:
+  - description: "Documentation Lotus Technical projects"
+    runtime: docusaurus
+    endpoint: ""
+    staticAssetPath: ./apps/docs/assets
+
+connections:
+  - id: prismic-api-key
+    name: Prismic API Key
+    host: "${PRISMIC_ENDPOINT}"
+    login: "${PRISMIC_API_KEY}"
+    password: "${PRISMIC_API_SECRET}"
+  - id: neon
+    login: "${NEON_USERNAME}"
+    password: "${NEON_PASSWORD}"
+    host: https://neon.tech/
+  - id: minnesota-works-candidates
+    name: Minnesota Works
+    login: "${MINNESOTA_WORKS_CANDIDATES_USERNAME}"
+    password: "${MINNESOTA_WORKS_CANDIDATES_PASSWORD}"
+  - id: monster
+    login: "${MONSTER_USERNAME}"
+    password: "${MONSTER_PASSWORD}"
+    host: https://www.monster.com
+  - id: apollo
+    login: "${APOLLO_USERNAME}"
+    password: "${APOLLO_PASSWORD}"
+    host: https://www.apollo.io
+  - id: facebook
+    login: "${FACEBOOK_USERNAME}"
+    password: "${FACEBOOK_PASSWORD}"
+    host: https://www.facebook.com
+  - id: aws
+    type: aws
+    login: "${AWS_ACCESS_KEY_ID}"
+    password: "${AWS_SECRET_ACCESS_KEY}"
+
+envFiles:
+  - name: .env
+    description: "Environment variables for the project"
+    template: >-
+      PRISMIC_ENDPOINT=${connections.prismic-api-key.host}
+      PRISMIC_API_KEY=${connections.prismic-api-key.login}
+      PRISMIC_API_SECRET=${connections.prismic-api-key.password}

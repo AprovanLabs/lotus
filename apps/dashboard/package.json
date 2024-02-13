@@ -1,0 +1,10 @@
+{
+  "name": "dashboard",
+  "author": "Jacob Sampson",
+  "version": "1.0.0",
+  "description": "Internal dashboard",
+  "main": "index.js",
+  "scripts": {
+    "build": "mkdir -p build && cp index.html ./build"
+  }
+}

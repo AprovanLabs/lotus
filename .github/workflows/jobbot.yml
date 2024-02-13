@@ -1,0 +1,21 @@
+name: Jobbot Pipeline
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.repository == 'AprovanLabs/lotus'
+    steps:
+      - name: Run Scraper
+        uses: ./.github/actions/jobbot
+        with:
+          targets: category:jobs location:minnesota
+
+      - name: Output Results
+        uses: actions/upload-artifact@v2
+        with:
+          name: results
+          path: ${{ github.workspace }}
