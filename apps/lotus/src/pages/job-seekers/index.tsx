@@ -53,7 +53,7 @@ const JobSeekers = ({
 
       <div className="w-fit mx-auto py-32">
         <a href={`mailto:brousslang@lotustechnical.com`}>
-          <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
+          <button className="hover:text-white rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
             Contact Us
           </button>
         </a>

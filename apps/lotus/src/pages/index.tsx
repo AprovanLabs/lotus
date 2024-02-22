@@ -34,12 +34,12 @@ const HomePage = ({
             <p className="text-4xl text-white">{homePage?.slogan}</p>
             <div className="flex gap-x-24 justify-center p-20">
               <a href={`mailto:brousslang@lotustechnical.com`}>
-                <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
+                <button className="hover:text-white rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
                   Contact Us
                 </button>
               </a>
               <a href="/current-openings">
-                <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
+                <button className="hover:text-white rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
                   Current Openings
                 </button>
               </a>

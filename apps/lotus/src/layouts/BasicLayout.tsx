@@ -8,16 +8,29 @@ import { cn } from 'src/core/utils';
 
 const NavBar = ({ className }: { className: string }) => {
   return (
-    <div className={cn('z-50 flex justify-between p-11 pb-0', className)}>
+    <div className={cn('z-50 flex justify-between p-11 pb-0 text-[#00A7E4]', className)}>
       <a href="/">
         <img className="h-36 w-auto" src="/resources/images/lotus.png" alt="Lotus Technical logo" />
       </a>
-      <div className="flex gap-16 pt-10 text-[#92daf4] font-mono">
-        <a href="/clients">Clients</a>
-        <a href="/job-seekers">Job Seekers</a>
-        <a href="/employment-forms">Employment Forms</a>
-        <a href="/current-openings">Current Openings</a>
-        <a href={`mailto:brousslang@lotustechnical.com`}>Contact Us</a>
+      <div className="flex gap-16 pt-10 font-mono font-semibold">
+        <a className="hover:underline underline-offset-3" href="/clients">
+          Clients
+        </a>
+        <a className="hover:underline underline-offset-3" href="/job-seekers">
+          Job Seekers
+        </a>
+        <a className="hover:underline underline-offset-3" href="/employment-forms">
+          Employment Forms
+        </a>
+        <a className="hover:underline underline-offset-3" href="/current-openings">
+          Current Openings
+        </a>
+        <a
+          className="hover:underline underline-offset-3"
+          href={`mailto:brousslang@lotustechnical.com`}
+        >
+          Contact Us
+        </a>
       </div>
     </div>
   );

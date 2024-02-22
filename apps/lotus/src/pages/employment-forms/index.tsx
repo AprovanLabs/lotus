@@ -1,3 +1,4 @@
+import { Download } from 'lucide-react';
 import React from 'react';
 import BasicLayout from 'src/layouts/BasicLayout';
 import { EmploymentFormsModel } from 'src/lib/core/models/employmentForms';
@@ -22,7 +23,7 @@ const EmploymentForms = ({
             {employmentFormsPage?.forms.map(form => {
               return (
                 <a
-                  className="self-center px-12"
+                  className="self-center px-12 hover:underline underline-offset-3"
                   key={form?.title}
                   href={form?.link}
                   target="_blank"

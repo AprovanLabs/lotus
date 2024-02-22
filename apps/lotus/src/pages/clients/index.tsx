@@ -33,7 +33,7 @@ const Clients = ({
           <p className="text-2xl">{clientPage?.line1}</p>
           <p className="text-2xl">{clientPage?.line2}</p>
           <a className="mx-auto" href={`mailto:brousslang@lotustechnical.com`}>
-            <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 mt-8">
+            <button className="hover:text-white rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 mt-8">
               Contact Us
             </button>
           </a>
