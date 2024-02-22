@@ -10,5 +10,6 @@ export type JobModel = {
 };
 
 export type CurrentOpeningsModel = {
+  pageTitle: string;
   jobs: JobModel[];
 };

@@ -4,7 +4,6 @@ import { Twitter } from 'lucide-react';
 import { Facebook } from 'lucide-react';
 import { Linkedin } from 'lucide-react';
 import { FooterModel } from 'src/lib/core/models/footer';
-import FooterService from 'src/lib/server/footer/footerService';
 import { cn } from 'src/core/utils';
 
 const NavBar = ({ className }: { className: string }) => {
@@ -18,7 +17,7 @@ const NavBar = ({ className }: { className: string }) => {
         <a href="/job-seekers">Job Seekers</a>
         <a href="/employment-forms">Employment Forms</a>
         <a href="/current-openings">Current Openings</a>
-        <a href="/employment-forms">Contact Us</a>
+        <a href={`mailto:brousslang@lotustechnical.com`}>Contact Us</a>
       </div>
     </div>
   );
@@ -64,13 +63,15 @@ const BasicLayout = ({
   navFolded?: boolean;
 }) => {
   return (
-    <div className="relative flex flex-col min-h-[140vh] text-xl text-[#011F33]">
+    <div className="relative flex flex-col text-xl text-[#011F33]">
       <Head>
         <title>Lotus Technical</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar className={cn(navFolded && 'mb-[-12em]')} />
-      <main className="relative">{children}</main>
+      <div className="min-h-screen">
+        <main className="relative">{children}</main>
+      </div>
       <Footer footer={footer} />
     </div>
   );

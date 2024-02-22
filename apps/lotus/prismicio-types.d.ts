@@ -144,6 +144,17 @@ type CurrentOpeningsDocumentDataSlicesSlice = JobSlice;
  */
 interface CurrentOpeningsDocumentData {
   /**
+   * Page Title field in *Current Openings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: current_openings.page_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  page_title: prismic.KeyTextField;
+
+  /**
    * Slice Zone field in *Current Openings*
    *
    * - **Field Type**: Slice Zone

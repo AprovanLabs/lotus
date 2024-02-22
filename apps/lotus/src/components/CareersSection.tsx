@@ -8,12 +8,16 @@ const CareersSection = ({ careerFields }: { careerFields: CareerFields | undefin
         <div className="uppercase text-5xl">{careerFields?.title}</div>
       </div>
       <div className="flex justify-center gap-4">
-        <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
-          Contact Us
-        </button>
-        <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
-          Openings
-        </button>
+        <a href={`mailto:brousslang@lotustechnical.com`}>
+          <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 my-8">
+            Contact Us
+          </button>
+        </a>
+        <a href="/current-openings">
+          <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 my-8">
+            Openings
+          </button>
+        </a>
       </div>
       <div className="grid gap-11 grid-cols-3 pt-16 w-fit mx-auto">
         {careerFields?.careers?.map(career => {

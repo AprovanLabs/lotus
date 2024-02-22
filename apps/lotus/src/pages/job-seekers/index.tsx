@@ -52,9 +52,11 @@ const JobSeekers = ({
       <ProcessSection processSteps={jobSeekersPage?.processSteps} />
 
       <div className="w-fit mx-auto py-32">
-        <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
-          Get Started
-        </button>
+        <a href={`mailto:brousslang@lotustechnical.com`}>
+          <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
+            Contact Us
+          </button>
+        </a>
       </div>
     </BasicLayout>
   );

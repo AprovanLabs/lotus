@@ -3,6 +3,7 @@ import type { CurrentOpeningsModel } from 'src/lib/core/models/currentOpenings';
 
 export const mapPrismicCurrentOpenings = (data: CurrentOpeningsDocumentData) =>
   ({
+    pageTitle: data.page_title,
     jobs: (data?.slices || []).map(slice => ({
       title: slice?.primary.job_title,
       pay: slice?.primary.pay,

@@ -32,22 +32,30 @@ const Clients = ({
           <h2 className="text-5xl uppercase text-center">{clientPage?.heading}</h2>
           <p className="text-2xl">{clientPage?.line1}</p>
           <p className="text-2xl">{clientPage?.line2}</p>
-          <button className="mx-auto rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2">
-            Contact Us
-          </button>
+          <a className="mx-auto" href={`mailto:brousslang@lotustechnical.com`}>
+            <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 mt-8">
+              Contact Us
+            </button>
+          </a>
         </div>
       </div>
       <StatsSection stats={clientPage?.stats} />
-      <ProcessSection processSteps={clientPage?.processSteps} />
-      <CareersSection careerFields={clientPage?.careerFields?.[0]} />
-      <CareersSection careerFields={clientPage?.careerFields?.[1]} />
+      <div className="pb-56">
+        <ProcessSection processSteps={clientPage?.processSteps} />
+      </div>
+      <div className="pb-56">
+        <CareersSection careerFields={clientPage?.careerFields?.[0]} />
+      </div>
+      <div className="pb-56">
+        <CareersSection careerFields={clientPage?.careerFields?.[1]} />
+      </div>
     </BasicLayout>
   );
 };
 
 const StatsSection = ({ stats }: { stats: StatsModel[] | undefined }) => {
   return (
-    <div className="flex flex-row gap-24 justify-center pt-52 text-center">
+    <div className="flex flex-row gap-24 justify-center pt-48 text-center">
       {stats?.map((stat, index) => {
         return (
           <>
