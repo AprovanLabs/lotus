@@ -22,11 +22,11 @@ const JobSeekers = ({
   return (
     <BasicLayout footer={footer}>
       <CareersSection careerFields={jobSeekersPage?.careerFields} />
-      {/* what to expect */}
+      {/* what to expect section*/}
       <div className="flex justify-center p-6 pb-20">
-        <div className="uppercase text-5xl pt-48">What to expect</div>
+        <div className="pt-48 text-5xl uppercase">What to expect</div>
       </div>
-      <div className="text-2xl mx-auto w-fit">
+      <div className="mx-auto text-2xl w-fit">
         <div className="flex flex-row gap-6 pb-16">
           <Pencil size={50} color="#011F33" strokeWidth={1} />
           <p className="flex items-center">{jobSeekersPage?.whatToExpectSteps[0]}</p>
@@ -51,7 +51,7 @@ const JobSeekers = ({
 
       <ProcessSection processSteps={jobSeekersPage?.processSteps} />
 
-      <div className="w-fit mx-auto py-32">
+      <div className="py-32 mx-auto w-fit">
         <a href={`mailto:brousslang@lotustechnical.com`}>
           <button className="hover:text-white rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
             Contact Us

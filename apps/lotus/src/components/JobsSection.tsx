@@ -14,10 +14,10 @@ const JobSection = ({ jobs }: { jobs: JobModel[] | undefined }) => {
     setSelected(i);
   };
   return (
-    <div className="w-1/2 mx-auto pb-44">
+    <div className="px-16 mx-auto max-w-[70rem] pb-44">
       {jobs?.map((job, index) => {
         return (
-          <div>
+          <div key={index}>
             <div
               className={cn(
                 css({
@@ -36,7 +36,7 @@ const JobSection = ({ jobs }: { jobs: JobModel[] | undefined }) => {
                 }}
               >
                 <div className="flex justify-between cursor-pointer">
-                  <h2 className="text-3xl pb-4 font-semibold">{job.title}</h2>
+                  <h2 className="pb-4 text-3xl font-semibold">{job.title}</h2>
                   {selected === index ? <ChevronUp /> : <ChevronDown />}
                 </div>
                 <div className="flex gap-4 text-gray-500">
@@ -52,11 +52,11 @@ const JobSection = ({ jobs }: { jobs: JobModel[] | undefined }) => {
                 {job.description.length > 0 && <h2 className="font-semibold">Description: </h2>}
                 <RichText render={job.description as any} />
                 {job.responsibilities.length > 0 && (
-                  <h2 className="font-semibold pt-4">Responsibilities: </h2>
+                  <h2 className="pt-4 font-semibold">Responsibilities: </h2>
                 )}
                 <RichText render={job.responsibilities as any} />
                 {job.qualifications.length > 0 && (
-                  <h2 className="font-semibold pt-4">Qualifications: </h2>
+                  <h2 className="pt-4 font-semibold">Qualifications: </h2>
                 )}
                 <RichText render={job.qualifications as any} />
                 <a href={`mailto:brousslang@lotustechnical.com?subject=${job.title} Application`}>

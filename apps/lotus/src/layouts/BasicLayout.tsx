@@ -10,7 +10,7 @@ const NavBar = ({ className }: { className: string }) => {
   return (
     <div className={cn('z-50 flex justify-between p-11 pb-0 text-[#00A7E4]', className)}>
       <a href="/">
-        <img className="h-36 w-auto" src="/resources/images/lotus.png" alt="Lotus Technical logo" />
+        <img className="w-auto h-36" src="/resources/images/lotus.png" alt="Lotus Technical logo" />
       </a>
       <div className="flex gap-16 pt-10 font-mono font-semibold">
         <a className="hover:underline underline-offset-3" href="/clients">
@@ -38,8 +38,8 @@ const NavBar = ({ className }: { className: string }) => {
 
 const Footer = ({ footer }: { footer: FooterModel | undefined }) => {
   return (
-    <footer className="relative bottom-0 w-full bg-white flex justify-around">
-      <div className="flex flex-col gap-y-7 py-20 pl-28 font-mono">
+    <footer className="relative bottom-0 flex flex-col justify-around w-full py-16 bg-white gap-28 md:py-28 md:flex-row md:px-28">
+      <div className="flex flex-col mx-auto font-mono gap-y-7 lg:mx-0">
         <a href={`tel:${footer?.phoneNumber.replaceAll('-', '')}`}>{footer?.phoneNumber}</a>
         <a href={`mailto:${footer?.emailAddress}`}>{footer?.emailAddress}</a>
         <a href={footer?.googleMapsLink} target="_blank" rel="noreferrer">
@@ -50,8 +50,8 @@ const Footer = ({ footer }: { footer: FooterModel | undefined }) => {
           </div>
         </a>
       </div>
-      <div className="w-0.5 bg-[#011F33] h-48 mt-auto mb-auto"></div>
-      <div className="flex gap-16 mt-auto mb-auto">
+      <div className="w-0.5 bg-[#011F33] h-48 mt-auto mb-auto hidden md:block"></div>
+      <div className="flex items-center justify-center gap-16 md:pb-0">
         <a href={footer?.linkedInLink} target="_blank" rel="noreferrer">
           <Linkedin fill="#011F33" size={36} />
         </a>

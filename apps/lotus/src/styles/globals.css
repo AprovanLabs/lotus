@@ -90,5 +90,12 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    min-width: fit-content;
+    min-height: 100%;
+  }
+
+  html {
+    min-width: fit-content;
+    height: 100%;
   }
 }
