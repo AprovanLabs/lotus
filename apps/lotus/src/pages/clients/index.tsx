@@ -7,17 +7,6 @@ import { FooterModel } from 'src/lib/core/models/footer';
 import ClientService from 'src/lib/server/clients/clientService';
 import FooterService from 'src/lib/server/footer/footerService';
 
-const subHeading = 'We Partner With You';
-const bodyChunk1 =
-  'By gaining a deeper understanding of your business and culture we help you build a team that lasts.';
-const bodyChunk2 =
-  'We work closely with you to match requirements, qualifications, experiences, team dynamics, and personalities to meet the needs of your organization.';
-const step1 = 'Meeting to get to know you, your team, and business objectives.';
-const step2 = 'Consultation and facilities tour.';
-const step3 = 'Screening and interviewing potential candidates';
-const step4 = 'Match company requirements to qualified, dynamic emplotees.';
-const subHeading2 = 'Our Process';
-
 const Clients = ({
   clientPage,
   footer,
@@ -28,8 +17,8 @@ const Clients = ({
   return (
     <BasicLayout footer={footer}>
       <div className="flex justify-center">
-        <div className="relative flex flex-col gap-y-11 w-1/2 mx-auto">
-          <h2 className="text-5xl uppercase text-center">{clientPage?.heading}</h2>
+        <div className="relative flex flex-col w-3/4 mx-auto lg:w-1/2 gap-y-11">
+          <h2 className="text-5xl text-center uppercase">{clientPage?.heading}</h2>
           <p className="text-2xl">{clientPage?.line1}</p>
           <p className="text-2xl">{clientPage?.line2}</p>
           <a className="mx-auto" href={`mailto:brousslang@lotustechnical.com`}>
@@ -55,7 +44,7 @@ const Clients = ({
 
 const StatsSection = ({ stats }: { stats: StatsModel[] | undefined }) => {
   return (
-    <div className="flex flex-row gap-24 justify-center pt-48 text-center">
+    <div className="flex flex-row justify-center gap-12 px-10 pt-48 text-center md:gap-24">
       {stats?.map((stat, index) => {
         return (
           <>

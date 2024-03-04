@@ -1,4 +1,3 @@
-import { Download } from 'lucide-react';
 import React from 'react';
 import BasicLayout from 'src/layouts/BasicLayout';
 import { EmploymentFormsModel } from 'src/lib/core/models/employmentForms';
@@ -17,9 +16,9 @@ const EmploymentForms = ({
     <BasicLayout footer={footer} navFolded>
       <div className="bg-[#011F33]">
         <div className="select-none pointer-events-none opacity-10 absolute w-full h-full bg-cover bg-[url('/resources/images/skyline.jpg')] pt-[12rem]"></div>
-        <div className=" text-white pt-56 pb-96">
-          <h1 className="text-center text-5xl pb-20">{employmentFormsPage?.pageTitle}</h1>
-          <div className="grid grid-cols-3 gap-y-10 max-w-7xl mx-auto text-2xl">
+        <div className="pt-56 pb-[75rem] md:pb-[40rem] text-white ">
+          <h1 className="pb-20 text-5xl text-center">{employmentFormsPage?.pageTitle}</h1>
+          <div className="grid grid-cols-1 mx-auto text-2xl md:grid-cols-3 gap-y-10 max-w-7xl w-fit">
             {employmentFormsPage?.forms.map(form => {
               return (
                 <a

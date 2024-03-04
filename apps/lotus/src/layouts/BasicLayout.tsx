@@ -1,38 +1,102 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
-import { Twitter } from 'lucide-react';
+import { Menu, Twitter, X } from 'lucide-react';
 import { Facebook } from 'lucide-react';
 import { Linkedin } from 'lucide-react';
 import { FooterModel } from 'src/lib/core/models/footer';
 import { cn } from 'src/core/utils';
 
 const NavBar = ({ className }: { className: string }) => {
+  const [navToggle, setNavToggle] = useState(false);
   return (
-    <div className={cn('z-50 flex justify-between p-11 pb-0 text-[#00A7E4]', className)}>
-      <a href="/">
-        <img className="w-auto h-36" src="/resources/images/lotus.png" alt="Lotus Technical logo" />
-      </a>
-      <div className="flex gap-16 pt-10 font-mono font-semibold">
-        <a className="hover:underline underline-offset-3" href="/clients">
-          Clients
+    <>
+      <div className={cn('z-50 justify-between p-11 text-[#00A7E4] hidden xl:flex', className)}>
+        <a href="/">
+          <img
+            className="w-auto h-36"
+            src="/resources/images/lotus.png"
+            alt="Lotus Technical logo"
+          />
         </a>
-        <a className="hover:underline underline-offset-3" href="/job-seekers">
-          Job Seekers
-        </a>
-        <a className="hover:underline underline-offset-3" href="/employment-forms">
-          Employment Forms
-        </a>
-        <a className="hover:underline underline-offset-3" href="/current-openings">
-          Current Openings
-        </a>
-        <a
-          className="hover:underline underline-offset-3"
-          href={`mailto:brousslang@lotustechnical.com`}
-        >
-          Contact Us
-        </a>
+        <div className="flex gap-16 pt-10 font-mono font-semibold">
+          <a className="hover:underline underline-offset-3" href="/clients">
+            Clients
+          </a>
+          <a className="hover:underline underline-offset-3" href="/job-seekers">
+            Job Seekers
+          </a>
+          <a className="hover:underline underline-offset-3" href="/employment-forms">
+            Employment Forms
+          </a>
+          <a className="hover:underline underline-offset-3" href="/current-openings">
+            Current Openings
+          </a>
+          <a
+            className="hover:underline underline-offset-3"
+            href={`mailto:brousslang@lotustechnical.com`}
+          >
+            Contact Us
+          </a>
+        </div>
       </div>
-    </div>
+      <div
+        className={cn(
+          'z-50 flex items-center justify-between w-full h-24 p-11 text-[#00A7E4] pb-10 xl:hidden',
+          className
+        )}
+      >
+        <a href="/">
+          <img
+            className="w-auto h-24"
+            src="/resources/images/lotus.png"
+            alt="Lotus Technical logo"
+          />
+        </a>
+        <Menu
+          className="cursor-pointer"
+          size={50}
+          color="#00A7E4"
+          strokeWidth={2}
+          onClick={() => {
+            setNavToggle(!navToggle);
+          }}
+        />
+      </div>
+      <div className={navToggle ? 'h-full w-full left-0 top-0 z-50 bg-[#011F33] fixed' : 'hidden'}>
+        <X
+          className="absolute right-0 m-12 cursor-pointer"
+          size={40}
+          color="#00A7E4"
+          strokeWidth={2}
+          onClick={() => {
+            setNavToggle(!navToggle);
+          }}
+        />
+        <div className="flex flex-col gap-20 font-mono text-[#00A7E4] items-center h-full pt-48 text-3xl">
+          <a className="hover:underline underline-offset-3" href="/">
+            Home
+          </a>
+          <a className="hover:underline underline-offset-3" href="/clients">
+            Clients
+          </a>
+          <a className="hover:underline underline-offset-3" href="/job-seekers">
+            Job Seekers
+          </a>
+          <a className="hover:underline underline-offset-3" href="/employment-forms">
+            Employment Forms
+          </a>
+          <a className="hover:underline underline-offset-3" href="/current-openings">
+            Current Openings
+          </a>
+          <a
+            className="hover:underline underline-offset-3"
+            href={`mailto:brousslang@lotustechnical.com`}
+          >
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </>
   );
 };
 

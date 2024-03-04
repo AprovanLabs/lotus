@@ -1,4 +1,4 @@
-import { CurrentOpeningsModel, JobModel } from 'src/lib/core/models/currentOpenings';
+import { JobModel } from 'src/lib/core/models/currentOpenings';
 import { RichText } from 'prismic-reactjs';
 import { css } from '@emotion/css';
 import { cn } from 'src/core/utils';
