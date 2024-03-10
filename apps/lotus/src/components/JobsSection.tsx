@@ -39,11 +39,11 @@ const JobSection = ({ jobs }: { jobs: JobModel[] | undefined }) => {
                   <h2 className="pb-4 text-3xl font-semibold">{job.title}</h2>
                   {selected === index ? <ChevronUp /> : <ChevronDown />}
                 </div>
-                <div className="flex gap-4 text-gray-500">
+                <div className={job.pay ? 'flex gap-4 text-gray-500' : 'hidden'}>
                   <Banknote />
                   <p className="pb-2">{job.pay}</p>
                 </div>
-                <div className="flex gap-4 text-gray-500">
+                <div className={job.location ? 'flex gap-4 text-gray-500' : 'hidden'}>
                   <MapPin />
                   <p className="pb-2">{job.location}</p>
                 </div>

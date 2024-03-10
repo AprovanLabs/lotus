@@ -32,12 +32,13 @@ const Clients = ({
       <div className="pb-56">
         <ProcessSection processSteps={clientPage?.processSteps} />
       </div>
-      <div className="pb-56">
-        <CareersSection careerFields={clientPage?.careerFields?.[0]} />
-      </div>
-      <div className="pb-56">
-        <CareersSection careerFields={clientPage?.careerFields?.[1]} />
-      </div>
+      {clientPage?.careerFields?.map(section => {
+        return (
+          <div className="pb-56">
+            <CareersSection careerFields={section} />
+          </div>
+        );
+      })}
     </BasicLayout>
   );
 };

@@ -719,42 +719,13 @@ export type JobSeekersDocument<Lang extends string = string> = prismic.PrismicDo
   Lang
 >;
 
-/**
- * Content for TESTCUSTOMTYPE documents
- */
-interface TestcustomtypeDocumentData {
-  /**
-   * Form Name field in *TESTCUSTOMTYPE*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: testcustomtype.form_name
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  form_name: prismic.RichTextField;
-}
-
-/**
- * TESTCUSTOMTYPE document from Prismic
- *
- * - **API ID**: `testcustomtype`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type TestcustomtypeDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<Simplify<TestcustomtypeDocumentData>, 'testcustomtype', Lang>;
-
 export type AllDocumentTypes =
   | ClientDocument
   | CurrentOpeningsDocument
   | EmploymentFormsDocument
   | FooterDocument
   | HomeDocument
-  | JobSeekersDocument
-  | TestcustomtypeDocument;
+  | JobSeekersDocument;
 
 /**
  * Primary content in *CareerFields → Primary*
@@ -1061,8 +1032,6 @@ declare module '@prismicio/client' {
       JobSeekersDocumentData,
       JobSeekersDocumentDataWhatToExpectStepsItem,
       JobSeekersDocumentDataSlicesSlice,
-      TestcustomtypeDocument,
-      TestcustomtypeDocumentData,
       AllDocumentTypes,
       CareerFieldsSlice,
       CareerFieldsSliceDefaultPrimary,
