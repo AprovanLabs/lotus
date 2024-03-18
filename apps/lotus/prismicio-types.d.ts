@@ -214,6 +214,167 @@ export type CurrentOpeningsDocument<Lang extends string = string> =
   >;
 
 /**
+ * Item in *Employees → Employees*
+ */
+export interface EmployeesDocumentDataEmployeesItem {
+  /**
+   * Name field in *Employees → Employees*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: employees.employees[].name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Job Title field in *Employees → Employees*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: employees.employees[].job_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  job_title: prismic.KeyTextField;
+
+  /**
+   * Email field in *Employees → Employees*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: employees.employees[].email
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  email: prismic.KeyTextField;
+
+  /**
+   * LinkedIn Link field in *Employees → Employees*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: employees.employees[].linkedin_link
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  linkedin_link: prismic.KeyTextField;
+
+  /**
+   * Cell Number field in *Employees → Employees*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: employees.employees[].cell_number
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  cell_number: prismic.KeyTextField;
+
+  /**
+   * Office Phone Number field in *Employees → Employees*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: employees.employees[].office_phone_number
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  office_phone_number: prismic.KeyTextField;
+
+  /**
+   * Image field in *Employees → Employees*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: employees.employees[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+type EmployeesDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Employees documents
+ */
+interface EmployeesDocumentData {
+  /**
+   * Title field in *Employees*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: employees.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Employees field in *Employees*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: employees.employees[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  employees: prismic.GroupField<Simplify<EmployeesDocumentDataEmployeesItem>>;
+
+  /**
+   * Slice Zone field in *Employees*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: employees.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<EmployeesDocumentDataSlicesSlice> /**
+   * Meta Description field in *Employees*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: employees.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Employees*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: employees.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Employees*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: employees.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Employees document from Prismic
+ *
+ * - **API ID**: `employees`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type EmployeesDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+  Simplify<EmployeesDocumentData>,
+  'employees',
+  Lang
+>;
+
+/**
  * Item in *Employment Forms → Forms*
  */
 export interface EmploymentFormsDocumentDataFormsItem {
@@ -722,6 +883,7 @@ export type JobSeekersDocument<Lang extends string = string> = prismic.PrismicDo
 export type AllDocumentTypes =
   | ClientDocument
   | CurrentOpeningsDocument
+  | EmployeesDocument
   | EmploymentFormsDocument
   | FooterDocument
   | HomeDocument
@@ -1017,6 +1179,10 @@ declare module '@prismicio/client' {
       CurrentOpeningsDocument,
       CurrentOpeningsDocumentData,
       CurrentOpeningsDocumentDataSlicesSlice,
+      EmployeesDocument,
+      EmployeesDocumentData,
+      EmployeesDocumentDataEmployeesItem,
+      EmployeesDocumentDataSlicesSlice,
       EmploymentFormsDocument,
       EmploymentFormsDocumentData,
       EmploymentFormsDocumentDataFormsItem,

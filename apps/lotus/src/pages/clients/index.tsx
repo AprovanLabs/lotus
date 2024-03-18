@@ -32,9 +32,9 @@ const Clients = ({
       <div className="pb-56">
         <ProcessSection processSteps={clientPage?.processSteps} />
       </div>
-      {clientPage?.careerFields?.map(section => {
+      {clientPage?.careerFields?.map((section, i) => {
         return (
-          <div className="pb-56">
+          <div key={i} className="pb-56">
             <CareersSection careerFields={section} />
           </div>
         );

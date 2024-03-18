@@ -1,26 +1,31 @@
 import BasicLayout from '../layouts/BasicLayout';
-import React, { useRef, useState } from 'react';
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
-import { register } from 'swiper/element/bundle';
 import HomeService from 'src/lib/server/home/homeService';
 import FooterService from 'src/lib/server/footer/footerService';
 import { FooterModel } from 'src/lib/core/models/footer';
 import { HomeModel, infoBoxModel } from 'src/lib/core/models/home';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from 'src/components/ui/carousel';
+import EmployeesService from 'src/lib/server/employees/employeesService';
+import { EmployeesSectionModel } from 'src/lib/core/models/employees';
 
 const HomePage = ({
   homePage,
   footer,
+  employeesSection,
 }: {
   homePage: HomeModel | undefined;
   footer: FooterModel | undefined;
+  employeesSection: EmployeesSectionModel | undefined;
 }) => {
   return (
     <div className="bg-[#011F33] relative">
-      {/* bg-[top_left_90%] md:bg-[top_left_100%] lg:bg-[top_left_110%] xl:bg-[top_left_-60%] */}
       <div className="opacity-30 w-full h-full top-0 absolute bg-no-repeat bg-[linear-gradient(to_top,#011F33_70%,transparent),url('/resources/images/lotus.png')] bg-[90%_0rem] md:bg-[100%_0rem] lg:bg-[130%_0rem] xl:bg-[-50%_0rem]"></div>
       <BasicLayout footer={footer}>
         <div className="flex flex-col pt-40 text-center gap-y-11 ">
@@ -76,6 +81,7 @@ const HomePage = ({
         <div className="bg-[#00A7E4] flex justify-center mx-auto">
           <InfoBody info={homePage?.info[1]} />
         </div>
+        <Employees employeesSection={employeesSection} />
       </BasicLayout>
     </div>
   );
@@ -92,13 +98,52 @@ const InfoBody = ({ info }: { info: infoBoxModel | undefined }) => {
   );
 };
 
+const Employees = ({
+  employeesSection,
+}: {
+  employeesSection: EmployeesSectionModel | undefined;
+}) => {
+  return (
+    <div className="bg-[#CAEBFC] width-full relative py-24">
+      <h2 className="text-5xl text-center uppercase pb-11">Meet Our Team</h2>
+      <Carousel
+        className="w-full max-w-sm mx-auto"
+        opts={{
+          loop: true,
+        }}
+      >
+        <CarouselContent>
+          {employeesSection?.employees?.map(employee => (
+            <CarouselItem key={employee?.name}>
+              <div className="relative mx-auto text-3xl text-center text-white w-96">
+                <img src={employee?.imageUrl} alt="Lotus Technical logo" />
+                <div className="absolute bottom-0 w-full h-full bg-gradient-to-t from-[#011F33] to-55% flex flex-col justify-end pb-4">
+                  <p className="font-semibold">{employee.title}</p>
+                  <p>{employee.name}</p>
+                </div>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+    </div>
+  );
+};
+
 export async function getStaticProps() {
-  const [homePage, footer] = await Promise.all([HomeService.getHome(), FooterService.getFooter()]);
+  const [homePage, footer, employeesSection] = await Promise.all([
+    HomeService.getHome(),
+    FooterService.getFooter(),
+    EmployeesService.getEmployees(),
+  ]);
 
   return {
     props: {
       homePage,
       footer,
+      employeesSection,
     },
   };
 }

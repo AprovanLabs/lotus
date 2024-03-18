@@ -33,7 +33,8 @@ const NavBar = ({ className }: { className: string }) => {
           </a>
           <a
             className="hover:underline underline-offset-3"
-            href={`mailto:brousslang@lotustechnical.com`}
+            // href={`mailto:brousslang@lotustechnical.com`}
+            href="/contact-us"
           >
             Contact Us
           </a>
