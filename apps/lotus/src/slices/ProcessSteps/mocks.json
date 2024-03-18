@@ -1,0 +1,36 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "directly",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"step_number",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "tone",
+							"type": "Text"
+						}
+					],
+					[
+						"step_description",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "teach",
+							"type": "Text"
+						}
+					]
+				]
+			}
+		]
+	}
+]

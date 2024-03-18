@@ -1,0 +1,95 @@
+{
+  "id": "home",
+  "label": "Home",
+  "format": "page",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
+      "slogan": {
+        "type": "Text",
+        "config": {
+          "label": "Slogan",
+          "placeholder": ""
+        }
+      },
+      "home_page_information": {
+        "type": "Group",
+        "config": {
+          "label": "Home Page Information",
+          "fields": {
+            "heading": {
+              "type": "Text",
+              "config": {
+                "label": "Heading",
+                "placeholder": ""
+              }
+            },
+            "line_1": {
+              "type": "Text",
+              "config": {
+                "label": "Line 1",
+                "placeholder": ""
+              }
+            },
+            "line_2": {
+              "type": "Text",
+              "config": {
+                "label": "Line 2",
+                "placeholder": ""
+              }
+            },
+            "line_3": {
+              "type": "Text",
+              "config": {
+                "label": "Line 3",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_description": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "meta_image": {
+        "config": {
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      },
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
+      }
+    }
+  }
+}

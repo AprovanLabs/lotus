@@ -1,0 +1,34 @@
+{
+  "id": "career_fields",
+  "type": "SharedSlice",
+  "name": "CareerFields",
+  "description": "CareerFields",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "job": {
+          "type": "Text",
+          "config": {
+            "label": "Job",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}

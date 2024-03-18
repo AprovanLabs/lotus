@@ -9,8 +9,8 @@ const routes: prismic.ClientConfig['routes'] = [
     path: '/',
   },
   {
-    type: 'tournaments',
-    path: '/tournaments/:uid',
+    type: 'employment_forms',
+    path: '/employment-forms',
   },
 ];
 

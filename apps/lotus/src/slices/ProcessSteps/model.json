@@ -1,0 +1,41 @@
+{
+  "id": "process_steps",
+  "type": "SharedSlice",
+  "name": "ProcessSteps",
+  "description": "ProcessSteps",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "step_number": {
+          "type": "Text",
+          "config": {
+            "label": "Step Number",
+            "placeholder": ""
+          }
+        },
+        "step_description": {
+          "type": "Text",
+          "config": {
+            "label": "Step Description",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}

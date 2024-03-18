@@ -1,97 +1,151 @@
 import BasicLayout from '../layouts/BasicLayout';
-import React, { useRef, useState } from 'react';
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
-import { register } from 'swiper/element/bundle';
+import HomeService from 'src/lib/server/home/homeService';
+import FooterService from 'src/lib/server/footer/footerService';
+import { FooterModel } from 'src/lib/core/models/footer';
+import { HomeModel, infoBoxModel } from 'src/lib/core/models/home';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from 'src/components/ui/carousel';
+import EmployeesService from 'src/lib/server/employees/employeesService';
+import { EmployeesSectionModel } from 'src/lib/core/models/employees';
 
-const HomePage = () => {
-  const heading = 'Work is hectic';
-  const tagline = `Getting help doesn't have to be`;
-  const subHeading = 'Who we are';
-  const bodyChunk1 = `Lotus Technical has filled positions in organizations of all sizes ranging from the small family-owned business to large Fortune 500 companies`;
-  const bodyChunk2 = `Our staffing expertise and recruiting resources have helped us successfully place candidates in various roles from assembly to C-level executives`;
-  const bodyChunk3 = `Whether you are looking to fill an entry-level position or an executive position, Lotus Technical will help you find your most important business resource - your people`;
-  const subHeading2 = 'What we do';
-  const body2Chunk1 =
-    'Lotus Technical closes the gap between job seekers and organizations looking to fill positions in the Engineering, IT and Manufacturing industries';
-  const body2Chunk2 =
-    'With historically low unemployment rates, organizations spend unnecessary time and cost recruiting, screening, and hiring the right person for the job. Additionally, many organizations lack the internal resources to find, attract, and retain the right talent';
-  const body2Chunk3 =
-    'Since 2010, our job has been to connect organizations to top talent and simplify their hiring process.';
-
+const HomePage = ({
+  homePage,
+  footer,
+  employeesSection,
+}: {
+  homePage: HomeModel | undefined;
+  footer: FooterModel | undefined;
+  employeesSection: EmployeesSectionModel | undefined;
+}) => {
   return (
-    <div>
-      {' '}
-      <div className="bg-[#011F33] text-[#011F33] font-mono">
-        <div className="opacity-[.3] w-full h-full top-0 absolute bg-no-repeat bg-[linear-gradient(to_top,#011F33_10%,transparent),url('/resources/images/lotus.png')] translate-y-[10%] translate-x-[-12.5%]"></div>
-
-        <BasicLayout>
-          <div className="flex flex-col gap-y-11 text-center pt-40 ">
-            <h1
-              className="text-9xl  font-bold uppercase"
-              style={{ WebkitTextStroke: '3px rgba(255, 255, 255)' }}
-            >
-              {heading}
-            </h1>
-            <p className="text-4xl text-white">{tagline}</p>
-            <div className="flex gap-x-24 justify-center p-20">
-              <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
+    <div className="bg-[#011F33] relative">
+      <div className="opacity-30 w-full h-full top-0 absolute bg-no-repeat bg-[linear-gradient(to_top,#011F33_70%,transparent),url('/resources/images/lotus.png')] bg-[90%_0rem] md:bg-[100%_0rem] lg:bg-[130%_0rem] xl:bg-[-50%_0rem]"></div>
+      <BasicLayout footer={footer}>
+        <div className="flex flex-col pt-40 text-center gap-y-11 ">
+          <h1
+            className="font-bold uppercase text-9xl"
+            style={{ WebkitTextStroke: '3px rgba(255, 255, 255)' }}
+          >
+            {homePage?.title}
+          </h1>
+          <p className="text-4xl text-white">{homePage?.slogan}</p>
+          <div className="flex justify-center p-20 gap-x-24">
+            <a href={`mailto:brousslang@lotustechnical.com`}>
+              <button className="hover:text-white rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
                 Contact Us
               </button>
-              <button className="rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
+            </a>
+            <a href="/current-openings">
+              <button className="hover:text-white rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
                 Current Openings
               </button>
-            </div>
-            <div className="flex justify-center pb-40">
-              {/* moveDown icon */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="48"
-                height="48"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-move-down"
-              >
-                <path d="M8 18L12 22L16 18" />
-                <path d="M12 2V22" />
-              </svg>
-            </div>
+            </a>
           </div>
-          <img
-            src="/resources/images/cutLines2.png"
-            className="absolute right-0 bottom-[25%] w-[40rem]"
-          ></img>
-          <div className="bg-white flex justify-center">
-            <div className="relative flex flex-col gap-y-11 p-60 w-3/4">
-              <h2 className="text-6xl uppercase">{subHeading}</h2>
-              <p className="text-2xl">{bodyChunk1}</p>
-              <p className="text-2xl">{bodyChunk2}</p>
-              <p className="text-2xl">{bodyChunk3}</p>
-            </div>
+          <div className="flex justify-center pb-40">
+            {/* moveDown icon */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-move-down"
+            >
+              <path d="M8 18L12 22L16 18" />
+              <path d="M12 2V22" />
+            </svg>
           </div>
-          <img
-            src="/resources/images/cutLines.png"
-            className="absolute left-0 bottom-0 w-[40rem]"
-          ></img>
-          <div className="bg-[#00A7E4] flex justify-center mx-auto">
-            <div className="relative flex flex-col gap-y-11 p-60 w-3/4">
-              <h2 className="text-6xl uppercase">{subHeading2}</h2>
-              <p className="text-2xl">{body2Chunk1}</p>
-              <p className="text-2xl">{body2Chunk2}</p>
-              <p className="text-2xl">{body2Chunk3}</p>
-            </div>
-          </div>
-        </BasicLayout>
-      </div>
+        </div>
+        <img
+          src="/resources/images/cutLines2.png"
+          className="absolute right-0 bottom-[45%] xl:bottom-1/4 w-[30rem] xl:w-[40rem]"
+        ></img>
+        <div className="flex justify-center bg-white">
+          <InfoBody info={homePage?.info[0]} />
+        </div>
+        <img
+          src="/resources/images/cutLines.png"
+          className="absolute left-0 bottom-[15%] w-[30rem] xl:bottom-0 xl:w-[40rem]"
+        ></img>
+        <div className="bg-[#00A7E4] flex justify-center mx-auto">
+          <InfoBody info={homePage?.info[1]} />
+        </div>
+        <Employees employeesSection={employeesSection} />
+      </BasicLayout>
     </div>
   );
 };
+
+const InfoBody = ({ info }: { info: infoBoxModel | undefined }) => {
+  return (
+    <div className="relative flex flex-col w-3/4 px-10 py-60 gap-y-11 xl:px-60">
+      <h2 className="text-5xl uppercase">{info?.title.toUpperCase()}</h2>
+      <p className="text-2xl">{info?.line1}</p>
+      <p className="text-2xl">{info?.line2}</p>
+      <p className="text-2xl">{info?.line3}</p>
+    </div>
+  );
+};
+
+const Employees = ({
+  employeesSection,
+}: {
+  employeesSection: EmployeesSectionModel | undefined;
+}) => {
+  return (
+    <div className="bg-[#CAEBFC] width-full relative py-24">
+      <h2 className="text-5xl text-center uppercase pb-11">Meet Our Team</h2>
+      <Carousel
+        className="w-full max-w-sm mx-auto"
+        opts={{
+          loop: true,
+        }}
+      >
+        <CarouselContent>
+          {employeesSection?.employees?.map(employee => (
+            <CarouselItem key={employee?.name}>
+              <div className="relative mx-auto text-3xl text-center text-white w-96">
+                <img src={employee?.imageUrl} alt="Lotus Technical logo" />
+                <div className="absolute bottom-0 w-full h-full bg-gradient-to-t from-[#011F33] to-55% flex flex-col justify-end pb-4">
+                  <p className="font-semibold">{employee.title}</p>
+                  <p>{employee.name}</p>
+                </div>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+    </div>
+  );
+};
+
+export async function getStaticProps() {
+  const [homePage, footer, employeesSection] = await Promise.all([
+    HomeService.getHome(),
+    FooterService.getFooter(),
+    EmployeesService.getEmployees(),
+  ]);
+
+  return {
+    props: {
+      homePage,
+      footer,
+      employeesSection,
+    },
+  };
+}
 
 export default HomePage;

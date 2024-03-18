@@ -1,0 +1,28 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "saved",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"job",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "asleep",
+							"type": "Text"
+						}
+					]
+				]
+			}
+		]
+	}
+]
