@@ -5,12 +5,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "export": "next export",
     "slicemachine": "start-slicemachine"
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.369.0",
     "@emotion/css": "^11.11.0",
     "@formspree/react": "^2.4.4",
+    "@netlify/plugin-nextjs": "^4.41.3",
     "@prismicio/client": "^7.3.1",
     "@prismicio/next": "^1.5.0",
     "@prismicio/react": "^2.7.3",
