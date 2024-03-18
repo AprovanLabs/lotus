@@ -2,13 +2,13 @@ import { JobModel } from 'src/lib/core/models/currentOpenings';
 import { RichText } from 'prismic-reactjs';
 import { css } from '@emotion/css';
 import { cn } from 'src/core/utils';
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 import { Banknote, ChevronDown, ChevronUp, MapPin } from 'lucide-react';
 import Link from 'next/link';
 
 const JobSection = ({ jobs }: { jobs: JobModel[] | undefined }) => {
-  const [selected, setSelected] = useState(null);
-  const toggle = i => {
+  const [selected, setSelected] = useState<number | null>(null);
+  const toggle = (i: number | null) => {
     if (selected == i) {
       return setSelected(null);
     }
