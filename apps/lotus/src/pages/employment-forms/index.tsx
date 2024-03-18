@@ -15,7 +15,7 @@ const EmploymentForms = ({
 }) => {
   return (
     <BasicLayout footer={footer} navFolded>
-      <div className="bg-[#011F33]">
+      <div className="bg-[#011F33] pt-24">
         <div className="select-none pointer-events-none opacity-10 absolute w-full h-full bg-cover bg-[url('/resources/images/skyline.jpg')] pt-[12rem]"></div>
         <div className="pt-56 pb-[75rem] md:pb-[40rem] text-white ">
           <h1 className="pb-20 text-5xl text-center">{employmentFormsPage?.pageTitle}</h1>

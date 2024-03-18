@@ -31,13 +31,13 @@ const HomePage = ({
       <BasicLayout footer={footer}>
         <div className="flex flex-col pt-40 text-center gap-y-11 ">
           <h1
-            className="font-bold uppercase text-9xl"
+            className="font-bold uppercase text-7xl sm:text-9xl"
             style={{ WebkitTextStroke: '3px rgba(255, 255, 255)' }}
           >
             {homePage?.title}
           </h1>
-          <p className="text-4xl text-white">{homePage?.slogan}</p>
-          <div className="flex justify-center p-20 gap-x-24">
+          <p className="text-2xl text-white sm:text-4xl">{homePage?.slogan}</p>
+          <div className="flex flex-col items-center justify-center gap-4 py-20 sm:flex-row gap-x-24">
             <Link href="/contact-us">
               <button className="hover:text-white rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
                 Contact Us

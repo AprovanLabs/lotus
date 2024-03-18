@@ -9,7 +9,7 @@ const ContactUs = ({ footer }: { footer: FooterModel | undefined }) => {
 
   return (
     <BasicLayout footer={footer}>
-      <h1 className="pb-20 text-5xl text-center text-[#011F33]">Contact Us</h1>
+      <h1 className="pb-20 text-5xl text-center text-[#011F33] mt-24">Contact Us</h1>
       <div className="mx-auto">
         <div className="max-w-2xl mx-auto w-full text-[#011F33] flex justify-center items-center">
           <form method="POST" action="/api/submit-form" encType="multipart/form-data" ref={formRef}>

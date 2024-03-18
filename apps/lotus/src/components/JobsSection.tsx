@@ -2,7 +2,7 @@ import { JobModel } from 'src/lib/core/models/currentOpenings';
 import { RichText } from 'prismic-reactjs';
 import { css } from '@emotion/css';
 import { cn } from 'src/core/utils';
-import { SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import { Banknote, ChevronDown, ChevronUp, MapPin } from 'lucide-react';
 import Link from 'next/link';
 

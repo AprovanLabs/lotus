@@ -25,7 +25,7 @@ const ProcessSection = ({ processSteps }: { processSteps: ProcessSteps | undefin
       </div>
       {processSteps?.steps.map((step, index) => {
         return (
-          <div key={step.number} className="flex pt-16 gap-9">
+          <div key={step.number} className="flex flex-col items-center pt-16 gap-9 md:flex-row">
             <div
               style={{
                 backgroundColor: colors[index % 4],
@@ -34,7 +34,9 @@ const ProcessSection = ({ processSteps }: { processSteps: ProcessSteps | undefin
             >
               {step.number}
             </div>
-            <p className="flex items-center text-2xl w-96">{step.description}</p>
+            <p className="block mb-12 text-2xl text-center w-96 sm:mb-0 md:text-left">
+              {step.description}
+            </p>
           </div>
         );
       })}

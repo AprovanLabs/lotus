@@ -14,7 +14,7 @@ const NavBar = ({ className }: { className: string }) => {
       <div className={cn('z-50 justify-between p-11 text-[#00A7E4] hidden xl:flex', className)}>
         <Link href="/">
           <img
-            className="w-auto h-36"
+            className="w-auto cursor-pointer h-36"
             src="/resources/images/lotus.png"
             alt="Lotus Technical logo"
           />
@@ -45,7 +45,7 @@ const NavBar = ({ className }: { className: string }) => {
       >
         <Link href="/">
           <img
-            className="w-auto h-24"
+            className="w-auto h-24 cursor-pointer"
             src="/resources/images/lotus.png"
             alt="Lotus Technical logo"
           />
@@ -70,7 +70,7 @@ const NavBar = ({ className }: { className: string }) => {
             setNavToggle(!navToggle);
           }}
         />
-        <div className="flex flex-col gap-20 font-mono text-[#00A7E4] items-center h-full pt-48 text-3xl">
+        <div className="flex flex-col gap-20 font-mono text-[#00A7E4] items-center h-full pt-48 text-xl">
           <Link className="hover:underline underline-offset-3" href="/">
             Home
           </Link>
@@ -86,10 +86,7 @@ const NavBar = ({ className }: { className: string }) => {
           <Link className="hover:underline underline-offset-3" href="/current-openings">
             Current Openings
           </Link>
-          <Link
-            className="hover:underline underline-offset-3"
-            href={`mailto:brousslang@lotustechnical.com`}
-          >
+          <Link className="hover:underline underline-offset-3" href="/contact-us">
             Contact Us
           </Link>
         </div>
@@ -100,7 +97,7 @@ const NavBar = ({ className }: { className: string }) => {
 
 const Footer = ({ footer }: { footer: FooterModel | undefined }) => {
   return (
-    <footer className="relative bottom-0 flex flex-col justify-around w-full py-16 bg-white gap-28 md:py-28 md:flex-row md:px-28">
+    <footer className="relative bottom-0 flex flex-col justify-around w-full py-16 bg-white text-md gap-28 md:py-28 md:flex-row md:px-28">
       <div className="flex flex-col mx-auto font-mono gap-y-7 lg:mx-0">
         <Link href={`tel:${footer?.phoneNumber.replaceAll('-', '')}`}>{footer?.phoneNumber}</Link>
         <Link href={`mailto:${footer?.emailAddress}`}>{footer?.emailAddress}</Link>
@@ -115,13 +112,13 @@ const Footer = ({ footer }: { footer: FooterModel | undefined }) => {
       <div className="w-0.5 bg-[#011F33] h-48 mt-auto mb-auto hidden md:block"></div>
       <div className="flex items-center justify-center gap-16 md:pb-0">
         <Link href={footer?.linkedInLink || ''} target="_blank" rel="noreferrer">
-          <Linkedin fill="#011F33" size={36} />
+          <Linkedin fill="#011F33" size={36} className="cursor-pointer" />
         </Link>
         <Link href={footer?.facebookLink || ''} target="_blank" rel="noreferrer">
-          <Facebook fill="#011F33" size={36} />
+          <Facebook fill="#011F33" size={36} className="cursor-pointer" />
         </Link>
         <Link href={footer?.twitterLink || ''} target="_blank" rel="noreferrer">
-          <Twitter fill="#011F33" size={36} />
+          <Twitter fill="#011F33" size={36} className="cursor-pointer" />
         </Link>
       </div>
     </footer>
@@ -138,7 +135,7 @@ const BasicLayout = ({
   navFolded?: boolean;
 }) => {
   return (
-    <div className="relative flex flex-col text-xl text-[#011F33]">
+    <div className="relative flex flex-col text-[#011F33]">
       <Head>
         <title>Lotus Technical</title>
         <link rel="icon" href="/favicon.ico" />

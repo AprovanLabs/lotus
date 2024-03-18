@@ -13,14 +13,14 @@ const CareersSection = ({ careerFields }: { careerFields: CareerFields | undefin
   return (
     <div className="w-full">
       <div className="text-5xl text-center uppercase">{careerFields?.title}</div>
-      <div className="flex justify-center gap-4">
+      <div className="flex flex-col items-center justify-center gap-8 py-12 md:gap-24 md:flex-row">
         <Link href="/contact-us">
-          <button className="hover:text-white rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 my-8">
+          <button className="hover:text-white rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2">
             Contact Us
           </button>
         </Link>
         <Link href="/current-openings">
-          <button className="hover:text-white rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 my-8">
+          <button className="hover:text-white rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2">
             Openings
           </button>
         </Link>

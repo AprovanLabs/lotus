@@ -22,6 +22,7 @@ const JobSeekers = ({
 }) => {
   return (
     <BasicLayout footer={footer}>
+      <div className="pt-24" />
       <CareersSection careerFields={jobSeekersPage?.careerFields} />
       {/* what to expect section*/}
       <div className="flex justify-center p-6 pb-20">
