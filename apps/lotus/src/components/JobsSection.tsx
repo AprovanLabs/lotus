@@ -4,6 +4,7 @@ import { css } from '@emotion/css';
 import { cn } from 'src/core/utils';
 import { useState } from 'react';
 import { Banknote, ChevronDown, ChevronUp, MapPin } from 'lucide-react';
+import Link from 'next/link';
 
 const JobSection = ({ jobs }: { jobs: JobModel[] | undefined }) => {
   const [selected, setSelected] = useState(null);
@@ -59,11 +60,11 @@ const JobSection = ({ jobs }: { jobs: JobModel[] | undefined }) => {
                   <h2 className="pt-4 font-semibold">Qualifications: </h2>
                 )}
                 <RichText render={job.qualifications as any} />
-                <a href={`mailto:brousslang@lotustechnical.com?subject=${job.title} Application`}>
+                <Link href="/contact-us">
                   <button className="hover:text-white rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 mt-16">
                     Apply Now
                   </button>
-                </a>
+                </Link>
               </div>
             </div>
             <div className="h-1 bg-gradient-to-r from-[#2E8C37] via-[#00A7E4] to-[#CAEBFC]"></div>

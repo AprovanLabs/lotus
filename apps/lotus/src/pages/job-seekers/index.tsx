@@ -11,6 +11,7 @@ import JobSeekersService from 'src/lib/server/jobSeekers/jobSeekersService';
 import FooterService from 'src/lib/server/footer/footerService';
 import ProcessSection from 'src/components/ProcessSection';
 import CareersSection from 'src/components/CareersSection';
+import Link from 'next/link';
 
 const JobSeekers = ({
   jobSeekersPage,
@@ -52,11 +53,11 @@ const JobSeekers = ({
       <ProcessSection processSteps={jobSeekersPage?.processSteps} />
 
       <div className="py-32 mx-auto w-fit">
-        <a href={`mailto:brousslang@lotustechnical.com`}>
+        <Link href="/contact-us">
           <button className="hover:text-white rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
             Contact Us
           </button>
-        </a>
+        </Link>
       </div>
     </BasicLayout>
   );

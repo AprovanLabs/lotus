@@ -14,6 +14,7 @@ import {
 } from 'src/components/ui/carousel';
 import EmployeesService from 'src/lib/server/employees/employeesService';
 import { EmployeesSectionModel } from 'src/lib/core/models/employees';
+import Link from 'next/link';
 
 const HomePage = ({
   homePage,
@@ -37,16 +38,16 @@ const HomePage = ({
           </h1>
           <p className="text-4xl text-white">{homePage?.slogan}</p>
           <div className="flex justify-center p-20 gap-x-24">
-            <a href={`mailto:brousslang@lotustechnical.com`}>
+            <Link href="/contact-us">
               <button className="hover:text-white rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
                 Contact Us
               </button>
-            </a>
-            <a href="/current-openings">
+            </Link>
+            <Link href="/current-openings">
               <button className="hover:text-white rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 ">
                 Current Openings
               </button>
-            </a>
+            </Link>
           </div>
           <div className="flex justify-center pb-40">
             {/* moveDown icon */}

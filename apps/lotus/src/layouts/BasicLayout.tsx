@@ -5,39 +5,36 @@ import { Facebook } from 'lucide-react';
 import { Linkedin } from 'lucide-react';
 import { FooterModel } from 'src/lib/core/models/footer';
 import { cn } from 'src/core/utils';
+import Link from 'next/link';
 
 const NavBar = ({ className }: { className: string }) => {
   const [navToggle, setNavToggle] = useState(false);
   return (
     <>
       <div className={cn('z-50 justify-between p-11 text-[#00A7E4] hidden xl:flex', className)}>
-        <a href="/">
+        <Link href="/">
           <img
             className="w-auto h-36"
             src="/resources/images/lotus.png"
             alt="Lotus Technical logo"
           />
-        </a>
+        </Link>
         <div className="flex gap-16 pt-10 font-mono font-semibold">
-          <a className="hover:underline underline-offset-3" href="/clients">
+          <Link className="hover:underline underline-offset-3" href="/clients">
             Clients
-          </a>
-          <a className="hover:underline underline-offset-3" href="/job-seekers">
+          </Link>
+          <Link className="hover:underline underline-offset-3" href="/job-seekers">
             Job Seekers
-          </a>
-          <a className="hover:underline underline-offset-3" href="/employment-forms">
+          </Link>
+          <Link className="hover:underline underline-offset-3" href="/employment-forms">
             Employment Forms
-          </a>
-          <a className="hover:underline underline-offset-3" href="/current-openings">
+          </Link>
+          <Link className="hover:underline underline-offset-3" href="/current-openings">
             Current Openings
-          </a>
-          <a
-            className="hover:underline underline-offset-3"
-            // href={`mailto:brousslang@lotustechnical.com`}
-            href="/contact-us"
-          >
+          </Link>
+          <Link className="hover:underline underline-offset-3" href="/contact-us">
             Contact Us
-          </a>
+          </Link>
         </div>
       </div>
       <div
@@ -46,13 +43,13 @@ const NavBar = ({ className }: { className: string }) => {
           className
         )}
       >
-        <a href="/">
+        <Link href="/">
           <img
             className="w-auto h-24"
             src="/resources/images/lotus.png"
             alt="Lotus Technical logo"
           />
-        </a>
+        </Link>
         <Menu
           className="cursor-pointer"
           size={50}
@@ -74,27 +71,27 @@ const NavBar = ({ className }: { className: string }) => {
           }}
         />
         <div className="flex flex-col gap-20 font-mono text-[#00A7E4] items-center h-full pt-48 text-3xl">
-          <a className="hover:underline underline-offset-3" href="/">
+          <Link className="hover:underline underline-offset-3" href="/">
             Home
-          </a>
-          <a className="hover:underline underline-offset-3" href="/clients">
+          </Link>
+          <Link className="hover:underline underline-offset-3" href="/clients">
             Clients
-          </a>
-          <a className="hover:underline underline-offset-3" href="/job-seekers">
+          </Link>
+          <Link className="hover:underline underline-offset-3" href="/job-seekers">
             Job Seekers
-          </a>
-          <a className="hover:underline underline-offset-3" href="/employment-forms">
+          </Link>
+          <Link className="hover:underline underline-offset-3" href="/employment-forms">
             Employment Forms
-          </a>
-          <a className="hover:underline underline-offset-3" href="/current-openings">
+          </Link>
+          <Link className="hover:underline underline-offset-3" href="/current-openings">
             Current Openings
-          </a>
-          <a
+          </Link>
+          <Link
             className="hover:underline underline-offset-3"
             href={`mailto:brousslang@lotustechnical.com`}
           >
             Contact Us
-          </a>
+          </Link>
         </div>
       </div>
     </>
@@ -105,27 +102,27 @@ const Footer = ({ footer }: { footer: FooterModel | undefined }) => {
   return (
     <footer className="relative bottom-0 flex flex-col justify-around w-full py-16 bg-white gap-28 md:py-28 md:flex-row md:px-28">
       <div className="flex flex-col mx-auto font-mono gap-y-7 lg:mx-0">
-        <a href={`tel:${footer?.phoneNumber.replaceAll('-', '')}`}>{footer?.phoneNumber}</a>
-        <a href={`mailto:${footer?.emailAddress}`}>{footer?.emailAddress}</a>
-        <a href={footer?.googleMapsLink} target="_blank" rel="noreferrer">
+        <Link href={`tel:${footer?.phoneNumber.replaceAll('-', '')}`}>{footer?.phoneNumber}</Link>
+        <Link href={`mailto:${footer?.emailAddress}`}>{footer?.emailAddress}</Link>
+        <Link href={footer?.googleMapsLink || ''} target="_blank" rel="noreferrer">
           <div>
             <p>{footer?.addressLine1}</p>
             <p>{footer?.suiteNumber}</p>
             <p>{footer?.addressLine2}</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="w-0.5 bg-[#011F33] h-48 mt-auto mb-auto hidden md:block"></div>
       <div className="flex items-center justify-center gap-16 md:pb-0">
-        <a href={footer?.linkedInLink} target="_blank" rel="noreferrer">
+        <Link href={footer?.linkedInLink || ''} target="_blank" rel="noreferrer">
           <Linkedin fill="#011F33" size={36} />
-        </a>
-        <a href={footer?.facebookLink} target="_blank" rel="noreferrer">
+        </Link>
+        <Link href={footer?.facebookLink || ''} target="_blank" rel="noreferrer">
           <Facebook fill="#011F33" size={36} />
-        </a>
-        <a href={footer?.twitterLink} target="_blank" rel="noreferrer">
+        </Link>
+        <Link href={footer?.twitterLink || ''} target="_blank" rel="noreferrer">
           <Twitter fill="#011F33" size={36} />
-        </a>
+        </Link>
       </div>
     </footer>
   );

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { CareerFields } from 'src/lib/core/models/shared';
 
 //Megan notes -
@@ -13,16 +14,16 @@ const CareersSection = ({ careerFields }: { careerFields: CareerFields | undefin
     <div className="w-full">
       <div className="text-5xl text-center uppercase">{careerFields?.title}</div>
       <div className="flex justify-center gap-4">
-        <a href={`mailto:brousslang@lotustechnical.com`}>
+        <Link href="/contact-us">
           <button className="hover:text-white rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 my-8">
             Contact Us
           </button>
-        </a>
-        <a href="/current-openings">
+        </Link>
+        <Link href="/current-openings">
           <button className="hover:text-white rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 my-8">
             Openings
           </button>
-        </a>
+        </Link>
       </div>
       <div className="flex flex-wrap justify-center max-w-screen-lg px-16 pt-16 mx-auto gap-11">
         {careerFields?.careers?.map(career => {

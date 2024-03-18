@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import BasicLayout from 'src/layouts/BasicLayout';
 import { EmploymentFormsModel } from 'src/lib/core/models/employmentForms';
@@ -21,7 +22,7 @@ const EmploymentForms = ({
           <div className="grid grid-cols-1 mx-auto text-2xl md:grid-cols-3 gap-y-10 max-w-7xl w-fit">
             {employmentFormsPage?.forms.map(form => {
               return (
-                <a
+                <Link
                   className="self-center px-12 hover:underline underline-offset-3"
                   key={form?.title}
                   href={form?.link}
@@ -29,7 +30,7 @@ const EmploymentForms = ({
                   rel="noreferrer"
                 >
                   {form?.title}
-                </a>
+                </Link>
               );
             })}
           </div>

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import CareersSection from 'src/components/CareersSection';
 import ProcessSection from 'src/components/ProcessSection';
@@ -21,11 +22,11 @@ const Clients = ({
           <h2 className="text-5xl text-center uppercase">{clientPage?.heading}</h2>
           <p className="text-2xl">{clientPage?.line1}</p>
           <p className="text-2xl">{clientPage?.line2}</p>
-          <a className="mx-auto" href={`mailto:brousslang@lotustechnical.com`}>
-            <button className="hover:text-white rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 mt-8">
+          <Link href="/contact-us">
+            <button className="mx-auto hover:text-white rounded bg-gradient-to-r from-[#78B994] to-[#71B33D] w-52 p-2 mt-8">
               Contact Us
             </button>
-          </a>
+          </Link>
         </div>
       </div>
       <StatsSection stats={clientPage?.stats} />
