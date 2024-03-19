@@ -142,7 +142,12 @@ const BasicLayout = ({
   return (
     <div className="relative flex flex-col text-[#011F33]">
       <Head>
-        <title>Lotus Technical</title>
+        <title>
+          {' '}
+          {process.env.NEXT_PUBLIC_SITE === 'technical'
+            ? 'Lotus Technical'
+            : 'Lotus Healthcare Solutions'}
+        </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar className={cn(navFolded && 'mb-[-12em]')} />
