@@ -15,7 +15,7 @@ const CurrentOpenings = ({
 }) => {
   return (
     <BasicLayout footer={footer}>
-      <div className="flex flex-col pt-24 text-2xl">
+      <div className="flex flex-col pt-10 text-2xl">
         <h1 className="pb-20 text-5xl text-center">{currentOpeningsPage?.pageTitle}</h1>
         <JobSection jobs={currentOpeningsPage?.jobs} />
       </div>

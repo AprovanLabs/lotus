@@ -17,7 +17,7 @@ const Clients = ({
 }) => {
   return (
     <BasicLayout footer={footer}>
-      <div className="flex justify-center pt-24">
+      <div className="flex justify-center pt-10">
         <div className="relative flex flex-col w-3/4 mx-auto lg:w-1/2 gap-y-11">
           <h2 className="text-5xl text-center uppercase">{clientPage?.heading}</h2>
           <p className="text-2xl">{clientPage?.line1}</p>

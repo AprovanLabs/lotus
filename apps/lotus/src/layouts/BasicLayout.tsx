@@ -11,7 +11,12 @@ const NavBar = ({ className }: { className: string }) => {
   const [navToggle, setNavToggle] = useState(false);
   return (
     <>
-      <div className={cn('z-50 justify-between p-11 text-[#00A7E4] hidden xl:flex', className)}>
+      <div
+        className={cn(
+          'z-50 justify-between p-11 text-[#00A7E4] hidden xl:flex text-2xl',
+          className
+        )}
+      >
         <Link href="/">
           <img
             className="w-auto cursor-pointer h-36"
@@ -20,20 +25,20 @@ const NavBar = ({ className }: { className: string }) => {
           />
         </Link>
         <div className="flex gap-16 pt-10 font-mono font-semibold">
-          <Link className="hover:underline underline-offset-3" href="/clients">
-            Clients
+          <Link href="/clients">
+            <p className="cursor-pointer hover:underline underline-offset-3">Clients</p>
           </Link>
           <Link className="hover:underline underline-offset-3" href="/job-seekers">
-            Job Seekers
+            <p className="cursor-pointer hover:underline underline-offset-3">Job Seekers</p>
           </Link>
           <Link className="hover:underline underline-offset-3" href="/employment-forms">
-            Employment Forms
+            <p className="cursor-pointer hover:underline underline-offset-3">Employment Forms</p>
           </Link>
           <Link className="hover:underline underline-offset-3" href="/current-openings">
-            Current Openings
+            <p className="cursor-pointer hover:underline underline-offset-3">Current Openings</p>
           </Link>
           <Link className="hover:underline underline-offset-3" href="/contact-us">
-            Contact Us
+            <p className="cursor-pointer hover:underline underline-offset-3">Contact Us</p>
           </Link>
         </div>
       </div>
