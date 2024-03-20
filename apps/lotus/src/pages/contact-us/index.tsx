@@ -44,7 +44,7 @@ const ContactUs = ({ footer }: { footer: FooterModel | undefined }) => {
               />
               <div className="grid weight-500">
                 <label htmlFor="file" style={{ display: 'block', width: '100%' }}>
-                  Resume
+                  Attachment
                 </label>
                 <input type="file" name="file" />
               </div>
