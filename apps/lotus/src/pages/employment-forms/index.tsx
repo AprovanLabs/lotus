@@ -19,17 +19,13 @@ const EmploymentForms = ({
         <div className="select-none pointer-events-none opacity-10 absolute w-full h-full bg-cover bg-[url('/resources/images/skyline.jpg')] pt-[12rem]"></div>
         <div className="pt-80 pb-[75rem] md:pb-[40rem] text-white ">
           <h1 className="px-4 pb-20 text-5xl text-center">{employmentFormsPage?.pageTitle}</h1>
-          <div className="grid grid-cols-1 mx-auto text-2xl md:grid-cols-3 gap-y-10 max-w-7xl w-fit">
+          <div className="grid grid-cols-1 mx-auto text-2xl md:grid-cols-3 gap-y-10 md:gap-x-10 max-w-7xl w-fit">
             {employmentFormsPage?.forms.map(form => {
               return (
-                <Link
-                  className="self-center px-12 hover:underline underline-offset-3"
-                  key={form?.title}
-                  href={form?.link}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {form?.title}
+                <Link key={form?.title} href={form?.link} target="_blank" rel="noreferrer">
+                  <div className="self-center hover:underline underline-offset-3 md:max-w-xs">
+                    {form?.title}
+                  </div>
                 </Link>
               );
             })}
