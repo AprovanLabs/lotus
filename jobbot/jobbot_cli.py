@@ -45,7 +45,7 @@ class JobbotCli:
             "-o",
             dest="output_dir",
             type=str,
-            default="output",
+            default="target",
             help="The path to the output directory",
         )
 

@@ -22,6 +22,11 @@ connections:
     host: "${PRISMIC_ENDPOINT}"
     login: "${PRISMIC_API_KEY}"
     password: "${PRISMIC_API_SECRET}"
+  - id: prismic
+    type: prismic
+    name: Prismic Admin Username and Password
+    login: "${PRISMIC_USERNAME}"
+    password: "${PRISMIC_PASSWORD}"
   - id: neon
     login: "${NEON_USERNAME}"
     password: "${NEON_PASSWORD}"
@@ -54,3 +59,5 @@ envFiles:
       PRISMIC_ENDPOINT=${connections.prismic-api-key.host}
       PRISMIC_API_KEY=${connections.prismic-api-key.login}
       PRISMIC_API_SECRET=${connections.prismic-api-key.password}
+      PRISMIC_USERNAME=${connections.prismic.login}
+      PRISMIC_PASSWORDS=${connections.prismic.password}
