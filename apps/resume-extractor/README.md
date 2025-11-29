@@ -34,6 +34,8 @@ python3 -m src.main docs/sample-resume.pdf
 
 https://www.pcrecruiter.net/APIDOCS_V2/api-reference/Put_Update_1706.html
 
+https://www.pcrecruiter.net/APIDOCS_V2/additional-references/Candidates-V2.html
+
 `GET /candidatesV2`
 
 - `ResultsPerPage`: Max of 500

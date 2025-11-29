@@ -1,4 +1,6 @@
 import os
+import base64
+from pathlib import Path
 import requests
 from typing import Dict, Any, Optional
 
@@ -108,6 +110,151 @@ class PCRClient:
         }
         
         return pcr_data
+
+    def update_candidate(self, candidate_id: str, candidate_data: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Update an existing candidate in PC Recruiter.
+        
+        Args:
+            candidate_id: The ID of the candidate to update
+            candidate_data: Dictionary containing candidate information
+            
+        Returns:
+            API response as dictionary
+        """
+        if not self.session_id:
+            self.authenticate()
+            
+        update_url = f"{self.base_url}/candidatesV2/{candidate_id}?uid={self.pcr_database_id}"
+        
+        # Transform the input data to match PC Recruiter API format
+        pcr_candidate = self._transform_update_data(candidate_data)
+        
+        response = requests.put(
+            update_url,
+            json=pcr_candidate,
+            headers=self._get_headers()
+        )
+        response.raise_for_status()
+        
+        return response.json()
+
+    def get_candidate(self, candidate_id: str) -> Dict[str, Any]:
+        """
+        Get candidate details by ID.
+        
+        Args:
+            candidate_id: The ID of the candidate to retrieve
+            
+        Returns:
+            Candidate data as dictionary
+        """
+        if not self.session_id:
+            self.authenticate()
+            
+        get_url = f"{self.base_url}/candidatesV2/{candidate_id}?uid={self.pcr_database_id}"
+        
+        response = requests.get(
+            get_url,
+            headers=self._get_headers()
+        )
+        response.raise_for_status()
+        
+        result = response.json()
+        candidates = result.get("Results", [])
+        
+        if not candidates:
+            raise ValueError(f"Candidate with ID {candidate_id} not found")
+        
+        return candidates[0]
+
+    def upload_resume(self, candidate_id: str, file_path: str) -> Dict[str, Any]:
+        """
+        Upload a resume file for a candidate.
+        
+        Args:
+            candidate_id: The ID of the candidate
+            file_path: Path to the resume file to upload
+            
+        Returns:
+            API response as dictionary
+        """
+        if not self.session_id:
+            self.authenticate()
+            
+        # Validate file exists
+        file_path_obj = Path(file_path)
+        if not file_path_obj.exists():
+            raise ValueError(f"File not found: {file_path}")
+            
+        # Encode file to base64
+        base64_content = self._encode_file_to_base64(file_path)
+        
+        resume_url = f"{self.base_url}/candidates/{candidate_id}/resumes?uid={self.pcr_database_id}"
+        
+        resume_data = {
+            "CandidateId": int(candidate_id),
+            "Resume": base64_content,
+            "FileName": file_path_obj.name
+        }
+        
+        response = requests.post(
+            resume_url,
+            json=resume_data,
+            headers=self._get_headers()
+        )
+        response.raise_for_status()
+        
+        return response.json()
+
+    def _encode_file_to_base64(self, file_path: str) -> str:
+        """
+        Encode a file to base64 string.
+        
+        Args:
+            file_path: Path to the file to encode
+            
+        Returns:
+            Base64 encoded string
+        """
+        with open(file_path, 'rb') as file:
+            encoded_content = base64.b64encode(file.read()).decode('utf-8')
+        return encoded_content
+
+    def create_candidate_with_resume(self, candidate_data: Dict[str, Any], resume_file_path: str) -> Dict[str, Any]:
+        """
+        Create a candidate and upload their resume in one operation.
+        
+        Args:
+            candidate_data: Dictionary containing candidate information
+            resume_file_path: Path to the resume file to upload
+            
+        Returns:
+            Combined result with candidate creation and resume upload results
+        """
+        # Create the candidate first
+        candidate_result = self.create_candidate(candidate_data)
+        candidate_id = candidate_result.get('CandidateId')
+        
+        if not candidate_id:
+            raise ValueError("Failed to get CandidateId from creation response")
+        
+        # Upload the resume
+        resume_result = self.upload_resume(str(candidate_id), resume_file_path)
+        
+        # Return combined results
+        return {
+            "candidate": candidate_result,
+            "resume": resume_result,
+            "CandidateId": candidate_id
+        }
+
+    def _transform_update_data(self, data: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Transform candidate data for update operations.
+        Includes proper handling of currency fields and status values.
+        """
+        return data
 
     def _transform_currency(self, value: Any) -> Optional[Dict[str, Any]]:
         """

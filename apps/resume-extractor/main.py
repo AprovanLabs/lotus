@@ -7,6 +7,9 @@ $> python3 main.py extract /Users/jacob/Documents/Code/AprovanLabs/lotus/apps/re
 
 Upload candidate to PCR from JSON:
 $> python3 main.py upload-pcr /Users/jacob/Documents/Code/AprovanLabs/lotus/apps/resume-extractor/data/output.json
+
+Extract resume and upload directly to PCR in one step:
+$> python3 main.py extract-and-upload /Users/jacob/Documents/Code/AprovanLabs/lotus/apps/resume-extractor/data/Resume__MeganSampson.pdf
 """
 
 import sys
@@ -15,7 +18,7 @@ import argparse
 import logging
 import os
 from dotenv import load_dotenv
-from src.resume import extract_resume_to_json
+from src.resume import extract_resume_to_json, ResumeExtractor
 from src.pcr import PCRClient
 
 logging.basicConfig(level=logging.INFO)
@@ -48,19 +51,7 @@ def upload_pcr_command(args):
         logger.info(f"Loading candidate data from: {args.json_file}")
         logger.info(f"Candidate: {candidate_data.get('FirstName', 'Unknown')} {candidate_data.get('LastName', 'Unknown')}")
         
-        # Validate required credentials
-        if not args.username or not args.password:
-            logger.info("Error: Username and password are required. Provide them via command line arguments or set PCR_USERNAME/PCR_PASSWORD environment variables.")
-            sys.exit(1)
-            
-        # Initialize PCR client
-        client = PCRClient(
-            base_url=args.base_url,
-            username=args.username,
-            password=args.password,
-            database_id=args.database_id,
-            pcr_database_id=args.pcr_database_id
-        )
+        client = PCRClient()
         
         logger.info("Authenticating with PC Recruiter API...")
         client.authenticate()
@@ -87,6 +78,21 @@ def upload_pcr_command(args):
         sys.exit(1)
 
 
+def extract_and_upload_command(args):
+    """Extract candidate info from resume and upload directly to PC Recruiter."""
+    try:
+        extractor = ResumeExtractor(extractor_type=args.extractor_type)
+        result = extractor.extract_and_upload_to_pcr(args.file_path)
+        
+        logger.info(json.dumps(result, indent=2))
+        
+    except KeyboardInterrupt:
+        logger.info("\nOperation cancelled by user")
+    except (IOError, OSError, ValueError, RuntimeError, ConnectionError) as e:
+        logger.info("Error: %s", str(e))
+        sys.exit(1)
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Resume Extractor and PC Recruiter Integration Tool",
@@ -99,8 +105,11 @@ Examples:
   # Upload candidate to PC Recruiter (using environment variables)
   python main.py upload-pcr candidate.json
   
-  # Upload candidate with explicit credentials
-  python main.py upload-pcr candidate.json --username ADMIN --password your_password
+  # Extract resume and upload directly to PC Recruiter in one step
+  python main.py extract-and-upload resume.pdf
+  
+  # Extract resume and upload with specific extractor type
+  python main.py extract-and-upload resume.pdf --extractor-type markitdown
         """
     )
     
@@ -116,21 +125,12 @@ Examples:
     # Upload to PCR command
     pcr_parser = subparsers.add_parser('upload-pcr', help='Upload candidate to PC Recruiter from JSON')
     pcr_parser.add_argument('json_file', help='Path to JSON file containing candidate data')
-    pcr_parser.add_argument('--base-url', 
-                          default=os.getenv('PCR_BASE_URL', 'https://www2.pcrecruiter.net'),
-                          help='PC Recruiter API base URL (default: from PCR_BASE_URL env var)')
-    pcr_parser.add_argument('--username', 
-                          default=os.getenv('PCR_USERNAME'),
-                          help='PC Recruiter username (default: from PCR_USERNAME env var)')
-    pcr_parser.add_argument('--password', 
-                          default=os.getenv('PCR_PASSWORD'),
-                          help='PC Recruiter password (default: from PCR_PASSWORD env var)')
-    pcr_parser.add_argument('--database-id', 
-                          default="Lotus Technical.xigentsolutions",
-                          help='PC Recruiter database ID (default: "Lotus Technical.xigentsolutions")')
-    pcr_parser.add_argument('--pcr-database-id', 
-                          default=os.getenv('PCR_DATABASE_ID', 'odbc.xigentsolutions'),
-                          help='PCR database identifier for URL construction (default: from PCR_DATABASE_ID env var)')
+    
+    # Extract and upload command
+    extract_upload_parser = subparsers.add_parser('extract-and-upload', help='Extract resume and upload directly to PC Recruiter')
+    extract_upload_parser.add_argument('file_path', help='Path to resume file (PDF, DOCX, etc.)')
+    extract_upload_parser.add_argument('--extractor-type', default='auto', 
+                                     help='Extractor type: auto, markitdown, unstructured (default: auto)')
     
     args = parser.parse_args()
     
@@ -138,6 +138,8 @@ Examples:
         extract_resume_command(args)
     elif args.command == 'upload-pcr':
         upload_pcr_command(args)
+    elif args.command == 'extract-and-upload':
+        extract_and_upload_command(args)
     else:
         parser.print_help()
         sys.exit(1)
