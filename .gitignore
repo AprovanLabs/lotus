@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
 node_modules/
-=======
 .env
->>>>>>> Stashed changes
+.DS_Store
