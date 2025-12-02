@@ -1,34 +1,6 @@
 # Resume Extraction Process
 
-## Technical Implementation
-
-Use LangChain with Unstructured
-
-Alternative, use https://github.com/microsoft/markitdown
-
-## Credentials
-
-Login usernames and passwords should be taken as environment variables:
-
-```txt
-PCR_USERNAME=
-PCR_PASSWORD=
-PCR_BASE_URL=
-
-OUTLOOK_USERNAME=
-OUTLOOK_PASSWORD=
-OUTBOX_RECUITER_USER=
-```
-
 ## Overview
-
-### Login Process
-
-_The browser should already be logged-in for the PCR and Outbox email_
-
-1. Log in to PCR with the admin credentials
-2. Log in to Outlook
-3. In Outlook, switch to recruiter user's inbox
 
 ### Email Resolution Process
 

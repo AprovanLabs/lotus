@@ -3,6 +3,10 @@ pydantic>=2.0.0
 python-dotenv>=1.0.0
 requests>=2.25.0
 
+# Microsoft Graph and Outlook API
+msal>=1.24.0
+msgraph-core>=0.2.2
+
 # PDF and document processing
 markitdown[docx]>=0.0.1a2
 unstructured[pdf]>=0.11.0

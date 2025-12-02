@@ -41,3 +41,14 @@ https://www.pcrecruiter.net/APIDOCS_V2/additional-references/Candidates-V2.html
 - `ResultsPerPage`: Max of 500
 - `Page`: Start at 1
 - `Query`: Follows the OData query spec `CandidateId EQ 100004182369727`
+
+## References
+
+- https://github.com/shcherbak-ai/contextgem
+- https://github.com/opendatalab/MinerU?tab=readme-ov-file
+- https://github.com/opendatalab/magic-doc
+- https://docling-project.github.io/docling/getting_started/installation/#development-setup
+- https://github.com/datalab-to/marker
+- https://learn.microsoft.com/en-us/outlook/rest/get-started
+- https://docs.langchain.com/oss/python/langchain/overview
+- https://docs.langchain.com/oss/python/langchain/overview

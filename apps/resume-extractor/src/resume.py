@@ -11,7 +11,6 @@ from langchain_core.output_parsers import PydanticOutputParser
 from langchain_core.prompts import PromptTemplate
 
 from .candidate import CandidateInfo
-from .pcr import PCRClient
 
 logger = logging.getLogger(__name__)
 
@@ -190,50 +189,6 @@ class ResumeExtractor:
         
         logger.info("Processed %d files successfully, %d failed", len(results), len(errors))
         return results
-    
-    def extract_and_upload_to_pcr(self, file_path: str, upload_resume: bool = True) -> Dict[str, Any]:
-        """Extract candidate info from resume file and upload directly to PCR API.
-        
-        Args:
-            file_path: Path to the resume file
-            upload_resume: Whether to upload the actual resume file (default: True)
-        """
-        try:
-            # Extract candidate data from resume
-            logger.info("Extracting candidate data from: %s", file_path)
-            candidate_data = self.extract_candidate_from_file(file_path)
-            
-            # Log candidate info
-            logger.info("Candidate: %s %s", 
-                       candidate_data.get('FirstName', 'Unknown'), 
-                       candidate_data.get('LastName', 'Unknown'))
-            
-            # Initialize PCR client and authenticate
-            client = PCRClient()
-            logger.info("Authenticating with PC Recruiter API...")
-            client.authenticate()
-            logger.info("Authentication successful!")
-            
-            if upload_resume:
-                # Create candidate and upload resume together
-                logger.info("Creating candidate and uploading resume to PC Recruiter...")
-                result = client.create_candidate_with_resume(candidate_data, file_path)
-                
-                logger.info("Candidate and resume uploaded successfully!")
-                logger.info("Candidate ID: %s", result.get('CandidateId', 'Not available'))
-            else:
-                # Upload candidate only
-                logger.info("Creating candidate in PC Recruiter...")
-                result = client.create_candidate(candidate_data)
-                
-                logger.info("Candidate created successfully!")
-                logger.info("Candidate ID: %s", result.get('CandidateId', 'Not available'))
-            
-            return result
-            
-        except Exception as e:
-            logger.error("Error in extract and upload: %s", str(e))
-            raise ResumeExtractionError(f"Extract and upload failed: {str(e)}") from e
 
 
 def extract_resume_to_json(file_path: str, output_path: Optional[str] = None, 

@@ -41,7 +41,7 @@ class CandidateInfo(BaseModel):
     degree_type: Optional[str] = Field(default=None, alias="DegreeType")
     grad_year: Optional[int] = Field(default=None, alias="GradYear")
     date_entered: Optional[datetime] = Field(default_factory=datetime.now, alias="DateEntered")
-    email_address: str = Field(alias="EmailAddress")
+    email_address: Optional[str] = Field(alias="EmailAddress")
     industry: Optional[str] = Field(default=None, alias="Industry")
     specialty: Optional[str] = Field(default=None, alias="Specialty")
     show_on_web_rollup: Optional[bool] = Field(default=None, alias="ShowOnWebRollup")

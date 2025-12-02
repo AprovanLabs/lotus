@@ -8,16 +8,7 @@ class PCRClient:
     """PC Recruiter API Client for managing candidates."""
     
     def __init__(self, base_url: str = None, username: str = None, password: str = None, database_id: str = None, pcr_database_id: str = None):
-        """
-        Initialize the PC Recruiter API client.
-        
-        Args:
-            base_url: The base URL for the PC Recruiter API (defaults to PCR_BASE_URL env var)
-            username: Username for authentication (defaults to PCR_USERNAME env var)
-            password: Password for authentication (defaults to PCR_PASSWORD env var)
-            database_id: Database ID for authentication (defaults to "Lotus Technical.xigentsolutions")
-            pcr_database_id: PCR database identifier for URL construction (defaults to PCR_DATABASE_ID env var)
-        """
+        """Initialize the PC Recruiter API client."""
         self.base_url = (base_url or os.getenv('PCR_BASE_URL', 'https://www2.pcrecruiter.net')).rstrip('/')
         self.username = username or os.getenv('PCR_USERNAME')
         self.password = password or os.getenv('PCR_PASSWORD')
@@ -89,39 +80,58 @@ class PCRClient:
             raise ValueError("FirstName is required")
         if not data.get("LastName"):
             raise ValueError("LastName is required")
-        if not data.get("EmailAddress"):
-            raise ValueError("EmailAddress is required")
+        if not data.get("EmailAddress") and not data.get("MobilePhone"):
+            raise ValueError("EmailAddress or MobilePhone is required")
 
         pcr_data = {
             "FirstName": data.get("FirstName"),
             "LastName": data.get("LastName"),
-            "EmailAddress": data.get("EmailAddress"),
             "MiddleInitial": data.get("MiddleInitial"),
+            "Salutation": data.get("Salutation"),
+            "Title": data.get("Title"),
             "Address": data.get("Address"),
+            "Address2": data.get("Address2"),
             "City": data.get("City"),
             "State": data.get("State"),
             "PostalCode": data.get("PostalCode"),
+            "PostalCodeExtension": data.get("PostalCodeExtension"),
+            "FullPostalCode": data.get("FullPostalCode"),
+            "County": data.get("County"),
+            "Country": data.get("Country"),
+            "HomePhone": data.get("HomePhone", data.get("MobilePhone")),
+            "FaxPhone": data.get("FaxPhone"),
+            "Pager": data.get("Pager"),
+            "MobilePhone": data.get("MobilePhone") if data.get("HomePhone") else None,
             "WorkPhone": data.get("WorkPhone"),
+            "CurrentOccupation": data.get("CurrentOccupation"),
+            "Relocate": data.get("Relocate"),
+            "CurrentSalary": data.get("CurrentSalary"),
+            "DesiredSalary": data.get("DesiredSalary"),
             "School": data.get("School"),
             "DegreeType": data.get("DegreeType"),
-            "Status": data.get("Status"),
-            "Industry": data.get("Industry") or "",
+            "GradYear": data.get("GradYear"),
             "DateEntered": data.get("DateEntered"),
+            "EmailAddress": data.get("EmailAddress"),
+            "Industry": data.get("Industry"),
+            "Specialty": data.get("Specialty"),
+            "ShowOnWebRollup": data.get("ShowOnWebRollup"),
+            "Status": data.get("Status"),
+            "Subjective": data.get("Subjective"),
+            "Identification": data.get("Identification"),
+            "Available": data.get("Available"),
+            "BillRate": data.get("BillRate"),
+            "PayRate": data.get("PayRate"),
+            "DefaultCurrency": data.get("DefaultCurrency"),
+            "UserName": data.get("UserName")
         }
+
+        import json
+        print(json.dumps(pcr_data, indent=2))
         
         return pcr_data
 
     def update_candidate(self, candidate_id: str, candidate_data: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Update an existing candidate in PC Recruiter.
-        
-        Args:
-            candidate_id: The ID of the candidate to update
-            candidate_data: Dictionary containing candidate information
-            
-        Returns:
-            API response as dictionary
-        """
+        """Update an existing candidate in PC Recruiter."""
         if not self.session_id:
             self.authenticate()
             
@@ -140,15 +150,7 @@ class PCRClient:
         return response.json()
 
     def get_candidate(self, candidate_id: str) -> Dict[str, Any]:
-        """
-        Get candidate details by ID.
-        
-        Args:
-            candidate_id: The ID of the candidate to retrieve
-            
-        Returns:
-            Candidate data as dictionary
-        """
+        """Get candidate details by ID."""
         if not self.session_id:
             self.authenticate()
             
@@ -169,16 +171,7 @@ class PCRClient:
         return candidates[0]
 
     def upload_resume(self, candidate_id: str, file_path: str) -> Dict[str, Any]:
-        """
-        Upload a resume file for a candidate.
-        
-        Args:
-            candidate_id: The ID of the candidate
-            file_path: Path to the resume file to upload
-            
-        Returns:
-            API response as dictionary
-        """
+        """Upload a resume file for a candidate."""
         if not self.session_id:
             self.authenticate()
             
@@ -208,30 +201,13 @@ class PCRClient:
         return response.json()
 
     def _encode_file_to_base64(self, file_path: str) -> str:
-        """
-        Encode a file to base64 string.
-        
-        Args:
-            file_path: Path to the file to encode
-            
-        Returns:
-            Base64 encoded string
-        """
+        """Encode a file to base64 string."""
         with open(file_path, 'rb') as file:
             encoded_content = base64.b64encode(file.read()).decode('utf-8')
         return encoded_content
 
     def create_candidate_with_resume(self, candidate_data: Dict[str, Any], resume_file_path: str) -> Dict[str, Any]:
-        """
-        Create a candidate and upload their resume in one operation.
-        
-        Args:
-            candidate_data: Dictionary containing candidate information
-            resume_file_path: Path to the resume file to upload
-            
-        Returns:
-            Combined result with candidate creation and resume upload results
-        """
+        """Create a candidate and upload their resume in one operation."""
         # Create the candidate first
         candidate_result = self.create_candidate(candidate_data)
         candidate_id = candidate_result.get('CandidateId')
@@ -257,15 +233,7 @@ class PCRClient:
         return data
 
     def _transform_currency(self, value: Any) -> Optional[Dict[str, Any]]:
-        """
-        Transform currency value to PC Recruiter format.
-        
-        Args:
-            value: Currency value (can be number, dict, or None)
-            
-        Returns:
-            Currency object or None
-        """
+        """Transform currency value to PC Recruiter format."""
         if value is None:
             return None
             
