@@ -14,7 +14,7 @@ $> source .venv/bin/activate
 Install packages
 
 ```sh
-$> cd apps/resume-extrator
+$> cd apps/resume-extractor
 resume-extractor$> python3 -m pip install -r requirements.txt
 ```
 

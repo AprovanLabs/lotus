@@ -102,6 +102,8 @@ class ResumeExtractionOrchestrator:
         }
         
         try:
+            self.email_processor.tag_email_as_processed(email)
+
             # Step 1: Check if email has resume attachments (Email Resolution Process)
             if not self.outlook_client.has_resume_attachments(email):
                 logger.info(f"No resume attachments found in email: {email.subject}")
@@ -147,8 +149,6 @@ class ResumeExtractionOrchestrator:
                 else:
                     result['errors'].append("Failed to move email to PCR-Entered Resumes folder")
             else:
-                # Just tag with Bot if there were errors but don't move
-                self.email_processor.tag_email_as_processed(email)
                 result['moved_to_folder'] = 'Tagged only (errors occurred)'
             
             logger.info(f"Successfully processed email: {email.subject} - Found {len(candidates)} candidates")
@@ -157,8 +157,6 @@ class ResumeExtractionOrchestrator:
             error_msg = f"Error processing email {email.id}: {str(e)}"
             logger.error(error_msg)
             result['errors'].append(error_msg)
-            # Tag email as processed even if errors occurred
-            self.email_processor.tag_email_as_processed(email)
         
         finally:
             self.processed_count += 1

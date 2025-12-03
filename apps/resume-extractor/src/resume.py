@@ -10,7 +10,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import PydanticOutputParser
 from langchain_core.prompts import PromptTemplate
 
-from .candidate import CandidateInfo
+from .candidate import ResumeValidation
 
 logger = logging.getLogger(__name__)
 
@@ -25,24 +25,26 @@ class ResumeSummarizer:
     
     def __init__(self, openai_api_key: str):
         self.llm = ChatOpenAI(model="gpt-4o-mini", temperature=0, openai_api_key=openai_api_key)
-        self.parser = PydanticOutputParser(pydantic_object=CandidateInfo)
+        self.parser = PydanticOutputParser(pydantic_object=ResumeValidation)
 
     def _create_prompt_template(self) -> PromptTemplate:
         """Create a standardized prompt template for resume extraction."""
-        
-        system_prompt = f"""Extract candidate information from resume.
+    
+        system_prompt = f"""Analyze the document to determine if it's a resume and extract information if it is.
 
 Instructions:
-1. Extract only explicitly stated information
-2. Use null for missing fields
-3. Fill in the industry with the best approximation based on work experience (max 20 characters)
-4. Pay attention to Markdown headings for document structure
+1. First, determine if this document is actually a resume/CV
+2. If it's NOT a resume (e.g., job posting, article, application for something, random text), set is_resume=False and provide a reason
+3. If it IS a resume, set is_resume=True and extract all candidate information
+4. For candidate info: extract only explicitly stated information, use null for missing fields
+5. Fill in the industry with the best approximation based on work experience (max 20 characters)
+6. Pay attention to Markdown headings for document structure
 
 {{format_instructions}}"""
 
         user_prompt = f"""{{resume_content}}
 
-Extract candidate information following the schema."""
+Analyze this document and respond according to the schema."""
 
         return PromptTemplate(
             template=system_prompt + "\n\n" + user_prompt,
@@ -50,7 +52,7 @@ Extract candidate information following the schema."""
             partial_variables={"format_instructions": self.parser.get_format_instructions()}
         )
 
-    def summarize_resume_content(self, content: str) -> Dict[str, Any]:
+    def summarize_resume_content(self, content: str) -> Optional[Dict[str, Any]]:
         """Use LLM to extract structured candidate information from resume content."""
         if len(content.strip()) < 50:
             raise ValueError("Insufficient content")
@@ -59,14 +61,17 @@ Extract candidate information following the schema."""
         prompt = prompt_template.format(resume_content=content)
         
         messages = [
-            SystemMessage(content="You are an expert resume parser."),
+            SystemMessage(content="You are an expert resume parser and document classifier."),
             HumanMessage(content=prompt)
         ]
         
         response = self.llm.invoke(messages)
-        candidate_info = self.parser.parse(response.content)
-        
-        return candidate_info.model_dump(by_alias=True, exclude_none=False)
+        parsed_result = self.parser.parse(response.content)
+
+        if parsed_result.is_resume is False:
+            return None
+        else:
+            return parsed_result.candidate_info.model_dump(by_alias=True, exclude_none=False)
 
     def add_metadata(self, result: Dict[str, Any], file_path: str, extractor_name: str, 
                     content_length: int) -> Dict[str, Any]:
@@ -130,10 +135,6 @@ class ResumeExtractor:
         
         raise ResumeExtractionError(f"No suitable extractor available for {file_type}")
 
-    def _validate_result(self, result: Dict[str, Any]) -> None:
-        if 'EmailAddress' not in result:
-            raise ValueError("Email is missing")
-
     def extract_candidate_from_file(self, file_path: str) -> Dict[str, Any]:
         file_path_obj = Path(file_path)
         
@@ -150,10 +151,6 @@ class ResumeExtractor:
             
             result = self.summarizer.summarize_resume_content(content)
             result = self.summarizer.add_metadata(result, file_path, extractor_name, len(content))
-            
-            self._validate_result(result)
-
-            result['Status'] = 'Candidate'
 
             logger.info("Successfully processed: %s", file_path)
             return result

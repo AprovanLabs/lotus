@@ -1,6 +1,18 @@
 from pydantic import BaseModel, Field
-from typing import Optional, List
+from typing import Optional, List, Union
 from datetime import datetime
+
+class ResumeValidation(BaseModel):
+    """Wrapper model to validate if a document is actually a resume."""
+    is_resume: bool = Field(description="True if the document is a resume, False otherwise")
+    candidate_info: Optional['CandidateInfo'] = Field(
+        default=None, 
+        description="Candidate information extracted from resume. Only present if is_resume=True"
+    )
+    reason: Optional[str] = Field(
+        default=None,
+        description="Reason why the document is not considered a resume (only if is_resume=False)"
+    )
 
 class CurrencyRate(BaseModel):
     currency_code: str = Field(alias="CurrencyCode")
@@ -58,3 +70,6 @@ class CandidateInfo(BaseModel):
     user_name: Optional[str] = Field(alias="UserName")
     group: Optional[str] = Field(alias="Group")
     custom_fields: Optional[List[CustomField]] = Field(alias="CustomFields")
+
+# Update forward reference after CandidateInfo is defined
+ResumeValidation.model_rebuild()

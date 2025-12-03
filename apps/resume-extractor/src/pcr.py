@@ -14,6 +14,7 @@ class PCRClient:
         self.password = password or os.getenv('PCR_PASSWORD')
         self.database_id = database_id or "Lotus Technical.xigentsolutions"
         self.pcr_database_id = pcr_database_id or os.getenv('PCR_DATABASE_ID', 'odbc.xigentsolutions')
+        # Can be used to store the session token and avoid re-authentication
         self.session_id = os.getenv("PCR_TOKEN")
         
         if not self.username or not self.password:
@@ -110,12 +111,11 @@ class PCRClient:
             "School": data.get("School"),
             "DegreeType": data.get("DegreeType"),
             "GradYear": data.get("GradYear"),
-            "DateEntered": data.get("DateEntered"),
             "EmailAddress": data.get("EmailAddress"),
             "Industry": data.get("Industry"),
             "Specialty": data.get("Specialty"),
             "ShowOnWebRollup": data.get("ShowOnWebRollup"),
-            "Status": data.get("Status"),
+            "Status": data.get("Status", "Candidate"),
             "Subjective": data.get("Subjective"),
             "Identification": data.get("Identification"),
             "Available": data.get("Available"),
