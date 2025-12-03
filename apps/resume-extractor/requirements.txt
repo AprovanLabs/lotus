@@ -1,0 +1,23 @@
+# Core dependencies
+pydantic>=2.0.0
+python-dotenv>=1.0.0
+requests>=2.25.0
+
+# Microsoft Graph and Outlook API
+msal>=1.24.0
+msgraph-core>=0.2.2
+
+# PDF and document processing
+markitdown[docx]>=0.0.1a2
+unstructured[pdf]>=0.11.0
+pypdf>=3.0.0
+python-docx>=1.1.0
+
+# LangChain and AI
+langchain>=0.1.0
+langchain-openai>=0.0.5
+langchain-community>=0.0.10
+langchain-core>=0.1.0
+
+# Additional utilities
+python-magic>=0.4.27

@@ -1,0 +1,15 @@
+name: Jobbot Pipeline
+description: "Run the jobbot scraper and upload the results"
+
+inputs:
+  targets:
+    description: "Scraping targets"
+    required: true
+    default: "category:jobs location:minnesota"
+
+runs:
+  using: "docker"
+  image: "jobbot/Dockerfile"
+  args:
+    - ${{ inputs.targets }}
+    - /github/workspace
